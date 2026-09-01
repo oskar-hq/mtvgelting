@@ -1,0 +1,86 @@
+{
+  "name": "Männer-Turn-Verein Gelting von 1908 e.V.",
+  "kurzname": "MTV Gelting 08",
+  "gegruendet": 1908,
+  "claim": "Einer der größten ländlichen Sportvereine des Kreises Schleswig-Flensburg.",
+  "adresse": { "strasse": "Wackerballig 2", "plz": "24395", "ort": "Gelting" },
+  "telefon": "04643 1316",
+  "telefon_link": "+4946431316",
+  "telefax": "04643 9039430",
+  "email": "vorstand@mtv-gelting-08.de",
+  "register": "VR 1033 FL, Amtsgericht Flensburg",
+  "social": {
+    "facebook": "https://www.facebook.com/Mtvgelting08",
+    "instagram": "https://www.instagram.com/mtv_gelting_08"
+  },
+  "shop": "https://mtv-gelting-08.fan12.de",
+  "vorstand": [
+    { "name": "Hanno Reese", "rolle": "1. Vorsitzender", "paragraf26": true },
+    { "name": "Maria Sönnichsen", "rolle": "Vorstand", "paragraf26": true },
+    { "name": "Hans Peter Spurk", "rolle": "Vorstand", "paragraf26": true },
+    { "name": "Lenja Scharf", "rolle": "Weiterer Vorstand", "paragraf26": false },
+    { "name": "Thies Kraack-Petersen", "rolle": "Weiterer Vorstand", "paragraf26": false }
+  ],
+  "beitraege": [
+    { "gruppe": "Kinder & Jugendliche bis 18 Jahre, Schüler & Azubis", "monat": "7,00 €", "jahr": "84,00 €" },
+    { "gruppe": "Erwachsene ab 18 Jahren", "monat": "11,00 €", "jahr": "132,00 €" },
+    { "gruppe": "Familien", "monat": "22,00 €", "jahr": "264,00 €" },
+    { "gruppe": "Passive Mitglieder", "monat": "3,00 €", "jahr": "36,00 €" }
+  ],
+  "beitrag_hinweis": "Der Beitrag wird quartalsweise per SEPA-Lastschrift eingezogen – jeweils zum 1. März, 1. Juni, 1. September und 1. Dezember.",
+  "sponsoren": [
+    "Allianz Generalvertretung Marco Witt", "Autohaus Lorenzen", "Benz Kunsthandel", "Bruhn",
+    "Dachdeckerei Fritz", "Diako Residenz", "GVIK", "Höck", "Hotel Steinberger Hof",
+    "Kai Jensen Landtechnisches Lohnunternehmen", "Nord-Ostsee-Sparkasse", "Ostangler",
+    "Oswald Richter", "Partner-Alu-Schilder", "Paulsen", "REWE Kappeln", "Schmedeke",
+    "Stadtwerke SH", "team bau energie", "teg nord", "TÜV Nord", "VR-Bank"
+  ],
+  "news": [
+    {
+      "titel": "10.000 € für den Nachwuchs: Allianz Marco Witt unterstützt den MTV",
+      "datum": "2026-02-18", "kategorie": "Verein",
+      "text": "Die Allianz Generalvertretung Marco Witt unterstützt den MTV Gelting 08 über zwei Jahre mit insgesamt 10.000 Euro. Das Geld fließt gezielt in die Kinder- und Jugendarbeit des Vereins. „Diese Unterstützung gibt uns die Möglichkeit, unsere Angebote für Kinder und Jugendliche langfristig zu sichern und weiter auszubauen“, sagt der 1. Vorsitzende Hanno Reese."
+    },
+    {
+      "titel": "Sprachrohr 2026 ist online",
+      "datum": "2026-02-02", "kategorie": "Verein",
+      "text": "Die neue Ausgabe unserer Vereinszeitschrift Sprachrohr steht ab sofort zum Download bereit – mit Rückblicken aus allen Abteilungen, Terminen und Porträts."
+    },
+    {
+      "titel": "Sportzeiten für Kindergarten und Grundschule",
+      "datum": "2026-01-12", "kategorie": "Kinder",
+      "text": "Ab Januar gelten neue Zeiten für die Kindergarten- und Grundschulangebote. Alle Termine findest du im Wochenplan."
+    },
+    {
+      "titel": "Alle Kids treiben Sport!",
+      "datum": "2025-11-20", "kategorie": "Kinder",
+      "text": "Mit der Aktion „Alle Kids treiben Sport!“ wollen wir erreichen, dass kein Kind aus finanziellen Gründen auf Vereinssport verzichten muss. Sprich uns an – wir finden eine Lösung."
+    },
+    {
+      "titel": "Neue Nutzungshinweise für den Kraftraum",
+      "datum": "2025-10-06", "kategorie": "Fitness",
+      "text": "Für die Nutzung des Kraftraums gelten aktualisierte Hinweise. Eine Einweisung ist vor der ersten Nutzung verpflichtend."
+    },
+    {
+      "titel": "Handball: Spielpläne der neuen Saison",
+      "datum": "2025-09-15", "kategorie": "Ballsport",
+      "text": "Die Spielpläne der neuen Handballsaison sind veröffentlicht. Alle Ansetzungen und Tabellen findest du beim Handballverband Schleswig-Holstein."
+    }
+  ],
+  "termine": [
+    { "titel": "26. Birklauf", "datum": "2026-08-29", "zeit": "ab 15:45 Uhr", "ort": "Birkhalle Gelting",
+      "text": "Start und Ziel an der Birkhalle – mit Parkplatz, Umkleiden und Duschen. Strecken für alle Altersklassen." },
+    { "titel": "Hallenbelegungsplan Birkhalle", "datum": "", "zeit": "laufend", "ort": "Birkhalle",
+      "text": "Der aktuelle Belegungsplan der Birkhalle wird von der Gemeinde Gelting geführt." },
+    { "titel": "Vereinsbus – Buchung", "datum": "", "zeit": "nach Absprache", "ort": "Geschäftsstelle",
+      "text": "Der Vereinsbus kann von Abteilungen und Mannschaften über die Geschäftsstelle gebucht werden." }
+  ],
+  "spielplaene": [
+    { "name": "Handball", "quelle": "Handballverband Schleswig-Holstein", "url": "https://www.hvsh.de" },
+    { "name": "Fußball (FSG Ostseeküste)", "quelle": "fussball.de", "url": "https://www.fussball.de/verein/mtv-gelting-08-schleswig-holstein/-/id/00ES8GN8KK00006BVV0AG08LVUPGND5I" },
+    { "name": "Tennis", "quelle": "Abteilung Tennis", "url": "" },
+    { "name": "Badminton", "quelle": "Abteilung Badminton", "url": "" },
+    { "name": "Volleyball", "quelle": "Abteilung Volleyball", "url": "" },
+    { "name": "Tischtennis", "quelle": "Abteilung Tischtennis", "url": "" }
+  ]
+}

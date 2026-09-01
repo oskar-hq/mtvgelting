@@ -1,0 +1,248 @@
+{
+  "kategorien": [
+    { "id": "ballsport", "name": "Ballsport" },
+    { "id": "fitness",   "name": "Fitness & Gesundheit" },
+    { "id": "kinder",    "name": "Sport für Kinder" },
+    { "id": "senioren",  "name": "Seniorensport" },
+    { "id": "freizeit",  "name": "Freizeitsport" }
+  ],
+  "zielgruppen": [
+    { "id": "kinder",      "name": "Kinder" },
+    { "id": "jugend",      "name": "Jugend" },
+    { "id": "erwachsene",  "name": "Erwachsene" },
+    { "id": "senioren",    "name": "Senioren" }
+  ],
+  "angebote": [
+    {
+      "slug": "fussball", "name": "Fußball", "kategorie": "ballsport",
+      "zielgruppen": ["kinder", "jugend", "erwachsene"],
+      "kurz": "Spielbetrieb in der FSG Ostseeküste – vom Bambini bis zu den Alten Herren.",
+      "text": "Die Fußballer des MTV Gelting 08 spielen seit 2009 in einer Spielgemeinschaft mit dem TSV Kappeln, dem TSV Karby und dem SV Kieholm als FSG Ostseeküste. Aktuell nehmen 2 Herrenmannschaften, 2 Alt-Herren-Mannschaften und 14 Jugendmannschaften am Ligabetrieb teil.",
+      "zeiten": [], "ort": "Sportplatz Gelting", "geprueft": true
+    },
+    {
+      "slug": "handball", "name": "Handball", "kategorie": "ballsport",
+      "zielgruppen": ["kinder", "jugend", "erwachsene"],
+      "kurz": "Training und Punktspielbetrieb im Handballverband Schleswig-Holstein.",
+      "text": "Die Handballabteilung nimmt am Spielbetrieb des Handballverbandes Schleswig-Holstein teil. Aktuelle Spielpläne und Tabellen findest du unter hvsh.de.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "tennis", "name": "Tennis", "kategorie": "ballsport",
+      "zielgruppen": ["kinder", "jugend", "erwachsene"],
+      "kurz": "Punktspiele, Training und Vereinsturniere auf den Plätzen in Gelting.",
+      "text": "Die Tennisabteilung bietet Training für alle Altersklassen, Mannschaftsspielbetrieb und Vereinsturniere – vom Saisonauftakt bis zum Kuddelmuddel-Turnier zum Saisonabschluss.",
+      "zeiten": [], "ort": "Tennisanlage Gelting", "geprueft": false
+    },
+    {
+      "slug": "badminton", "name": "Badminton", "kategorie": "ballsport",
+      "zielgruppen": ["jugend", "erwachsene"],
+      "kurz": "Zweimal wöchentlich Spielbetrieb in der Birkhalle – Einsteiger willkommen.",
+      "text": "Badminton beim MTV Gelting 08 lebt vom offenen Spielbetrieb: Wer Lust hat, kommt vorbei. Schläger sind in begrenzter Zahl vorhanden.",
+      "zeiten": [
+        { "tag": "Montag", "von": "17:30", "bis": "19:00", "ort": "Birkhalle" },
+        { "tag": "Freitag", "von": "18:30", "bis": "20:00", "ort": "Birkhalle" }
+      ],
+      "ort": "Birkhalle", "geprueft": true
+    },
+    {
+      "slug": "volleyball", "name": "Volleyball", "kategorie": "ballsport",
+      "zielgruppen": ["jugend", "erwachsene"],
+      "kurz": "Gemischtes Hobby- und Mannschaftsspiel in der Halle.",
+      "text": "Volleyball für alle, die Spaß am Spiel haben – vom lockeren Mixed bis zum Punktspiel.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "tischtennis", "name": "Tischtennis", "kategorie": "ballsport",
+      "zielgruppen": ["kinder", "jugend", "erwachsene"],
+      "kurz": "Training und Ligaspiele für Jugendliche und Erwachsene.",
+      "text": "Die Tischtennisabteilung trainiert regelmäßig in der Halle und nimmt mit Mannschaften am Ligabetrieb teil.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "maennerballsport", "name": "Männerballsportgruppe", "kategorie": "ballsport",
+      "zielgruppen": ["erwachsene", "senioren"],
+      "kurz": "Ballsport ohne Ligadruck – Bewegung, Spiel und Geselligkeit.",
+      "text": "Die Männerballsportgruppe trifft sich zum gemeinsamen Spiel quer durch die Ballsportarten. Ohne Wettkampf, mit viel Spaß.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+
+    {
+      "slug": "leichtathletik", "name": "Leichtathletik", "kategorie": "fitness",
+      "zielgruppen": ["kinder", "jugend", "erwachsene"],
+      "kurz": "Laufen, Springen, Werfen – Grundlagentraining und Wettkämpfe.",
+      "text": "Leichtathletik beim MTV Gelting 08 reicht vom spielerischen Einstieg bis zur Wettkampfvorbereitung. Höhepunkt im Vereinsjahr ist der Birklauf.",
+      "zeiten": [], "ort": "Sportplatz / Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "damengymnastik", "name": "Damengymnastik", "kategorie": "fitness",
+      "zielgruppen": ["erwachsene", "senioren"],
+      "kurz": "Montags Gymnastik für Kraft, Beweglichkeit und Rücken.",
+      "text": "Ein abwechslungsreiches Gymnastikprogramm für Frauen jeden Alters – Kräftigung, Dehnung und Rückenschule in der Gruppe.",
+      "zeiten": [ { "tag": "Montag", "von": "19:00", "bis": "20:00", "ort": "Birkhalle" } ],
+      "ort": "Birkhalle", "geprueft": true
+    },
+    {
+      "slug": "step-aerobic", "name": "Step Aerobic", "kategorie": "fitness",
+      "zielgruppen": ["erwachsene"],
+      "kurz": "Ausdauertraining auf dem Step – montags direkt im Anschluss an die Gymnastik.",
+      "text": "Step Aerobic verbindet Ausdauer, Koordination und Musik. Einsteigerinnen und Einsteiger können jederzeit dazukommen.",
+      "zeiten": [ { "tag": "Montag", "von": "20:00", "bis": "21:00", "ort": "Birkhalle" } ],
+      "ort": "Birkhalle", "geprueft": true
+    },
+    {
+      "slug": "yoga", "name": "Yoga", "kategorie": "fitness",
+      "zielgruppen": ["erwachsene", "senioren"],
+      "kurz": "Beweglichkeit, Atmung und Entspannung in ruhiger Gruppe.",
+      "text": "Yoga für alle Level – mit Fokus auf Beweglichkeit, Atmung und einen ruhigen Ausgleich zum Alltag.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "fitness-mix", "name": "Fitness Mix", "kategorie": "fitness",
+      "zielgruppen": ["erwachsene"],
+      "kurz": "Abwechslungsreiches Ganzkörpertraining aus Kraft, Ausdauer und Koordination.",
+      "text": "Jede Stunde ist anders: Kräftigung, Intervalle, Koordination und Mobilisation im Wechsel.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "fitness-an-geraeten", "name": "Fitness an Geräten", "kategorie": "fitness",
+      "zielgruppen": ["jugend", "erwachsene", "senioren"],
+      "kurz": "Kraftraum des Vereins mit Einweisung – Training nach eigenem Plan.",
+      "text": "Der vereinseigene Kraftraum steht Mitgliedern nach Einweisung zur Verfügung. Bitte die Nutzungshinweise und Öffnungszeiten beachten.",
+      "zeiten": [], "ort": "Kraftraum Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "reha-sport", "name": "Reha-Sport", "kategorie": "fitness",
+      "zielgruppen": ["erwachsene", "senioren"],
+      "kurz": "Ärztlich verordneter Rehabilitationssport in kleiner Gruppe.",
+      "text": "Reha-Sport findet in kleinen Gruppen unter qualifizierter Anleitung statt und kann über eine ärztliche Verordnung abgerechnet werden.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "aqua-gymnastik", "name": "Aqua-Gymnastik", "kategorie": "fitness",
+      "zielgruppen": ["erwachsene", "senioren"],
+      "kurz": "Gelenkschonendes Training im Wasser.",
+      "text": "Bewegung im Wasser entlastet die Gelenke und trainiert trotzdem den ganzen Körper – ideal auch nach Verletzungen.",
+      "zeiten": [], "ort": "Schwimmbad", "geprueft": false
+    },
+    {
+      "slug": "nordic-walking", "name": "Nordic-Walking", "kategorie": "fitness",
+      "zielgruppen": ["erwachsene", "senioren"],
+      "kurz": "Gemeinsame Runden durch die Geltinger Landschaft.",
+      "text": "In der Gruppe unterwegs an der frischen Luft – mit Technikhinweisen für alle, die neu einsteigen.",
+      "zeiten": [], "ort": "Treffpunkt Birkhalle", "geprueft": false
+    },
+
+    {
+      "slug": "eltern-kind-turnen", "name": "Eltern-Kind-Turnen", "kategorie": "kinder",
+      "zielgruppen": ["kinder"],
+      "kurz": "Erste Bewegungserfahrungen gemeinsam mit Mama oder Papa.",
+      "text": "Bewegungslandschaften, Lieder und Spiele für die Kleinsten – gemeinsam mit einem Elternteil.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "sport-spiel-turnen", "name": "Sport, Spiel & Turnen", "kategorie": "kinder",
+      "zielgruppen": ["kinder"],
+      "kurz": "Vielseitige Grundausbildung für Kindergarten- und Grundschulkinder.",
+      "text": "Turnen, Toben, Spielen: eine breite Bewegungsgrundlage, aus der später jede Sportart wachsen kann.",
+      "zeiten": [], "ort": "Schulsporthalle", "geprueft": false
+    },
+    {
+      "slug": "kunstturnen", "name": "Kunstturnen", "kategorie": "kinder",
+      "zielgruppen": ["kinder", "jugend"],
+      "kurz": "Geräte- und Bodenturnen mit Anleitung – mittwochs und freitags.",
+      "text": "An Geräten und am Boden werden Turnelemente Schritt für Schritt aufgebaut – vom Rad bis zur Kür.",
+      "zeiten": [
+        { "tag": "Mittwoch", "von": "", "bis": "", "ort": "Schulsporthalle" },
+        { "tag": "Freitag", "von": "", "bis": "", "ort": "Schulsporthalle" }
+      ],
+      "ort": "Schulsporthalle", "geprueft": false
+    },
+    {
+      "slug": "mtv-dance-kids", "name": "MTV Dance Kids", "kategorie": "kinder",
+      "zielgruppen": ["kinder", "jugend"],
+      "kurz": "Tanzen zu aktueller Musik – Choreografien für Auftritte im Vereinsjahr.",
+      "text": "Die Dance Kids erarbeiten gemeinsam Choreografien und zeigen sie bei Vereinsfesten und Veranstaltungen.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "kindergarten-leichtathletik", "name": "Kindergarten-Leichtathletik", "kategorie": "kinder",
+      "zielgruppen": ["kinder"],
+      "kurz": "Laufen, Springen und Werfen spielerisch für Kita-Kinder.",
+      "text": "Ein niedrigschwelliges Bewegungsangebot direkt für die Kindergartenkinder aus Gelting und Umgebung.",
+      "zeiten": [], "ort": "Schulsporthalle / Sportplatz", "geprueft": false
+    },
+    {
+      "slug": "fussballkindergarten", "name": "Fußballkindergarten", "kategorie": "kinder",
+      "zielgruppen": ["kinder"],
+      "kurz": "Der erste Kontakt mit dem Ball – ganz ohne Leistungsdruck.",
+      "text": "Im Fußballkindergarten lernen die Jüngsten spielerisch den Umgang mit dem Ball und das Spiel in der Gruppe.",
+      "zeiten": [], "ort": "Sportplatz / Halle", "geprueft": false
+    },
+    {
+      "slug": "freizeitsport-nach-der-schule", "name": "Freizeitsport nach der Schule", "kategorie": "kinder",
+      "zielgruppen": ["kinder", "jugend"],
+      "kurz": "Offenes Bewegungsangebot direkt im Anschluss an den Unterricht.",
+      "text": "Ein offenes Angebot für Schulkinder: Spiele, Sportarten zum Ausprobieren und Bewegung in der Gruppe.",
+      "zeiten": [], "ort": "Schulsporthalle", "geprueft": false
+    },
+    {
+      "slug": "yoga-fuer-kinder", "name": "Yoga für Kinder", "kategorie": "kinder",
+      "zielgruppen": ["kinder"],
+      "kurz": "Ruhe, Körpergefühl und Konzentration – kindgerecht vermittelt.",
+      "text": "Kinderyoga verbindet Bewegung mit Entspannung und stärkt Körpergefühl und Konzentration.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+
+    {
+      "slug": "seniorensport-sie-und-ihn", "name": "Seniorensport für Sie und Ihn", "kategorie": "senioren",
+      "zielgruppen": ["senioren"],
+      "kurz": "Gemischte Gruppe: Beweglichkeit, Kraft und Gleichgewicht.",
+      "text": "Ein Programm für alle, die im Alter beweglich und sicher auf den Beinen bleiben wollen – in gemischter Gruppe.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "seniorensport-maenner-50", "name": "Seniorensport Männer über 50", "kategorie": "senioren",
+      "zielgruppen": ["senioren", "erwachsene"],
+      "kurz": "Ausgleichssport für Männer ab 50 – Bewegung und Geselligkeit.",
+      "text": "Kräftigung, Ballspiele und Ausgleichsgymnastik für Männer ab 50. Der Klönschnack danach gehört dazu.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "frauen-seniorensport", "name": "Frauen-Seniorensport", "kategorie": "senioren",
+      "zielgruppen": ["senioren"],
+      "kurz": "Gymnastik und Bewegung in vertrauter Frauengruppe.",
+      "text": "Bewegung, Kräftigung und Beweglichkeit in einer festen Gruppe – im eigenen Tempo.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+    {
+      "slug": "sitzgymnastik", "name": "Sitzgymnastik", "kategorie": "senioren",
+      "zielgruppen": ["senioren"],
+      "kurz": "Übungen im Sitzen oder im Stehen mit Stuhl – ganz ohne Matte.",
+      "text": "2014 hat der MTV Gelting 08 sein Sportangebot für alle erweitert, die nicht auf einer Gymnastikmatte trainieren möchten: Die Übungen werden im Sitzen oder im Stehen mit einem Stuhl ausgeführt.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": true
+    },
+    {
+      "slug": "reha-sport-senioren", "name": "Reha-Sport (Senioren)", "kategorie": "senioren",
+      "zielgruppen": ["senioren"],
+      "kurz": "Rehabilitationssport speziell für ältere Teilnehmerinnen und Teilnehmer.",
+      "text": "Reha-Sport in kleiner Gruppe, abgestimmt auf die Bedürfnisse älterer Teilnehmerinnen und Teilnehmer.",
+      "zeiten": [], "ort": "Birkhalle", "geprueft": false
+    },
+
+    {
+      "slug": "dart", "name": "Dart", "kategorie": "freizeit",
+      "zielgruppen": ["jugend", "erwachsene", "senioren"],
+      "kurz": "Seit April 2024 eigene Sparte – Training, Ligen und offene Abende.",
+      "text": "Am 22. April 2024 hat der MTV Gelting 08 eine Dart-Sparte eröffnet. Gespielt wird an mehreren Boards – Anfängerinnen und Anfänger sind ausdrücklich willkommen.",
+      "zeiten": [], "ort": "Vereinsheim", "geprueft": true
+    },
+    {
+      "slug": "pokern", "name": "Pokern", "kategorie": "freizeit",
+      "zielgruppen": ["erwachsene"],
+      "kurz": "Geselliger Spieleabend in fester Runde.",
+      "text": "Ein geselliger Abend am Kartentisch – ohne Einsätze, mit viel Spaß an der Runde.",
+      "zeiten": [], "ort": "Vereinsheim", "geprueft": false
+    }
+  ]
+}
