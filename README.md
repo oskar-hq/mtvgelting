@@ -14,14 +14,14 @@ Dieser Entwurf fasst dieselben Inhalte in fünf Seiten zusammen:
 | Seite | Ersetzt | Prinzip |
 |---|---|---|
 | `index.html` | Startseite, Aktuelles | Einstieg über die Frage „Was möchtest du machen?" |
-| `sportangebot.html` | ~31 Abteilungs-Unterseiten | **Eine** filterbare Übersicht: Bereich, Alter, Volltextsuche. Details klappen in der Karte auf. |
-| `termine.html` | Trainingszeiten je Sportart, 6 Spielplan-Seiten, Vereinstermine | **Ein** Wochenplan über alle Angebote + Spielplan-Links + Vereinsjahr |
+| `sportangebot.html` | ~36 Abteilungs-Unterseiten | **Eine** filterbare Übersicht: Bereich, Alter, Volltextsuche. Details und alle Trainingszeiten klappen in der Karte auf. |
+| `termine.html` | Trainingszeiten je Sportart, 6 Spielplan-Seiten, Vereinstermine | **Ein** Wochenplan mit allen 58 Einheiten inkl. Ort und Übungsleitung |
 | `verein.html` | Vorstand, Geschäftsstelle, Satzungen, Sprachrohr, Jugendschutz | Eine Seite mit Sprungnavigation |
 | `mitglied-werden.html` | Mitglied werden, Beitragsordnung | Beiträge, Ablauf in drei Schritten, Kontakt |
 
 Dazu `impressum.html` und `datenschutz.html`.
 
-Nichts wurde weggeworfen: alle 31 Angebote, alle Abteilungen, alle Vereinsinfos sind enthalten —
+Nichts wurde weggeworfen: alle 36 Angebote, alle Abteilungen, alle Vereinsinfos sind enthalten —
 nur anders sortiert. Die Filter-Links sind teilbar
 (`sportangebot.html?kategorie=kinder&fuer=kinder`), sodass jede Abteilung weiterhin einen eigenen
 Link für ihre Aushänge hat.
@@ -47,7 +47,6 @@ data/angebote.json    alle 31 Sportangebote mit Kategorie, Zielgruppe, Zeiten
 tools/build.py        Generator (Templates + Seiteninhalte)
 assets/css/site.css   Design-System
 assets/js/site.js     Navigation + Angebotsfilter
-assets/img/logo.svg   Vereinswappen (Nachbau, siehe unten)
 ```
 
 ### Farben
@@ -77,21 +76,22 @@ Alle Stellen sind in den Seiten sichtbar als „folgt" / „auf Anfrage" markier
 
 1. **Fotos.** Sämtliche Bilder sind Platzhalter. Der aktuelle Auftritt nutzt Stockfotos —
    echte Vereinsfotos wären der größte sichtbare Gewinn.
-2. **Trainingszeiten.** Belegt sind nur Badminton, Damengymnastik, Step Aerobic (Zeiten) und
-   Kunstturnen (Tage). Die übrigen 27 Angebote zeigen „Zeit auf Anfrage".
-3. **Ansprechpartner je Abteilung** — im Datenmodell noch nicht angelegt.
+2. **Trainingszeiten** — weitgehend erledigt. Der Hallenbelegungsplan (gültig ab Juni 2026) ist
+   vollständig eingepflegt: 58 Einheiten mit Tag, Uhrzeit, Ort, Gruppe und Übungsleitung.
+   Nur vier Angebote stehen nicht darin (Volleyball, Reha-Sport, Kunstturnen, Pokern) und zeigen
+   „Zeit auf Anfrage".
+3. **Ansprechpartner je Abteilung.** Die Übungsleitung steht pro Trainingseinheit; was fehlt, sind
+   Kontaktdaten (Telefon/E-Mail) der Abteilungsleitungen.
 4. **PDFs**: Satzung, Ehrenordnung, Aufnahmeantrag, Sprachrohr.
 5. **Kinder- & Jugendschutzkonzept**: Text und Ansprechpersonen.
 6. **Öffnungszeiten der Geschäftsstelle.**
 7. **E-Mail-Adresse prüfen** — auf der Live-Seite per JavaScript verschleiert; hier ist
    `vorstand@mtv-gelting-08.de` hinterlegt und muss bestätigt werden.
 8. **Sponsorenlogos** inkl. Freigabe (aktuell als Namen gesetzt).
-9. **Offizielles Vereinswappen als Datei.** `assets/img/logo.svg` ist ein SVG-Nachbau
-   anhand einer Abbildung des Wappens — gut genug für den Entwurf, aber kein Original.
-   Die offizielle Datei sollte es ersetzen; Dateiname beibehalten, dann sind Header,
-   Footer und Favicon automatisch aktualisiert. Auch der Blauton `--blue` in
-   `assets/css/site.css` ist aus der Abbildung geschätzt und sollte gegen den echten
-   Wert des Vereins geprüft werden.
+9. **Vereinswappen als Datei.** Ein Nachbau war nicht gut genug und wurde wieder entfernt; der
+   Header trägt derzeit eine reine Wortmarke. Sobald das Original als SVG oder PNG vorliegt, wird
+   es in Header, Footer und Favicon eingebunden. Auch der Blauton `--blue` ist aus einer
+   Abbildung des Wappens geschätzt und sollte gegen den echten Wert geprüft werden.
 
 **Technisch zu klären**
 

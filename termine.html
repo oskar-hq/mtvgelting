@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@600;700&family=Inter:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/css/site.css">
-<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231D4E7C'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='14' fill='%23FFFFFF' text-anchor='middle'%3EMTV%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
@@ -22,7 +22,6 @@
 <header class="hdr">
   <div class="wrap hdr__inner">
     <a class="brand" href="index.html">
-      <img class="brand__logo" src="assets/img/logo.svg" alt="" width="30" height="40">
       <span class="brand__txt">
         <span class="brand__mark">MTV Gelting</span>
         <span class="brand__sub">seit 1908</span>
@@ -46,7 +45,7 @@
   <div class="wrap">
     <p class="label">Termine</p>
     <h1 class="h1">Wochenplan &amp;<br>Spieltage.</h1>
-    <p class="lead" style="margin-top:1.5rem">Alle Trainingszeiten in einer Tabelle, dazu Spielpläne und die festen Termine im Vereinsjahr.</p>
+    <p class="lead" style="margin-top:1.5rem">58 Trainingszeiten in einer Tabelle – mit Ort und Übungsleitung. Dazu Spielpläne und die festen Termine im Vereinsjahr.</p>
   </div>
 </section>
 
@@ -56,55 +55,419 @@
       <table class="plan">
         <caption class="visually-hidden" style="position:absolute;left:-9999px">Trainingszeiten nach Wochentag</caption>
         <thead>
-          <tr><th scope="col">Tag</th><th scope="col">Zeit</th><th scope="col">Angebot</th><th scope="col">Ort</th><th scope="col">Bereich</th></tr>
+          <tr><th scope="col">Tag</th><th scope="col">Zeit</th><th scope="col">Angebot</th><th scope="col">Ort</th><th scope="col">Leitung</th></tr>
         </thead>
         <tbody>
         <tr>
-          <td class="t-time"><strong>Montag</strong></td>
+          <th scope="row" class="t-day">Montag</th>
+          <td class="t-time">14:00–15:00</td>
+          <td class="t-name"><a href="sportangebot.html#schul-ag">Schul-AG</a></td>
+          <td>Schulsporthalle / Birkhalle</td>
+          <td class="muted">B. Kratz</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">15:00–16:15</td>
+          <td class="t-name"><a href="sportangebot.html#eltern-kind-turnen">Eltern-Kind-Turnen</a></td>
+          <td>Birkhalle</td>
+          <td class="muted">A. Nissen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">15:30–17:30</td>
+          <td class="t-name"><a href="sportangebot.html#mini-dancekids">Mini-Dancekids</a></td>
+          <td>Schulsporthalle</td>
+          <td class="muted">Y. Kratz</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">16:30–17:30</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">Mini-Handball</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">A. Nissen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
           <td class="t-time">17:30–19:00</td>
-          <td class="t-name"><a href="sportangebot.html#badminton" style="text-decoration:none">Badminton</a></td>
+          <td class="t-name"><a href="sportangebot.html#badminton">Badminton<span class="t-grp">Jugendliche &amp; Erwachsene</span></a></td>
           <td>Birkhalle</td>
-          <td class="muted">Ballsport</td>
+          <td class="muted">D. Rütterswoerden</td>
         </tr>
         <tr>
-          <td class="t-time"></td>
+          <td class="t-day"></td>
+          <td class="t-time">17:30–18:30</td>
+          <td class="t-name"><a href="sportangebot.html#laufbahntraining">Laufbahntraining</a></td>
+          <td>Sportplatz</td>
+          <td class="muted">A. Nissen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">18:00–19:00</td>
+          <td class="t-name"><a href="sportangebot.html#tischtennis">Tischtennis<span class="t-grp">Kinder &amp; Jugendliche</span></a></td>
+          <td>Schulsporthalle</td>
+          <td class="muted">M. Brosch</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">19:00–21:00</td>
+          <td class="t-name"><a href="sportangebot.html#tischtennis">Tischtennis<span class="t-grp">Erwachsene</span></a></td>
+          <td>Schulsporthalle</td>
+          <td class="muted">M. Brosch</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
           <td class="t-time">19:00–20:00</td>
-          <td class="t-name"><a href="sportangebot.html#damengymnastik" style="text-decoration:none">Damengymnastik</a></td>
+          <td class="t-name"><a href="sportangebot.html#damensport">Damensport &amp; Gymnastik</a></td>
           <td>Birkhalle</td>
-          <td class="muted">Fitness &amp; Gesundheit</td>
+          <td class="muted">C. Nissen-Döring</td>
         </tr>
         <tr>
-          <td class="t-time"></td>
+          <td class="t-day"></td>
           <td class="t-time">20:00–21:00</td>
-          <td class="t-name"><a href="sportangebot.html#step-aerobic" style="text-decoration:none">Step Aerobic</a></td>
+          <td class="t-name"><a href="sportangebot.html#step-fitness">Step Fitness</a><span class="t-note">jeden 1. Montag: Workout of the month</span></td>
           <td>Birkhalle</td>
-          <td class="muted">Fitness &amp; Gesundheit</td>
+          <td class="muted">C. Nissen-Döring / E. Krüsmann</td>
         </tr>
         <tr>
-          <td class="t-time"><strong>Mittwoch</strong></td>
-          <td class="t-time"><span class="muted">Zeit folgt</span></td>
-          <td class="t-name"><a href="sportangebot.html#kunstturnen" style="text-decoration:none">Kunstturnen</a></td>
+          <td class="t-day"></td>
+          <td class="t-time"><span class="muted">nach Absprache</span></td>
+          <td class="t-name"><a href="sportangebot.html#kita-sport">Kita-Sport</a><span class="t-note">vormittags, Zeiten in Abstimmung mit der Kita</span></td>
+          <td>Birkhalle</td>
+          <td class="muted">B. Kratz</td>
+        </tr>
+        <tr>
+          <th scope="row" class="t-day">Dienstag</th>
+          <td class="t-time">09:00–10:15</td>
+          <td class="t-name"><a href="sportangebot.html#nordic-walking">Nordic-Walking</a></td>
+          <td>Treff am Sportplatz</td>
+          <td class="muted">H.-P. Spurk</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">14:00–15:00</td>
+          <td class="t-name"><a href="sportangebot.html#schul-ag">Schul-AG</a></td>
+          <td>Schulsporthalle / Birkhalle</td>
+          <td class="muted">B. Kratz</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">15:00–15:45</td>
+          <td class="t-name"><a href="sportangebot.html#sitzgymnastik">Fit bis ins hohe Alter / Sitzgymnastik</a></td>
           <td>Schulsporthalle</td>
-          <td class="muted">Sport für Kinder</td>
+          <td class="muted">H.-P. Spurk</td>
         </tr>
         <tr>
-          <td class="t-time"><strong>Freitag</strong></td>
+          <td class="t-day"></td>
+          <td class="t-time">15:30–16:30</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">F-Jugend (Jahrgang 2018/2019)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">D. Kronefeld</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">16:00–17:00</td>
+          <td class="t-name"><a href="sportangebot.html#frauensportgruppe">Frauensportgruppe</a></td>
+          <td>Schulsporthalle</td>
+          <td class="muted">H.-P. Spurk</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">16:30–18:00</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">weibliche D-Jugend (Jahrgang 14/15)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">D. Kronefeld / L. Christophersen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">17:00–18:00</td>
+          <td class="t-name"><a href="sportangebot.html#sport-fuer-maenner-ab-50">Sport für Männer ab 50</a></td>
+          <td>Schulsporthalle</td>
+          <td class="muted">H.-P. Spurk</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">17:15–18:30</td>
+          <td class="t-name"><a href="sportangebot.html#fussball">Fußball<span class="t-grp">E-Jugend FSG Ostseeküste</span></a></td>
+          <td>Sportplatz</td>
+          <td class="muted">B. Surm / A. Vollmer</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">18:00–19:30</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">weibliche A-Jugend (Jahrgang 08/09)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">S. Koch</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">18:00–19:00</td>
+          <td class="t-name"><a href="sportangebot.html#sportabzeichen">Sportabzeichen</a><span class="t-note">Mai bis September, jeder 1. Dienstag im Monat</span></td>
+          <td>Sportplatz</td>
+          <td class="muted">I. Wollesen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">19:30–21:00</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">Frauen (2007 und älter)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">H. Scharf</td>
+        </tr>
+        <tr>
+          <th scope="row" class="t-day">Mittwoch</th>
+          <td class="t-time">14:00–15:00</td>
+          <td class="t-name"><a href="sportangebot.html#schul-ag">Schul-AG</a></td>
+          <td>Schulsporthalle</td>
+          <td class="muted">B. Kratz</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">14:00–15:00</td>
+          <td class="t-name"><a href="sportangebot.html#leichtathletik-kindergarten">Leichtathletik für Kindergartenkinder</a></td>
+          <td>Birkhalle</td>
+          <td class="muted">A. Nissen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">15:00–16:30</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">männliche &amp; weibliche E-Jugend (Jahrgang 16/17)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">K. Sonnenberg / C. Lausen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">15:30–16:30</td>
+          <td class="t-name"><a href="sportangebot.html#yoga-fuer-kids">Yoga für Kids</a></td>
+          <td>Schulsporthalle</td>
+          <td class="muted">A. Nissen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">16:30–18:00</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">weibliche C-Jugend (Jahrgang 12/13)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">A. Krüsmann / M. Schmedeke</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">17:00–18:00</td>
+          <td class="t-name"><a href="sportangebot.html#pilates">Pilates</a></td>
+          <td>Schulsporthalle</td>
+          <td class="muted">M. Bölling</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">18:00–19:30</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">weibliche B-Jugend (Jahrgang 10/11)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">R. Petersen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">18:00–19:00</td>
+          <td class="t-name"><a href="sportangebot.html#yoga">Yoga<span class="t-grp">Anfänger</span></a></td>
+          <td>Schulsporthalle</td>
+          <td class="muted">W. Wittig</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">19:00–20:00</td>
+          <td class="t-name"><a href="sportangebot.html#yoga">Yoga<span class="t-grp">Fortgeschrittene</span></a></td>
+          <td>Schulsporthalle</td>
+          <td class="muted">W. Wittig</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">19:30–21:30</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">männliche A-Jugend &amp; Männer (ab 16 Jahre)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">H. Richter / T. Reimer</td>
+        </tr>
+        <tr>
+          <th scope="row" class="t-day">Donnerstag</th>
+          <td class="t-time">09:30–10:30</td>
+          <td class="t-name"><a href="sportangebot.html#seniorensport">Seniorensport</a></td>
+          <td>Birkhalle</td>
+          <td class="muted">B. Kratz</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">14:00–15:00</td>
+          <td class="t-name"><a href="sportangebot.html#schul-ag">Schul-AG</a></td>
+          <td>Schulsporthalle / Birkhalle</td>
+          <td class="muted">B. Kratz</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">15:15–16:00</td>
+          <td class="t-name"><a href="sportangebot.html#fussball">Fußball<span class="t-grp">Kindergarten FSG Ostseeküste</span></a></td>
+          <td>Birkhalle / Sportplatz</td>
+          <td class="muted">B. Kratz</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">16:00–17:00</td>
+          <td class="t-name"><a href="sportangebot.html#fussball">Fußball<span class="t-grp">F-Jugend FSG Ostseeküste</span></a></td>
+          <td>Sportplatz</td>
+          <td class="muted">B. Kratz</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">16:00–17:30</td>
+          <td class="t-name"><a href="sportangebot.html#sport-fuer-kinder-ab-6">Sport für Kinder ab 6</a></td>
+          <td>Birkhalle / Sportplatz</td>
+          <td class="muted">D. Kronefeld</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">17:00–18:30</td>
+          <td class="t-name"><a href="sportangebot.html#fussball">Fußball<span class="t-grp">E-Jugend FSG Ostseeküste</span></a></td>
+          <td>Sportplatz</td>
+          <td class="muted">B. Surm</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">17:00–18:30</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">weibliche A-Jugend (Jahrgang 08/09)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">S. Koch</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">ab 17:00</td>
+          <td class="t-name"><a href="sportangebot.html#kraftraum">Kraftraum<span class="t-grp">Geräteeinweisung</span></a><span class="t-note">nur nach telefonischer Absprache</span></td>
+          <td>Birkhalle</td>
+          <td class="muted">L. Ehrig</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">17:30–18:30</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">weibliche D-Jugend (Jahrgang 14/15)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">D. Kronefeld / L. Christophersen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
           <td class="t-time">18:30–20:00</td>
-          <td class="t-name"><a href="sportangebot.html#badminton" style="text-decoration:none">Badminton</a></td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">Frauen (2007 und älter)</span></a></td>
           <td>Birkhalle</td>
-          <td class="muted">Ballsport</td>
+          <td class="muted">H. Scharf</td>
         </tr>
         <tr>
-          <td class="t-time"></td>
-          <td class="t-time"><span class="muted">Zeit folgt</span></td>
-          <td class="t-name"><a href="sportangebot.html#kunstturnen" style="text-decoration:none">Kunstturnen</a></td>
+          <td class="t-day"></td>
+          <td class="t-time">19:00–19:45</td>
+          <td class="t-name"><a href="sportangebot.html#aquajogging">Aquajogging<span class="t-grp">Gruppe 1</span></a></td>
+          <td>Pottloch</td>
+          <td class="muted">M. Bölling</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">19:30–21:30</td>
+          <td class="t-name"><a href="sportangebot.html#tischtennis">Tischtennis<span class="t-grp">Erwachsene</span></a></td>
           <td>Schulsporthalle</td>
-          <td class="muted">Sport für Kinder</td>
+          <td class="muted">V. Gatz</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">19:45–20:30</td>
+          <td class="t-name"><a href="sportangebot.html#aquajogging">Aquajogging<span class="t-grp">Gruppe 2</span></a></td>
+          <td>Pottloch</td>
+          <td class="muted">M. Bölling</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">20:00–22:00</td>
+          <td class="t-name"><a href="sportangebot.html#maennersportgruppe">Männersportgruppe</a></td>
+          <td>Birkhalle</td>
+          <td class="muted">T. Henningsen</td>
+        </tr>
+        <tr>
+          <th scope="row" class="t-day">Freitag</th>
+          <td class="t-time">10:00–12:00</td>
+          <td class="t-name"><a href="sportangebot.html#mtv-move">MTV MOVE</a></td>
+          <td>Birkhalle</td>
+          <td class="muted">M. Bölling</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">13:30–15:00</td>
+          <td class="t-name"><a href="sportangebot.html#after-school-sport">After School Sport<span class="t-grp">Alles was rollt</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">B. Kratz</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">14:30–16:00</td>
+          <td class="t-name"><a href="sportangebot.html#scheersbergfesttraining">Scheersbergfest-Training</a><span class="t-note">Mai bis Oktober</span></td>
+          <td>Birkhalle / Sportplatz</td>
+          <td class="muted">S. Koch / T. Kraack-Petersen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">15:00–16:15</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">männliche &amp; weibliche E-Jugend (Jahrgang 16/17)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">K. Sonnenberg / C. Lausen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">15:00–18:00</td>
+          <td class="t-name"><a href="sportangebot.html#tennis">Tennis<span class="t-grp">MTV Tennis</span></a><span class="t-note">Mai bis Oktober</span></td>
+          <td>Tennisplatz</td>
+          <td class="muted">Ta. Henningsen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">16:15–17:30</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">weibliche C-Jugend (Jahrgang 12/13)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">A. Krüsmann / M. Schmedeke</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">16:15–17:30</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">weibliche B-Jugend (Jahrgang 10/11)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">R. Petersen</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">17:00–18:20</td>
+          <td class="t-name"><a href="sportangebot.html#linedance">Moderne Linedance</a></td>
+          <td>Schulsporthalle</td>
+          <td class="muted">K. Much</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">17:30–18:45</td>
+          <td class="t-name"><a href="sportangebot.html#handball">Handball<span class="t-grp">männliche A-Jugend &amp; Männer (ab 16 Jahre)</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">H. Richter / T. Reimer</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">18:45–20:00</td>
+          <td class="t-name"><a href="sportangebot.html#badminton">Badminton<span class="t-grp">Kinder, Jugendliche &amp; Erwachsene</span></a></td>
+          <td>Birkhalle</td>
+          <td class="muted">D. Rütterswoerden</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">ab 19:00</td>
+          <td class="t-name"><a href="sportangebot.html#dart">Dart</a></td>
+          <td>Birkhalle</td>
+          <td class="muted">A. Koch</td>
+        </tr>
+        <tr>
+          <td class="t-day"></td>
+          <td class="t-time">20:00–22:00</td>
+          <td class="t-name"><a href="sportangebot.html#modellflug">Modellflug</a></td>
+          <td>Birkhalle</td>
+          <td class="muted">V. Hamann</td>
         </tr>
         </tbody>
       </table>
     </div>
-    <p class="note" style="margin-top:1.5rem">Dieser Plan zeigt die Zeiten, die aus dem öffentlichen Auftritt hervorgehen. Die übrigen Abteilungen tragen ihre Zeiten nach — danach ersetzt diese eine Tabelle sämtliche Zeitangaben auf den Einzelseiten.</p>
+    <p class="note" style="margin-top:1.5rem">Quelle: Hallenbelegungsplan / Trainingszeiten MTV Gelting 08, gültig ab Juni 2026. Diese eine Tabelle ersetzt sämtliche Zeitangaben, die bisher über die Einzelseiten der Abteilungen verstreut waren.</p>
   </div>
 </section>
 
@@ -157,7 +520,6 @@
   <div class="wrap">
     <div class="ftr__cols">
       <div>
-        <img class="ftr__logo" src="assets/img/logo.svg" alt="" width="45" height="60">
         <p class="ftr__h">Kontakt</p>
         <ul class="ftr__list">
           <li>Männer-Turn-Verein Gelting von 1908 e.V.</li>

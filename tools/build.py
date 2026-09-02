@@ -14,6 +14,7 @@ A = json.loads((DATA / "angebote.json").read_text(encoding="utf-8"))
 KATS = {k["id"]: k["name"] for k in A["kategorien"]}
 ZG = {z["id"]: z["name"] for z in A["zielgruppen"]}
 ANG = A["angebote"]
+QUELLE = A.get("quelle", "")
 
 WOCHENTAGE = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
 MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni",
@@ -64,7 +65,7 @@ def head(title, desc, active, extra=""):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@600;700&family=Inter:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/css/site.css">
-<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231D4E7C'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='14' fill='%23FFFFFF' text-anchor='middle'%3EMTV%3C/text%3E%3C/svg%3E">
 {extra}</head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
@@ -72,7 +73,6 @@ def head(title, desc, active, extra=""):
 <header class="hdr">
   <div class="wrap hdr__inner">
     <a class="brand" href="index.html">
-      <img class="brand__logo" src="assets/img/logo.svg" alt="" width="30" height="40">
       <span class="brand__txt">
         <span class="brand__mark">MTV Gelting</span>
         <span class="brand__sub">seit 1908</span>
@@ -109,7 +109,6 @@ def footer():
   <div class="wrap">
     <div class="ftr__cols">
       <div>
-        <img class="ftr__logo" src="assets/img/logo.svg" alt="" width="45" height="60">
         <p class="ftr__h">Kontakt</p>
         <ul class="ftr__list">
           <li>{esc(V['name'])}</li>
@@ -166,32 +165,66 @@ def write(name, title, desc, active, body, extra=""):
 # Bausteine
 # --------------------------------------------------------------------------
 
+def zeitspanne(z):
+    """Zeitangabe einer Einheit; offene Enden bleiben als solche sichtbar."""
+    if z.get("von") and z.get("bis"):
+        return "%s\u2013%s" % (z["von"], z["bis"])
+    if z.get("von"):
+        return "ab %s" % z["von"]
+    return ""
+
+
 def zeit_pills(ang):
-    """Trainingszeiten als Pillen; unbekannte Zeiten werden offen ausgewiesen."""
+    """Kurzuebersicht der Trainingszeiten; lange Listen werden gekuerzt."""
     if not ang["zeiten"]:
         return '<span class="pill pill--open">Zeit auf Anfrage</span>'
     out = []
-    for z in ang["zeiten"]:
-        if z.get("von"):
-            out.append(f'<span class="pill">{esc(z["tag"][:2])} {esc(z["von"])}–{esc(z["bis"])}</span>')
+    for z in ang["zeiten"][:3]:
+        sp = zeitspanne(z)
+        if sp:
+            out.append('<span class="pill">%s %s</span>' % (esc(z["tag"][:2]), esc(sp)))
         else:
-            out.append(f'<span class="pill pill--open">{esc(z["tag"])} · Zeit folgt</span>')
+            out.append('<span class="pill pill--open">%s</span>' % esc(z["tag"]))
+    rest = len(ang["zeiten"]) - 3
+    if rest > 0:
+        out.append('<span class="pill pill--more">+%d weitere</span>' % rest)
     return "".join(out)
+
+
+def zeit_liste(ang):
+    """Alle Einheiten eines Angebots als gestapelte Liste – passt in schmale Karten."""
+    if not ang["zeiten"]:
+        return ""
+    items = []
+    for z in ang["zeiten"]:
+        kopf = "%s %s" % (z["tag"], zeitspanne(z) or "nach Absprache")
+        meta = [z.get("ort") or ang["ort"]]
+        if z.get("leitung"):
+            meta.append(z["leitung"])
+        gruppe = ('<span class="z-grp">%s</span>' % esc(z["gruppe"])) if z.get("gruppe") else ""
+        hinweis = ('<span class="z-note">%s</span>' % esc(z["hinweis"])) if z.get("hinweis") else ""
+        items.append('<li><span class="z-when">%s</span>%s<span class="z-meta">%s</span>%s</li>'
+                     % (esc(kopf), gruppe, esc(" \u00b7 ".join(meta)), hinweis))
+    return '<ul class="zeiten">%s</ul>' % "".join(items)
 
 
 def card(ang):
     such = " ".join([ang["name"], ang["kurz"], KATS[ang["kategorie"]],
-                     " ".join(ZG[z] for z in ang["zielgruppen"])]).lower()
+                     " ".join(ZG[z] for z in ang["zielgruppen"])]
+                    + [z.get("gruppe", "") for z in ang["zeiten"]]).lower()
     zg = " ".join(ang["zielgruppen"])
     zgtxt = ", ".join(ZG[z] for z in ang["zielgruppen"])
+    n = len(ang["zeiten"])
+    summary = "Details" if n <= 1 else "Details & alle %d Zeiten" % n
     return f"""      <article class="card" data-kategorie="{esc(ang['kategorie'])}" data-zielgruppen="{esc(zg)}" data-suche="{esc(such)}" id="{esc(ang['slug'])}">
         <p class="card__kat">{esc(KATS[ang['kategorie']])}</p>
         <h3 class="card__name">{esc(ang['name'])}</h3>
         <p class="card__kurz">{esc(ang['kurz'])}</p>
         <div class="card__zeit">{zeit_pills(ang)}</div>
         <details>
-          <summary>Details</summary>
+          <summary>{esc(summary)}</summary>
           <p>{esc(ang['text'])}</p>
+          {zeit_liste(ang)}
           <p class="card__meta">Ort: {esc(ang['ort'])} &nbsp;·&nbsp; Für: {esc(zgtxt)}</p>
         </details>
       </article>"""
@@ -213,26 +246,28 @@ def kategorie_tiles():
 
 
 def wochenplan():
-    """Wochenplan aus den hinterlegten Trainingszeiten."""
+    """Alle Trainingszeiten aller Angebote, nach Wochentag und Uhrzeit."""
     rows = []
     for tag in WOCHENTAGE:
-        eintraege = []
-        for a in ANG:
-            for z in a["zeiten"]:
-                if z["tag"] == tag:
-                    eintraege.append((z.get("von") or "", z.get("bis") or "", a, z))
-        eintraege.sort(key=lambda e: e[0] or "zz")
-        for i, (von, bis, a, z) in enumerate(eintraege):
-            tagzelle = f'<td class="t-time"><strong>{esc(tag)}</strong></td>' if i == 0 \
-                else '<td class="t-time"></td>'
-            zeit = f"{esc(von)}–{esc(bis)}" if von else '<span class="muted">Zeit folgt</span>'
-            rows.append(f"""        <tr>
-          {tagzelle}
-          <td class="t-time">{zeit}</td>
-          <td class="t-name"><a href="sportangebot.html#{esc(a['slug'])}" style="text-decoration:none">{esc(a['name'])}</a></td>
-          <td>{esc(z.get('ort') or a['ort'])}</td>
-          <td class="muted">{esc(KATS[a['kategorie']])}</td>
-        </tr>""")
+        eintraege = [(z, a) for a in ANG for z in a["zeiten"] if z["tag"] == tag]
+        eintraege.sort(key=lambda e: e[0].get("von") or "zz")
+        for i, (z, a) in enumerate(eintraege):
+            tagzelle = ('<th scope="row" class="t-day">%s</th>' % esc(tag)) if i == 0 \
+                else '<td class="t-day"></td>'
+            sp = zeitspanne(z)
+            zeit = esc(sp) if sp else '<span class="muted">nach Absprache</span>'
+            name = esc(a["name"])
+            if z.get("gruppe"):
+                name += '<span class="t-grp">%s</span>' % esc(z["gruppe"])
+            hinweis = ('<span class="t-note">%s</span>' % esc(z["hinweis"])) if z.get("hinweis") else ""
+            rows.append("""        <tr>
+          %s
+          <td class="t-time">%s</td>
+          <td class="t-name"><a href="sportangebot.html#%s">%s</a>%s</td>
+          <td>%s</td>
+          <td class="muted">%s</td>
+        </tr>""" % (tagzelle, zeit, esc(a["slug"]), name, hinweis,
+                    esc(z.get("ort") or a["ort"]), esc(z.get("leitung", "\u2013"))))
     return "\n".join(rows)
 
 
@@ -274,7 +309,7 @@ def seite_start():
         </div>
         <div class="hero__stats">
           <div><div class="stat__num">{len(ANG)}</div><div class="stat__txt">Sportangebote</div></div>
-          <div><div class="stat__num">5</div><div class="stat__txt">Abteilungen</div></div>
+          <div><div class="stat__num">{sum(len(a["zeiten"]) for a in ANG)}</div><div class="stat__txt">Trainingszeiten</div></div>
           <div><div class="stat__num">{V['gegruendet']}</div><div class="stat__txt">gegründet</div></div>
         </div>
       </div>
@@ -402,7 +437,7 @@ def seite_sportangebot():
     </div>
     <p class="empty" id="keine-treffer" hidden>Keine Angebote gefunden. Filter zurücksetzen oder <a href="verein.html#geschaeftsstelle">Geschäftsstelle fragen</a>.</p>
 
-    <p class="note" style="margin-top:2.5rem">Trainingszeiten mit dem Hinweis „Zeit auf Anfrage“ liegen für diesen Entwurf noch nicht vor und werden vom Verein ergänzt. Alle vorhandenen Zeiten stehen im <a href="termine.html">Wochenplan</a>.</p>
+    <p class="note" style="margin-top:2.5rem">Die Zeiten stammen aus dem {esc(QUELLE)}. Vier Angebote sind dort nicht aufgeführt und zeigen deshalb „Zeit auf Anfrage“. Alle Zeiten im Überblick stehen im <a href="termine.html">Wochenplan</a>.</p>
   </div>
 </section>
 """
@@ -432,7 +467,7 @@ def seite_termine():
   <div class="wrap">
     <p class="label">Termine</p>
     <h1 class="h1">Wochenplan &amp;<br>Spieltage.</h1>
-    <p class="lead" style="margin-top:1.5rem">Alle Trainingszeiten in einer Tabelle, dazu Spielpläne und die festen Termine im Vereinsjahr.</p>
+    <p class="lead" style="margin-top:1.5rem">{sum(len(a["zeiten"]) for a in ANG)} Trainingszeiten in einer Tabelle – mit Ort und Übungsleitung. Dazu Spielpläne und die festen Termine im Vereinsjahr.</p>
   </div>
 </section>
 
@@ -442,14 +477,14 @@ def seite_termine():
       <table class="plan">
         <caption class="visually-hidden" style="position:absolute;left:-9999px">Trainingszeiten nach Wochentag</caption>
         <thead>
-          <tr><th scope="col">Tag</th><th scope="col">Zeit</th><th scope="col">Angebot</th><th scope="col">Ort</th><th scope="col">Bereich</th></tr>
+          <tr><th scope="col">Tag</th><th scope="col">Zeit</th><th scope="col">Angebot</th><th scope="col">Ort</th><th scope="col">Leitung</th></tr>
         </thead>
         <tbody>
 {wochenplan()}
         </tbody>
       </table>
     </div>
-    <p class="note" style="margin-top:1.5rem">Dieser Plan zeigt die Zeiten, die aus dem öffentlichen Auftritt hervorgehen. Die übrigen Abteilungen tragen ihre Zeiten nach — danach ersetzt diese eine Tabelle sämtliche Zeitangaben auf den Einzelseiten.</p>
+    <p class="note" style="margin-top:1.5rem">Quelle: {esc(QUELLE)}. Diese eine Tabelle ersetzt sämtliche Zeitangaben, die bisher über die Einzelseiten der Abteilungen verstreut waren.</p>
   </div>
 </section>
 
