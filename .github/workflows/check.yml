@@ -1,0 +1,25 @@
+name: Seiten prüfen
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Seiten aus data/ neu erzeugen
+        run: python3 tools/build.py
+
+      - name: Prüfen, dass die eingecheckten Seiten zu den Daten passen
+        run: |
+          if ! git diff --exit-code; then
+            echo "::error::Die erzeugten Seiten weichen von den eingecheckten ab. Bitte 'python3 tools/build.py' ausführen und das Ergebnis committen."
+            exit 1
+          fi

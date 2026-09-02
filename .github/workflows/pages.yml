@@ -1,8 +1,14 @@
+# Deployt die Seite über GitHub Actions.
+#
+# Nur nötig, wenn unter Settings > Pages als Source "GitHub Actions" gewählt ist.
+# Bei der Einstellung "Deploy from a branch" veröffentlicht GitHub den Branch
+# direkt und dieser Workflow wird nicht gebraucht.
+#
+# Läuft bewusst nur auf Zuruf, damit er nicht bei jedem Push fehlschlägt,
+# solange Pages noch nicht eingerichtet ist.
 name: GitHub Pages
 
 on:
-  push:
-    branches: [claude/mtv-gelting-audit-3jknqv]
   workflow_dispatch:
 
 permissions:
@@ -15,35 +21,16 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Seiten aus data/ neu erzeugen
-        run: python3 tools/build.py
-
-      - name: Prüfen, dass die eingecheckten Seiten zu den Daten passen
-        run: |
-          if ! git diff --exit-code; then
-            echo "::error::Die erzeugten Seiten weichen von den eingecheckten ab. Bitte 'python3 tools/build.py' ausführen und das Ergebnis committen."
-            exit 1
-          fi
-
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
       - id: deployment
         uses: actions/deploy-pages@v4
