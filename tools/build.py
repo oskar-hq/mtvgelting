@@ -65,7 +65,7 @@ def head(title, desc, active, extra=""):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@600;700&family=Inter:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/css/site.css">
-<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="128x128">
 {extra}</head>
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
@@ -73,7 +73,7 @@ def head(title, desc, active, extra=""):
 <header class="hdr">
   <div class="wrap hdr__inner">
     <a class="brand" href="index.html">
-      <img class="brand__logo" src="assets/img/logo.svg" alt="" width="30" height="40">
+      <img class="brand__logo" src="assets/img/logo.png" alt="" width="225" height="300">
       <span class="brand__txt">
         <span class="brand__mark">MTV Gelting</span>
         <span class="brand__sub">seit 1908</span>
@@ -110,7 +110,7 @@ def footer():
   <div class="wrap">
     <div class="ftr__cols">
       <div>
-        <img class="ftr__logo" src="assets/img/logo.svg" alt="" width="45" height="60">
+        <img class="ftr__logo" src="assets/img/logo.png" alt="" width="225" height="300">
         <p class="ftr__h">Kontakt</p>
         <ul class="ftr__list">
           <li>{esc(V['name'])}</li>

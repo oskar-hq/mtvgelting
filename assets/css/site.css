@@ -5,16 +5,16 @@
 :root {
   --paper:      #F2F5F8;
   --surface:    #FFFFFF;
-  --ink:        #12283B;
+  --ink:        #11253C;
   --ink-70:     #3D5163;
   --ink-45:     #5A6E84;
   --line:       #D8E1EA;
   --line-soft:  #E8EEF5;
-  --blue:       #1D4E7C;   /* Vereinsblau aus dem Wappen */
-  --blue-dark:  #153A5E;
-  --blue-tint:  #E7EEF6;
-  --blue-pale:  #9DBBD6;
-  --deep:       #102D48;
+  --blue:       #134679;   /* Vereinsblau, aus dem Wappen ausgelesen */
+  --blue-dark:  #0E355C;
+  --blue-tint:  #E6EDF5;
+  --blue-pale:  #9BB6D3;
+  --deep:       #0C2745;
   --radius:     4px;
   --pad:        clamp(1.25rem, 4vw, 3rem);
   --maxw:       1320px;
@@ -146,10 +146,10 @@ p:last-child { margin-bottom: 0; }
 .hdr__inner {
   position: relative;
   display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
-  min-height: 68px;
+  min-height: 74px;
 }
 .brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; flex: none; }
-.brand__logo { height: 40px; width: auto; flex: none; }
+.brand__logo { height: 46px; width: auto; flex: none; }
 .brand__txt { display: flex; flex-direction: column; line-height: 1.05; }
 .brand__mark {
   font-family: var(--display); font-weight: 700; font-size: 1.05rem;
@@ -196,7 +196,7 @@ p:last-child { margin-bottom: 0; }
     transform: translateY(-8px); opacity: 0; visibility: hidden; pointer-events: none;
     transition: transform .22s ease, opacity .22s ease, visibility .22s;
     max-height: 80dvh; overflow-y: auto;
-    box-shadow: 0 18px 40px -28px rgba(18,40,59,.5);
+    box-shadow: 0 18px 40px -28px rgba(17,37,60,.5);
   }
   .nav[data-open="true"] { transform: translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
   .nav a { padding: .9rem .25rem; font-size: .95rem; border-bottom: 1px solid var(--line-soft); border-radius: 0; }
@@ -219,7 +219,7 @@ p:last-child { margin-bottom: 0; }
 .media {
   position: relative; overflow: hidden; border-radius: var(--radius);
   background:
-    repeating-linear-gradient(135deg, rgba(18,40,59,.045) 0 2px, transparent 2px 11px),
+    repeating-linear-gradient(135deg, rgba(17,37,60,.045) 0 2px, transparent 2px 11px),
     linear-gradient(160deg, #E6ECF2, #D3DDE7);
   border: 1px solid var(--line);
   aspect-ratio: 4 / 3;
@@ -231,7 +231,7 @@ p:last-child { margin-bottom: 0; }
 .media--blue {
   background:
     repeating-linear-gradient(135deg, rgba(255,255,255,.09) 0 2px, transparent 2px 11px),
-    linear-gradient(160deg, var(--blue), #0E2A44);
+    linear-gradient(160deg, var(--blue), #0A2140);
   border-color: transparent;
 }
 .media__tag {
@@ -317,7 +317,7 @@ p:last-child { margin-bottom: 0; }
   padding: 1.35rem; display: flex; flex-direction: column; gap: .65rem;
   transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
 }
-.card:hover { border-color: var(--ink); transform: translateY(-2px); box-shadow: 0 10px 30px -18px rgba(18,40,59,.45); }
+.card:hover { border-color: var(--ink); transform: translateY(-2px); box-shadow: 0 10px 30px -18px rgba(17,37,60,.45); }
 .card[hidden] { display: none; }
 .card__kat { font-family: var(--mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
 .card__name { font-family: var(--display); font-size: 1.3rem; font-weight: 600; letter-spacing: -.03em; }
@@ -471,7 +471,7 @@ table.plan th.t-day, table.plan td.t-day { font-family: var(--mono); font-size: 
 .ftr__cols { display: grid; gap: 2.5rem; grid-template-columns: 1fr; padding-bottom: 3rem; }
 @media (min-width: 760px)  { .ftr__cols { grid-template-columns: 1.4fr 1fr 1fr; } }
 @media (min-width: 1040px) { .ftr__cols { grid-template-columns: 1.6fr 1fr 1fr 1fr; } }
-.ftr__logo { height: 60px; width: auto; margin-bottom: 1.25rem; }
+.ftr__logo { height: 72px; width: auto; margin-bottom: 1.35rem; }
 .ftr__h { font-family: var(--mono); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(242,245,248,.45); margin-bottom: 1rem; }
 .ftr__list { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; font-size: .92rem; }
 .ftr__word {

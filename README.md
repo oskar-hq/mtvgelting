@@ -47,15 +47,25 @@ data/angebote.json    alle 31 Sportangebote mit Kategorie, Zielgruppe, Zeiten
 tools/build.py        Generator (Templates + Seiteninhalte)
 assets/css/site.css   Design-System
 assets/js/site.js     Navigation + Angebotsfilter
-assets/img/logo.svg   Vereinswappen (Nachzeichnung, siehe offene Punkte)
+assets/img/logo.hd1.png  Vereinswappen, Originaldatei (1500 × 2000, transparent)
+assets/img/logo.png      daraus erzeugt, 225 × 300 für Header und Footer
+assets/img/favicon.png   daraus erzeugt, 128 × 128
 ```
 
 ### Farben
 
-Die Palette folgt dem Vereinswappen: Vereinsblau `#1D4E7C`, Weiß und ein helles Grau
-`#F2F5F8` als Grundfläche. Dunkle Flächen und der Footer nutzen ein tieferes Navy
-`#102D48`, Fließtext ein dunkles Blaugrau `#12283B`. Alle Text-Hintergrund-Paare
-erreichen mindestens 4,5:1 (WCAG AA).
+Die Palette folgt dem Vereinswappen: **Vereinsblau `#134679`**, direkt aus der Logodatei
+ausgelesen, dazu Weiß und ein helles Grau `#F2F5F8` als Grundfläche. Dunkle Flächen und der
+Footer nutzen ein tieferes Navy `#0C2745`, Fließtext ein dunkles Blaugrau `#11253C`. Alle
+Text-Hintergrund-Paare erreichen mindestens 4,5:1 (WCAG AA).
+
+Die beiden Web-Größen entstehen aus der Originaldatei und sind eingecheckt; sie werden nicht
+bei jedem Build neu erzeugt. Nach einem Austausch des Originals:
+
+```
+python3 -c "from PIL import Image; s=Image.open('assets/img/logo.hd1.png').convert('RGBA'); \
+s.resize((225,300), Image.LANCZOS).quantize(colors=32, method=Image.FASTOCTREE).save('assets/img/logo.png', optimize=True)"
+```
 
 Inhaltspflege läuft damit über die JSON-Dateien, nicht über HTML. Trainingszeiten stehen an genau
 einer Stelle (`angebote.json`) und erscheinen automatisch auf der Angebotsseite **und** im
@@ -89,11 +99,8 @@ Alle Stellen sind in den Seiten sichtbar als „folgt" / „auf Anfrage" markier
 7. **E-Mail-Adresse prüfen** — auf der Live-Seite per JavaScript verschleiert; hier ist
    `vorstand@mtv-gelting-08.de` hinterlegt und muss bestätigt werden.
 8. **Sponsorenlogos** inkl. Freigabe (aktuell als Namen gesetzt).
-9. **Vereinswappen im Original.** `assets/img/logo.svg` ist nach einer Abbildung nachgezeichnet,
-   nicht die offizielle Datei. Für den Entwurf trägt es, für einen Livegang sollte das Original
-   her — Dateiname beibehalten, dann ziehen Header, Footer und Favicon automatisch nach.
-   Auch der Blauton `--blue` ist aus der Abbildung geschätzt und sollte gegen den echten
-   Wert geprüft werden.
+9. ~~Vereinswappen~~ — erledigt. Die Originaldatei liegt unter `assets/img/logo.hd1.png` und
+   ist in Header, Footer und Favicon eingebunden; das Vereinsblau ist daraus ausgelesen.
 
 **Technisch zu klären**
 
