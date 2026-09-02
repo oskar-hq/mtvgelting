@@ -37,6 +37,10 @@ Die Seiten werden aus den JSON-Dateien in `data/` erzeugt:
 python3 tools/build.py
 ```
 
+Ein Workflow prüft bei jedem Push, dass die eingecheckten HTML-Dateien zu den Daten in `data/`
+passen — wer JSON ändert und den Generator vergisst, bekommt eine rote CI statt einer stillen
+Abweichung.
+
 ```
 data/verein.json      Stammdaten, Vorstand, Beiträge, News, Termine, Sponsoren
 data/angebote.json    alle 31 Sportangebote mit Kategorie, Zielgruppe, Zeiten
@@ -83,6 +87,26 @@ Alle Stellen sind in den Seiten sichtbar als „folgt" / „auf Anfrage" markier
 11. **Spielpläne**: aktuell Links zu den Verbänden. Einbettung wäre möglich, aber
     abhängig von den Schnittstellen der Verbände.
 12. **Impressum und Datenschutzerklärung** müssen vor Veröffentlichung rechtlich geprüft werden.
+
+## GitHub Pages aktivieren
+
+Der Actions-Token darf eine Pages-Site nicht selbst anlegen, solange Pages im Repository noch nie
+eingerichtet wurde. Dieser eine Schritt muss deshalb einmalig von Hand erfolgen — unter
+**Settings → Pages**:
+
+**Variante A — Deploy from a branch** (einfachster Weg, sofort live)
+Source: `Deploy from a branch`, Branch: `claude/mtv-gelting-audit-3jknqv`, Ordner: `/ (root)`.
+GitHub veröffentlicht den Branch dann direkt; der Pages-Workflow wird nicht gebraucht.
+
+**Variante B — GitHub Actions**
+Source: `GitHub Actions`. Danach den Workflow „GitHub Pages" einmal starten
+(Actions → GitHub Pages → Run workflow). Jede weitere Veröffentlichung läuft dann darüber.
+
+Die Adresse lautet anschließend `https://oskar-hq.github.io/mtvgelting/`.
+
+Die Seiten tragen `noindex, nofollow`, damit der Entwurf nicht in Suchmaschinen neben dem
+echten Vereinsauftritt auftaucht. Vor einem echten Livegang muss das Meta-Tag in
+`tools/build.py` entfernt werden.
 
 ## Lokal ansehen
 
