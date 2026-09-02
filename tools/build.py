@@ -246,7 +246,11 @@ def seite_start():
         <p class="news__kat">{esc(n['kategorie'])}</p>
       </article>""" for n in V["news"][:4])
 
-    sponsoren = "".join(f'<div class="sponsor">{esc(s)}</div>' for s in V["sponsoren"])
+    sp = list(V["sponsoren"])
+    sp += [""] * (-len(sp) % 12)
+    sponsoren = "".join(
+        (f'<div class="sponsor">{esc(s)}</div>' if s
+         else '<div class="sponsor" aria-hidden="true"></div>') for s in sp)
     ticker_items = "".join(f"<span>{esc(k['name'])}</span>" for k in A["kategorien"]) * 2
 
     body = f"""
@@ -267,7 +271,7 @@ def seite_start():
         <div class="hero__stats">
           <div><div class="stat__num">{len(ANG)}</div><div class="stat__txt">Sportangebote</div></div>
           <div><div class="stat__num">5</div><div class="stat__txt">Abteilungen</div></div>
-          <div><div class="stat__num">117</div><div class="stat__txt">Jahre Verein</div></div>
+          <div><div class="stat__num">{V['gegruendet']}</div><div class="stat__txt">gegründet</div></div>
         </div>
       </div>
     </div>
