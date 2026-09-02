@@ -47,6 +47,7 @@ data/angebote.json    alle 31 Sportangebote mit Kategorie, Zielgruppe, Zeiten
 tools/build.py        Generator (Templates + Seiteninhalte)
 assets/css/site.css   Design-System
 assets/js/site.js     Navigation + Angebotsfilter
+assets/img/logo.svg   Vereinswappen (Nachzeichnung, siehe offene Punkte)
 ```
 
 ### Farben
@@ -88,10 +89,11 @@ Alle Stellen sind in den Seiten sichtbar als „folgt" / „auf Anfrage" markier
 7. **E-Mail-Adresse prüfen** — auf der Live-Seite per JavaScript verschleiert; hier ist
    `vorstand@mtv-gelting-08.de` hinterlegt und muss bestätigt werden.
 8. **Sponsorenlogos** inkl. Freigabe (aktuell als Namen gesetzt).
-9. **Vereinswappen als Datei.** Ein Nachbau war nicht gut genug und wurde wieder entfernt; der
-   Header trägt derzeit eine reine Wortmarke. Sobald das Original als SVG oder PNG vorliegt, wird
-   es in Header, Footer und Favicon eingebunden. Auch der Blauton `--blue` ist aus einer
-   Abbildung des Wappens geschätzt und sollte gegen den echten Wert geprüft werden.
+9. **Vereinswappen im Original.** `assets/img/logo.svg` ist nach einer Abbildung nachgezeichnet,
+   nicht die offizielle Datei. Für den Entwurf trägt es, für einen Livegang sollte das Original
+   her — Dateiname beibehalten, dann ziehen Header, Footer und Favicon automatisch nach.
+   Auch der Blauton `--blue` ist aus der Abbildung geschätzt und sollte gegen den echten
+   Wert geprüft werden.
 
 **Technisch zu klären**
 
