@@ -1,0 +1,20 @@
+{% extends "admin/anmelderahmen.html" %}
+{% block titel %}Anmelden{% endblock %}
+{% block inhalt %}
+<h1>Vereinsverwaltung</h1>
+<p class="hilfe">Melde dich mit deiner E-Mail-Adresse und deinem Passwort an, um die Inhalte der Website zu bearbeiten.</p>
+<form method="post" class="formular">
+  <input type="hidden" name="csrf" value="{{ csrf() }}">
+  <input type="hidden" name="weiter" value="{{ weiter }}">
+  <p class="feld">
+    <label for="email">E-Mail-Adresse</label>
+    <input id="email" name="email" type="email" value="{{ email }}" autocomplete="username" required autofocus>
+  </p>
+  <p class="feld">
+    <label for="passwort">Passwort</label>
+    <input id="passwort" name="passwort" type="password" autocomplete="current-password" required>
+  </p>
+  <p><button class="knopf knopf--haupt" type="submit">Anmelden</button></p>
+</form>
+<p class="hilfe">Passwort vergessen? Eine andere Person mit Zugang kann unter „Zugänge“ ein neues anlegen.</p>
+{% endblock %}

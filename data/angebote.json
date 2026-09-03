@@ -1,396 +1,1098 @@
 {
   "quelle": "Hallenbelegungsplan / Trainingszeiten MTV Gelting 08, gültig ab Juni 2026",
   "kategorien": [
-    { "id": "ballsport", "name": "Ballsport" },
-    { "id": "fitness",   "name": "Fitness & Gesundheit" },
-    { "id": "kinder",    "name": "Sport für Kinder" },
-    { "id": "senioren",  "name": "Seniorensport" },
-    { "id": "freizeit",  "name": "Freizeitsport" }
+    {
+      "id": "ballsport",
+      "name": "Ballsport"
+    },
+    {
+      "id": "fitness",
+      "name": "Fitness & Gesundheit"
+    },
+    {
+      "id": "kinder",
+      "name": "Sport für Kinder"
+    },
+    {
+      "id": "senioren",
+      "name": "Seniorensport"
+    },
+    {
+      "id": "freizeit",
+      "name": "Freizeitsport"
+    }
   ],
   "zielgruppen": [
-    { "id": "kinder",     "name": "Kinder" },
-    { "id": "jugend",     "name": "Jugend" },
-    { "id": "erwachsene", "name": "Erwachsene" },
-    { "id": "senioren",   "name": "Senioren" }
+    {
+      "id": "kinder",
+      "name": "Kinder"
+    },
+    {
+      "id": "jugend",
+      "name": "Jugend"
+    },
+    {
+      "id": "erwachsene",
+      "name": "Erwachsene"
+    },
+    {
+      "id": "senioren",
+      "name": "Senioren"
+    }
   ],
   "angebote": [
     {
-      "slug": "fussball", "name": "Fußball", "kategorie": "ballsport",
-      "zielgruppen": ["kinder", "jugend", "erwachsene"],
+      "slug": "fussball",
+      "name": "Fußball",
+      "kategorie": "ballsport",
+      "zielgruppen": [
+        "kinder",
+        "jugend",
+        "erwachsene"
+      ],
       "kurz": "Spielbetrieb in der FSG Ostseeküste – vom Kindergarten bis zu den Alten Herren.",
       "text": "Die Fußballer des MTV Gelting 08 spielen seit 2009 in einer Spielgemeinschaft mit dem TSV Kappeln, dem TSV Karby und dem SV Kieholm als FSG Ostseeküste. Aktuell nehmen 2 Herrenmannschaften, 2 Alt-Herren-Mannschaften und 14 Jugendmannschaften am Ligabetrieb teil.",
       "ort": "Sportplatz",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Dienstag",   "von": "17:15", "bis": "18:30", "ort": "Sportplatz", "gruppe": "E-Jugend FSG Ostseeküste", "leitung": "B. Surm / A. Vollmer" },
-        { "tag": "Donnerstag", "von": "15:15", "bis": "16:00", "ort": "Birkhalle / Sportplatz", "gruppe": "Kindergarten FSG Ostseeküste", "leitung": "B. Kratz" },
-        { "tag": "Donnerstag", "von": "16:00", "bis": "17:00", "ort": "Sportplatz", "gruppe": "F-Jugend FSG Ostseeküste", "leitung": "B. Kratz" },
-        { "tag": "Donnerstag", "von": "17:00", "bis": "18:30", "ort": "Sportplatz", "gruppe": "E-Jugend FSG Ostseeküste", "leitung": "B. Surm" }
+        {
+          "tag": "Dienstag",
+          "von": "17:15",
+          "bis": "18:30",
+          "ort": "Sportplatz",
+          "gruppe": "E-Jugend FSG Ostseeküste",
+          "leitung": "B. Surm / A. Vollmer"
+        },
+        {
+          "tag": "Donnerstag",
+          "von": "15:15",
+          "bis": "16:00",
+          "ort": "Birkhalle / Sportplatz",
+          "gruppe": "Kindergarten FSG Ostseeküste",
+          "leitung": "B. Kratz"
+        },
+        {
+          "tag": "Donnerstag",
+          "von": "16:00",
+          "bis": "17:00",
+          "ort": "Sportplatz",
+          "gruppe": "F-Jugend FSG Ostseeküste",
+          "leitung": "B. Kratz"
+        },
+        {
+          "tag": "Donnerstag",
+          "von": "17:00",
+          "bis": "18:30",
+          "ort": "Sportplatz",
+          "gruppe": "E-Jugend FSG Ostseeküste",
+          "leitung": "B. Surm"
+        }
       ]
     },
     {
-      "slug": "handball", "name": "Handball", "kategorie": "ballsport",
-      "zielgruppen": ["kinder", "jugend", "erwachsene"],
+      "slug": "handball",
+      "name": "Handball",
+      "kategorie": "ballsport",
+      "zielgruppen": [
+        "kinder",
+        "jugend",
+        "erwachsene"
+      ],
       "kurz": "Von Mini-Handball bis zu den Männern – zwölf Trainingsgruppen an vier Tagen.",
       "text": "Die Handballabteilung ist die größte des Vereins und nimmt am Spielbetrieb des Handballverbandes Schleswig-Holstein teil. Trainiert wird nach Jahrgängen in der Birkhalle. Aktuelle Spielpläne und Tabellen findest du unter hvsh.de.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Montag",     "von": "16:30", "bis": "17:30", "ort": "Birkhalle", "gruppe": "Mini-Handball", "leitung": "A. Nissen" },
-        { "tag": "Dienstag",   "von": "15:30", "bis": "16:30", "ort": "Birkhalle", "gruppe": "F-Jugend (Jahrgang 2018/2019)", "leitung": "D. Kronefeld" },
-        { "tag": "Dienstag",   "von": "16:30", "bis": "18:00", "ort": "Birkhalle", "gruppe": "weibliche D-Jugend (Jahrgang 14/15)", "leitung": "D. Kronefeld / L. Christophersen" },
-        { "tag": "Dienstag",   "von": "18:00", "bis": "19:30", "ort": "Birkhalle", "gruppe": "weibliche A-Jugend (Jahrgang 08/09)", "leitung": "S. Koch" },
-        { "tag": "Dienstag",   "von": "19:30", "bis": "21:00", "ort": "Birkhalle", "gruppe": "Frauen (2007 und älter)", "leitung": "H. Scharf" },
-        { "tag": "Mittwoch",   "von": "15:00", "bis": "16:30", "ort": "Birkhalle", "gruppe": "männliche & weibliche E-Jugend (Jahrgang 16/17)", "leitung": "K. Sonnenberg / C. Lausen" },
-        { "tag": "Mittwoch",   "von": "16:30", "bis": "18:00", "ort": "Birkhalle", "gruppe": "weibliche C-Jugend (Jahrgang 12/13)", "leitung": "A. Krüsmann / M. Schmedeke" },
-        { "tag": "Mittwoch",   "von": "18:00", "bis": "19:30", "ort": "Birkhalle", "gruppe": "weibliche B-Jugend (Jahrgang 10/11)", "leitung": "R. Petersen" },
-        { "tag": "Mittwoch",   "von": "19:30", "bis": "21:30", "ort": "Birkhalle", "gruppe": "männliche A-Jugend & Männer (ab 16 Jahre)", "leitung": "H. Richter / T. Reimer" },
-        { "tag": "Donnerstag", "von": "17:00", "bis": "18:30", "ort": "Birkhalle", "gruppe": "weibliche A-Jugend (Jahrgang 08/09)", "leitung": "S. Koch" },
-        { "tag": "Donnerstag", "von": "17:30", "bis": "18:30", "ort": "Birkhalle", "gruppe": "weibliche D-Jugend (Jahrgang 14/15)", "leitung": "D. Kronefeld / L. Christophersen" },
-        { "tag": "Donnerstag", "von": "18:30", "bis": "20:00", "ort": "Birkhalle", "gruppe": "Frauen (2007 und älter)", "leitung": "H. Scharf" },
-        { "tag": "Freitag",    "von": "15:00", "bis": "16:15", "ort": "Birkhalle", "gruppe": "männliche & weibliche E-Jugend (Jahrgang 16/17)", "leitung": "K. Sonnenberg / C. Lausen" },
-        { "tag": "Freitag",    "von": "16:15", "bis": "17:30", "ort": "Birkhalle", "gruppe": "weibliche C-Jugend (Jahrgang 12/13)", "leitung": "A. Krüsmann / M. Schmedeke" },
-        { "tag": "Freitag",    "von": "16:15", "bis": "17:30", "ort": "Birkhalle", "gruppe": "weibliche B-Jugend (Jahrgang 10/11)", "leitung": "R. Petersen" },
-        { "tag": "Freitag",    "von": "17:30", "bis": "18:45", "ort": "Birkhalle", "gruppe": "männliche A-Jugend & Männer (ab 16 Jahre)", "leitung": "H. Richter / T. Reimer" }
+        {
+          "tag": "Montag",
+          "von": "16:30",
+          "bis": "17:30",
+          "ort": "Birkhalle",
+          "gruppe": "Mini-Handball",
+          "leitung": "A. Nissen"
+        },
+        {
+          "tag": "Dienstag",
+          "von": "15:30",
+          "bis": "16:30",
+          "ort": "Birkhalle",
+          "gruppe": "F-Jugend (Jahrgang 2018/2019)",
+          "leitung": "D. Kronefeld"
+        },
+        {
+          "tag": "Dienstag",
+          "von": "16:30",
+          "bis": "18:00",
+          "ort": "Birkhalle",
+          "gruppe": "weibliche D-Jugend (Jahrgang 14/15)",
+          "leitung": "D. Kronefeld / L. Christophersen"
+        },
+        {
+          "tag": "Dienstag",
+          "von": "18:00",
+          "bis": "19:30",
+          "ort": "Birkhalle",
+          "gruppe": "weibliche A-Jugend (Jahrgang 08/09)",
+          "leitung": "S. Koch"
+        },
+        {
+          "tag": "Dienstag",
+          "von": "19:30",
+          "bis": "21:00",
+          "ort": "Birkhalle",
+          "gruppe": "Frauen (2007 und älter)",
+          "leitung": "H. Scharf"
+        },
+        {
+          "tag": "Mittwoch",
+          "von": "15:00",
+          "bis": "16:30",
+          "ort": "Birkhalle",
+          "gruppe": "männliche & weibliche E-Jugend (Jahrgang 16/17)",
+          "leitung": "K. Sonnenberg / C. Lausen"
+        },
+        {
+          "tag": "Mittwoch",
+          "von": "16:30",
+          "bis": "18:00",
+          "ort": "Birkhalle",
+          "gruppe": "weibliche C-Jugend (Jahrgang 12/13)",
+          "leitung": "A. Krüsmann / M. Schmedeke"
+        },
+        {
+          "tag": "Mittwoch",
+          "von": "18:00",
+          "bis": "19:30",
+          "ort": "Birkhalle",
+          "gruppe": "weibliche B-Jugend (Jahrgang 10/11)",
+          "leitung": "R. Petersen"
+        },
+        {
+          "tag": "Mittwoch",
+          "von": "19:30",
+          "bis": "21:30",
+          "ort": "Birkhalle",
+          "gruppe": "männliche A-Jugend & Männer (ab 16 Jahre)",
+          "leitung": "H. Richter / T. Reimer"
+        },
+        {
+          "tag": "Donnerstag",
+          "von": "17:00",
+          "bis": "18:30",
+          "ort": "Birkhalle",
+          "gruppe": "weibliche A-Jugend (Jahrgang 08/09)",
+          "leitung": "S. Koch"
+        },
+        {
+          "tag": "Donnerstag",
+          "von": "17:30",
+          "bis": "18:30",
+          "ort": "Birkhalle",
+          "gruppe": "weibliche D-Jugend (Jahrgang 14/15)",
+          "leitung": "D. Kronefeld / L. Christophersen"
+        },
+        {
+          "tag": "Donnerstag",
+          "von": "18:30",
+          "bis": "20:00",
+          "ort": "Birkhalle",
+          "gruppe": "Frauen (2007 und älter)",
+          "leitung": "H. Scharf"
+        },
+        {
+          "tag": "Freitag",
+          "von": "15:00",
+          "bis": "16:15",
+          "ort": "Birkhalle",
+          "gruppe": "männliche & weibliche E-Jugend (Jahrgang 16/17)",
+          "leitung": "K. Sonnenberg / C. Lausen"
+        },
+        {
+          "tag": "Freitag",
+          "von": "16:15",
+          "bis": "17:30",
+          "ort": "Birkhalle",
+          "gruppe": "weibliche C-Jugend (Jahrgang 12/13)",
+          "leitung": "A. Krüsmann / M. Schmedeke"
+        },
+        {
+          "tag": "Freitag",
+          "von": "16:15",
+          "bis": "17:30",
+          "ort": "Birkhalle",
+          "gruppe": "weibliche B-Jugend (Jahrgang 10/11)",
+          "leitung": "R. Petersen"
+        },
+        {
+          "tag": "Freitag",
+          "von": "17:30",
+          "bis": "18:45",
+          "ort": "Birkhalle",
+          "gruppe": "männliche A-Jugend & Männer (ab 16 Jahre)",
+          "leitung": "H. Richter / T. Reimer"
+        }
       ]
     },
     {
-      "slug": "tennis", "name": "Tennis", "kategorie": "ballsport",
-      "zielgruppen": ["kinder", "jugend", "erwachsene"],
+      "slug": "tennis",
+      "name": "Tennis",
+      "kategorie": "ballsport",
+      "zielgruppen": [
+        "kinder",
+        "jugend",
+        "erwachsene"
+      ],
       "kurz": "Freitagstraining auf der Tennisanlage – in der Sommersaison von Mai bis Oktober.",
       "text": "Die Tennisabteilung bietet Training für alle Altersklassen, Mannschaftsspielbetrieb und Vereinsturniere – vom Saisonauftakt bis zum Kuddelmuddel-Turnier zum Saisonabschluss.",
       "ort": "Tennisplatz",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Freitag", "von": "15:00", "bis": "18:00", "ort": "Tennisplatz", "gruppe": "MTV Tennis", "leitung": "Ta. Henningsen", "hinweis": "Mai bis Oktober" }
+        {
+          "tag": "Freitag",
+          "von": "15:00",
+          "bis": "18:00",
+          "ort": "Tennisplatz",
+          "gruppe": "MTV Tennis",
+          "leitung": "Ta. Henningsen",
+          "hinweis": "Mai bis Oktober"
+        }
       ]
     },
     {
-      "slug": "badminton", "name": "Badminton", "kategorie": "ballsport",
-      "zielgruppen": ["kinder", "jugend", "erwachsene"],
+      "slug": "badminton",
+      "name": "Badminton",
+      "kategorie": "ballsport",
+      "zielgruppen": [
+        "kinder",
+        "jugend",
+        "erwachsene"
+      ],
       "kurz": "Zweimal wöchentlich offener Spielbetrieb in der Birkhalle – Einsteiger willkommen.",
       "text": "Badminton beim MTV Gelting 08 lebt vom offenen Spielbetrieb: Wer Lust hat, kommt vorbei. Freitags spielen auch Kinder mit.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Montag",  "von": "17:30", "bis": "19:00", "ort": "Birkhalle", "gruppe": "Jugendliche & Erwachsene", "leitung": "D. Rütterswoerden" },
-        { "tag": "Freitag", "von": "18:45", "bis": "20:00", "ort": "Birkhalle", "gruppe": "Kinder, Jugendliche & Erwachsene", "leitung": "D. Rütterswoerden" }
+        {
+          "tag": "Montag",
+          "von": "17:30",
+          "bis": "19:00",
+          "ort": "Birkhalle",
+          "gruppe": "Jugendliche & Erwachsene",
+          "leitung": "D. Rütterswoerden"
+        },
+        {
+          "tag": "Freitag",
+          "von": "18:45",
+          "bis": "20:00",
+          "ort": "Birkhalle",
+          "gruppe": "Kinder, Jugendliche & Erwachsene",
+          "leitung": "D. Rütterswoerden"
+        }
       ]
     },
     {
-      "slug": "tischtennis", "name": "Tischtennis", "kategorie": "ballsport",
-      "zielgruppen": ["kinder", "jugend", "erwachsene"],
+      "slug": "tischtennis",
+      "name": "Tischtennis",
+      "kategorie": "ballsport",
+      "zielgruppen": [
+        "kinder",
+        "jugend",
+        "erwachsene"
+      ],
       "kurz": "Eigene Zeiten für Kinder und Erwachsene, dreimal in der Woche.",
       "text": "Die Tischtennisabteilung trainiert in der Schulsporthalle und nimmt mit Mannschaften am Ligabetrieb teil.",
       "ort": "Schulsporthalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Montag",     "von": "18:00", "bis": "19:00", "ort": "Schulsporthalle", "gruppe": "Kinder & Jugendliche", "leitung": "M. Brosch" },
-        { "tag": "Montag",     "von": "19:00", "bis": "21:00", "ort": "Schulsporthalle", "gruppe": "Erwachsene", "leitung": "M. Brosch" },
-        { "tag": "Donnerstag", "von": "19:30", "bis": "21:30", "ort": "Schulsporthalle", "gruppe": "Erwachsene", "leitung": "V. Gatz" }
+        {
+          "tag": "Montag",
+          "von": "18:00",
+          "bis": "19:00",
+          "ort": "Schulsporthalle",
+          "gruppe": "Kinder & Jugendliche",
+          "leitung": "M. Brosch"
+        },
+        {
+          "tag": "Montag",
+          "von": "19:00",
+          "bis": "21:00",
+          "ort": "Schulsporthalle",
+          "gruppe": "Erwachsene",
+          "leitung": "M. Brosch"
+        },
+        {
+          "tag": "Donnerstag",
+          "von": "19:30",
+          "bis": "21:30",
+          "ort": "Schulsporthalle",
+          "gruppe": "Erwachsene",
+          "leitung": "V. Gatz"
+        }
       ]
     },
     {
-      "slug": "volleyball", "name": "Volleyball", "kategorie": "ballsport",
-      "zielgruppen": ["jugend", "erwachsene"],
+      "slug": "volleyball",
+      "name": "Volleyball",
+      "kategorie": "ballsport",
+      "zielgruppen": [
+        "jugend",
+        "erwachsene"
+      ],
       "kurz": "Gemischtes Hobby- und Mannschaftsspiel in der Halle.",
       "text": "Volleyball für alle, die Spaß am Spiel haben – vom lockeren Mixed bis zum Punktspiel.",
-      "ort": "Birkhalle", "zeiten": []
+      "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
+      "zeiten": []
     },
     {
-      "slug": "maennersportgruppe", "name": "Männersportgruppe", "kategorie": "ballsport",
-      "zielgruppen": ["erwachsene", "senioren"],
+      "slug": "maennersportgruppe",
+      "name": "Männersportgruppe",
+      "kategorie": "ballsport",
+      "zielgruppen": [
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Donnerstagabend Ballsport ohne Ligadruck – Bewegung, Spiel und Geselligkeit.",
       "text": "Die Männersportgruppe trifft sich zum gemeinsamen Spiel quer durch die Ballsportarten. Ohne Wettkampf, mit viel Spaß.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Donnerstag", "von": "20:00", "bis": "22:00", "ort": "Birkhalle", "leitung": "T. Henningsen" }
+        {
+          "tag": "Donnerstag",
+          "von": "20:00",
+          "bis": "22:00",
+          "ort": "Birkhalle",
+          "leitung": "T. Henningsen"
+        }
       ]
     },
-
     {
-      "slug": "laufbahntraining", "name": "Laufbahntraining", "kategorie": "fitness",
-      "zielgruppen": ["kinder", "jugend", "erwachsene"],
+      "slug": "laufbahntraining",
+      "name": "Laufbahntraining",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "kinder",
+        "jugend",
+        "erwachsene"
+      ],
       "kurz": "Lauftraining auf der Bahn am Sportplatz, montags.",
       "text": "Laufen, Springen, Werfen – Grundlagentraining auf der Bahn. Höhepunkt im Vereinsjahr ist der Birklauf.",
       "ort": "Sportplatz",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Montag", "von": "17:30", "bis": "18:30", "ort": "Sportplatz", "leitung": "A. Nissen" }
+        {
+          "tag": "Montag",
+          "von": "17:30",
+          "bis": "18:30",
+          "ort": "Sportplatz",
+          "leitung": "A. Nissen"
+        }
       ]
     },
     {
-      "slug": "damensport", "name": "Damensport & Gymnastik", "kategorie": "fitness",
-      "zielgruppen": ["erwachsene", "senioren"],
+      "slug": "damensport",
+      "name": "Damensport & Gymnastik",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Montags Gymnastik für Kraft, Beweglichkeit und Rücken.",
       "text": "Ein abwechslungsreiches Gymnastikprogramm für Frauen jeden Alters – Kräftigung, Dehnung und Rückenschule in der Gruppe.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Montag", "von": "19:00", "bis": "20:00", "ort": "Birkhalle", "leitung": "C. Nissen-Döring" }
+        {
+          "tag": "Montag",
+          "von": "19:00",
+          "bis": "20:00",
+          "ort": "Birkhalle",
+          "leitung": "C. Nissen-Döring"
+        }
       ]
     },
     {
-      "slug": "step-fitness", "name": "Step Fitness", "kategorie": "fitness",
-      "zielgruppen": ["erwachsene"],
+      "slug": "step-fitness",
+      "name": "Step Fitness",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "erwachsene"
+      ],
       "kurz": "Ausdauertraining auf dem Step – direkt im Anschluss an die Gymnastik.",
       "text": "Step Fitness verbindet Ausdauer, Koordination und Musik. Jeden ersten Montag im Monat gibt es das „Workout of the month“.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Montag", "von": "20:00", "bis": "21:00", "ort": "Birkhalle", "leitung": "C. Nissen-Döring / E. Krüsmann", "hinweis": "jeden 1. Montag: Workout of the month" }
+        {
+          "tag": "Montag",
+          "von": "20:00",
+          "bis": "21:00",
+          "ort": "Birkhalle",
+          "leitung": "C. Nissen-Döring / E. Krüsmann",
+          "hinweis": "jeden 1. Montag: Workout of the month"
+        }
       ]
     },
     {
-      "slug": "yoga", "name": "Yoga", "kategorie": "fitness",
-      "zielgruppen": ["erwachsene", "senioren"],
+      "slug": "yoga",
+      "name": "Yoga",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Mittwochs in zwei Gruppen – für Anfänger und Fortgeschrittene.",
       "text": "Yoga mit Fokus auf Beweglichkeit, Atmung und einen ruhigen Ausgleich zum Alltag. Einsteigerinnen und Einsteiger haben eine eigene Gruppe.",
       "ort": "Schulsporthalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Mittwoch", "von": "18:00", "bis": "19:00", "ort": "Schulsporthalle", "gruppe": "Anfänger", "leitung": "W. Wittig" },
-        { "tag": "Mittwoch", "von": "19:00", "bis": "20:00", "ort": "Schulsporthalle", "gruppe": "Fortgeschrittene", "leitung": "W. Wittig" }
+        {
+          "tag": "Mittwoch",
+          "von": "18:00",
+          "bis": "19:00",
+          "ort": "Schulsporthalle",
+          "gruppe": "Anfänger",
+          "leitung": "W. Wittig"
+        },
+        {
+          "tag": "Mittwoch",
+          "von": "19:00",
+          "bis": "20:00",
+          "ort": "Schulsporthalle",
+          "gruppe": "Fortgeschrittene",
+          "leitung": "W. Wittig"
+        }
       ]
     },
     {
-      "slug": "pilates", "name": "Pilates", "kategorie": "fitness",
-      "zielgruppen": ["erwachsene", "senioren"],
+      "slug": "pilates",
+      "name": "Pilates",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Rumpfkraft, Haltung und kontrollierte Bewegung – mittwochs.",
       "text": "Pilates trainiert die tiefe Rumpfmuskulatur und die Haltung, in ruhigem Tempo und gelenkschonend.",
       "ort": "Schulsporthalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Mittwoch", "von": "17:00", "bis": "18:00", "ort": "Schulsporthalle", "leitung": "M. Bölling" }
+        {
+          "tag": "Mittwoch",
+          "von": "17:00",
+          "bis": "18:00",
+          "ort": "Schulsporthalle",
+          "leitung": "M. Bölling"
+        }
       ]
     },
     {
-      "slug": "mtv-move", "name": "MTV MOVE", "kategorie": "fitness",
-      "zielgruppen": ["erwachsene", "senioren"],
+      "slug": "mtv-move",
+      "name": "MTV MOVE",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Zwei Stunden Bewegung am Freitagvormittag.",
       "text": "Ein offenes Bewegungsangebot am Vormittag – mit wechselnden Schwerpunkten aus Kraft, Ausdauer und Beweglichkeit.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Freitag", "von": "10:00", "bis": "12:00", "ort": "Birkhalle", "leitung": "M. Bölling" }
+        {
+          "tag": "Freitag",
+          "von": "10:00",
+          "bis": "12:00",
+          "ort": "Birkhalle",
+          "leitung": "M. Bölling"
+        }
       ]
     },
     {
-      "slug": "linedance", "name": "Moderne Linedance", "kategorie": "fitness",
-      "zielgruppen": ["erwachsene", "senioren"],
+      "slug": "linedance",
+      "name": "Moderne Linedance",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Tanzen in der Reihe – freitags in der Schulsporthalle.",
       "text": "Linedance zu moderner Musik: Choreografien werden Schritt für Schritt aufgebaut, Vorkenntnisse sind nicht nötig.",
       "ort": "Schulsporthalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Freitag", "von": "17:00", "bis": "18:20", "ort": "Schulsporthalle", "leitung": "K. Much" }
+        {
+          "tag": "Freitag",
+          "von": "17:00",
+          "bis": "18:20",
+          "ort": "Schulsporthalle",
+          "leitung": "K. Much"
+        }
       ]
     },
     {
-      "slug": "kraftraum", "name": "Kraftraum", "kategorie": "fitness",
-      "zielgruppen": ["jugend", "erwachsene", "senioren"],
+      "slug": "kraftraum",
+      "name": "Kraftraum",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "jugend",
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Training nach eigenem Plan – Geräteeinweisung donnerstags nach Absprache.",
       "text": "Der vereinseigene Kraftraum steht Mitgliedern nach einer Einweisung zur Verfügung. Die Einweisung findet donnerstags statt und muss vorher telefonisch abgesprochen werden.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Donnerstag", "von": "17:00", "bis": "", "ort": "Birkhalle", "gruppe": "Geräteeinweisung", "leitung": "L. Ehrig", "hinweis": "nur nach telefonischer Absprache" }
+        {
+          "tag": "Donnerstag",
+          "von": "17:00",
+          "bis": "",
+          "ort": "Birkhalle",
+          "gruppe": "Geräteeinweisung",
+          "leitung": "L. Ehrig",
+          "hinweis": "nur nach telefonischer Absprache"
+        }
       ]
     },
     {
-      "slug": "aquajogging", "name": "Aquajogging", "kategorie": "fitness",
-      "zielgruppen": ["erwachsene", "senioren"],
+      "slug": "aquajogging",
+      "name": "Aquajogging",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Gelenkschonendes Training im Wasser, donnerstags in zwei Gruppen.",
       "text": "Bewegung im Wasser entlastet die Gelenke und trainiert trotzdem den ganzen Körper – ideal auch nach Verletzungen. Trainiert wird im Pottloch.",
       "ort": "Pottloch",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Donnerstag", "von": "19:00", "bis": "19:45", "ort": "Pottloch", "gruppe": "Gruppe 1", "leitung": "M. Bölling" },
-        { "tag": "Donnerstag", "von": "19:45", "bis": "20:30", "ort": "Pottloch", "gruppe": "Gruppe 2", "leitung": "M. Bölling" }
+        {
+          "tag": "Donnerstag",
+          "von": "19:00",
+          "bis": "19:45",
+          "ort": "Pottloch",
+          "gruppe": "Gruppe 1",
+          "leitung": "M. Bölling"
+        },
+        {
+          "tag": "Donnerstag",
+          "von": "19:45",
+          "bis": "20:30",
+          "ort": "Pottloch",
+          "gruppe": "Gruppe 2",
+          "leitung": "M. Bölling"
+        }
       ]
     },
     {
-      "slug": "nordic-walking", "name": "Nordic-Walking", "kategorie": "fitness",
-      "zielgruppen": ["erwachsene", "senioren"],
+      "slug": "nordic-walking",
+      "name": "Nordic-Walking",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Dienstagmorgens gemeinsam durch die Geltinger Landschaft.",
       "text": "In der Gruppe unterwegs an der frischen Luft – mit Technikhinweisen für alle, die neu einsteigen. Treffpunkt ist der Sportplatz.",
       "ort": "Treff am Sportplatz",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Dienstag", "von": "09:00", "bis": "10:15", "ort": "Treff am Sportplatz", "leitung": "H.-P. Spurk" }
+        {
+          "tag": "Dienstag",
+          "von": "09:00",
+          "bis": "10:15",
+          "ort": "Treff am Sportplatz",
+          "leitung": "H.-P. Spurk"
+        }
       ]
     },
     {
-      "slug": "sportabzeichen", "name": "Sportabzeichen", "kategorie": "fitness",
-      "zielgruppen": ["kinder", "jugend", "erwachsene", "senioren"],
+      "slug": "sportabzeichen",
+      "name": "Sportabzeichen",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "kinder",
+        "jugend",
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Abnahme am ersten Dienstag im Monat, von Mai bis September.",
       "text": "Das Deutsche Sportabzeichen kann beim MTV Gelting 08 abgelegt werden. Die Abnahme findet in der Sommersaison einmal im Monat auf dem Sportplatz statt.",
       "ort": "Sportplatz",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Dienstag", "von": "18:00", "bis": "19:00", "ort": "Sportplatz", "leitung": "I. Wollesen", "hinweis": "Mai bis September, jeder 1. Dienstag im Monat" }
+        {
+          "tag": "Dienstag",
+          "von": "18:00",
+          "bis": "19:00",
+          "ort": "Sportplatz",
+          "leitung": "I. Wollesen",
+          "hinweis": "Mai bis September, jeder 1. Dienstag im Monat"
+        }
       ]
     },
     {
-      "slug": "reha-sport", "name": "Reha-Sport", "kategorie": "fitness",
-      "zielgruppen": ["erwachsene", "senioren"],
+      "slug": "reha-sport",
+      "name": "Reha-Sport",
+      "kategorie": "fitness",
+      "zielgruppen": [
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Ärztlich verordneter Rehabilitationssport in kleiner Gruppe.",
       "text": "Reha-Sport findet in kleinen Gruppen unter qualifizierter Anleitung statt und kann über eine ärztliche Verordnung abgerechnet werden.",
-      "ort": "Birkhalle", "zeiten": []
+      "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
+      "zeiten": []
     },
-
     {
-      "slug": "kita-sport", "name": "Kita-Sport", "kategorie": "kinder",
-      "zielgruppen": ["kinder"],
+      "slug": "kita-sport",
+      "name": "Kita-Sport",
+      "kategorie": "kinder",
+      "zielgruppen": [
+        "kinder"
+      ],
       "kurz": "Bewegungsangebot für Kita-Gruppen am Montagvormittag.",
       "text": "Der MTV kommt in die Kita beziehungsweise die Kita in die Birkhalle – ein Bewegungsangebot in Abstimmung mit den Einrichtungen.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Montag", "von": "", "bis": "", "ort": "Birkhalle", "leitung": "B. Kratz", "hinweis": "vormittags, Zeiten in Abstimmung mit der Kita" }
+        {
+          "tag": "Montag",
+          "von": "",
+          "bis": "",
+          "ort": "Birkhalle",
+          "leitung": "B. Kratz",
+          "hinweis": "vormittags, Zeiten in Abstimmung mit der Kita"
+        }
       ]
     },
     {
-      "slug": "schul-ag", "name": "Schul-AG", "kategorie": "kinder",
-      "zielgruppen": ["kinder", "jugend"],
+      "slug": "schul-ag",
+      "name": "Schul-AG",
+      "kategorie": "kinder",
+      "zielgruppen": [
+        "kinder",
+        "jugend"
+      ],
       "kurz": "Vier Tage in der Woche direkt im Anschluss an den Unterricht.",
       "text": "Die Schul-AG ist das Bindeglied zwischen Schule und Verein: Bewegung und Sportarten zum Ausprobieren, gleich nach dem Unterricht.",
       "ort": "Schulsporthalle / Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Montag",     "von": "14:00", "bis": "15:00", "ort": "Schulsporthalle / Birkhalle", "leitung": "B. Kratz" },
-        { "tag": "Dienstag",   "von": "14:00", "bis": "15:00", "ort": "Schulsporthalle / Birkhalle", "leitung": "B. Kratz" },
-        { "tag": "Mittwoch",   "von": "14:00", "bis": "15:00", "ort": "Schulsporthalle", "leitung": "B. Kratz" },
-        { "tag": "Donnerstag", "von": "14:00", "bis": "15:00", "ort": "Schulsporthalle / Birkhalle", "leitung": "B. Kratz" }
+        {
+          "tag": "Montag",
+          "von": "14:00",
+          "bis": "15:00",
+          "ort": "Schulsporthalle / Birkhalle",
+          "leitung": "B. Kratz"
+        },
+        {
+          "tag": "Dienstag",
+          "von": "14:00",
+          "bis": "15:00",
+          "ort": "Schulsporthalle / Birkhalle",
+          "leitung": "B. Kratz"
+        },
+        {
+          "tag": "Mittwoch",
+          "von": "14:00",
+          "bis": "15:00",
+          "ort": "Schulsporthalle",
+          "leitung": "B. Kratz"
+        },
+        {
+          "tag": "Donnerstag",
+          "von": "14:00",
+          "bis": "15:00",
+          "ort": "Schulsporthalle / Birkhalle",
+          "leitung": "B. Kratz"
+        }
       ]
     },
     {
-      "slug": "eltern-kind-turnen", "name": "Eltern-Kind-Turnen", "kategorie": "kinder",
-      "zielgruppen": ["kinder"],
+      "slug": "eltern-kind-turnen",
+      "name": "Eltern-Kind-Turnen",
+      "kategorie": "kinder",
+      "zielgruppen": [
+        "kinder"
+      ],
       "kurz": "Erste Bewegungserfahrungen gemeinsam mit Mama oder Papa.",
       "text": "Bewegungslandschaften, Lieder und Spiele für die Kleinsten – gemeinsam mit einem Elternteil.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Montag", "von": "15:00", "bis": "16:15", "ort": "Birkhalle", "leitung": "A. Nissen" }
+        {
+          "tag": "Montag",
+          "von": "15:00",
+          "bis": "16:15",
+          "ort": "Birkhalle",
+          "leitung": "A. Nissen"
+        }
       ]
     },
     {
-      "slug": "mini-dancekids", "name": "Mini-Dancekids", "kategorie": "kinder",
-      "zielgruppen": ["kinder"],
+      "slug": "mini-dancekids",
+      "name": "Mini-Dancekids",
+      "kategorie": "kinder",
+      "zielgruppen": [
+        "kinder"
+      ],
       "kurz": "Tanzen zu aktueller Musik – montags in der Schulsporthalle.",
       "text": "Die Mini-Dancekids erarbeiten gemeinsam Choreografien und zeigen sie bei Vereinsfesten und Veranstaltungen.",
       "ort": "Schulsporthalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Montag", "von": "15:30", "bis": "17:30", "ort": "Schulsporthalle", "leitung": "Y. Kratz" }
+        {
+          "tag": "Montag",
+          "von": "15:30",
+          "bis": "17:30",
+          "ort": "Schulsporthalle",
+          "leitung": "Y. Kratz"
+        }
       ]
     },
     {
-      "slug": "leichtathletik-kindergarten", "name": "Leichtathletik für Kindergartenkinder", "kategorie": "kinder",
-      "zielgruppen": ["kinder"],
+      "slug": "leichtathletik-kindergarten",
+      "name": "Leichtathletik für Kindergartenkinder",
+      "kategorie": "kinder",
+      "zielgruppen": [
+        "kinder"
+      ],
       "kurz": "Laufen, Springen und Werfen spielerisch – mittwochs.",
       "text": "Ein niedrigschwelliges Bewegungsangebot für die Kindergartenkinder aus Gelting und Umgebung.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Mittwoch", "von": "14:00", "bis": "15:00", "ort": "Birkhalle", "leitung": "A. Nissen" }
+        {
+          "tag": "Mittwoch",
+          "von": "14:00",
+          "bis": "15:00",
+          "ort": "Birkhalle",
+          "leitung": "A. Nissen"
+        }
       ]
     },
     {
-      "slug": "yoga-fuer-kids", "name": "Yoga für Kids", "kategorie": "kinder",
-      "zielgruppen": ["kinder"],
+      "slug": "yoga-fuer-kids",
+      "name": "Yoga für Kids",
+      "kategorie": "kinder",
+      "zielgruppen": [
+        "kinder"
+      ],
       "kurz": "Ruhe, Körpergefühl und Konzentration – kindgerecht vermittelt.",
       "text": "Kinderyoga verbindet Bewegung mit Entspannung und stärkt Körpergefühl und Konzentration.",
       "ort": "Schulsporthalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Mittwoch", "von": "15:30", "bis": "16:30", "ort": "Schulsporthalle", "leitung": "A. Nissen" }
+        {
+          "tag": "Mittwoch",
+          "von": "15:30",
+          "bis": "16:30",
+          "ort": "Schulsporthalle",
+          "leitung": "A. Nissen"
+        }
       ]
     },
     {
-      "slug": "sport-fuer-kinder-ab-6", "name": "Sport für Kinder ab 6", "kategorie": "kinder",
-      "zielgruppen": ["kinder"],
+      "slug": "sport-fuer-kinder-ab-6",
+      "name": "Sport für Kinder ab 6",
+      "kategorie": "kinder",
+      "zielgruppen": [
+        "kinder"
+      ],
       "kurz": "Vielseitige Grundausbildung donnerstags in Halle und auf dem Sportplatz.",
       "text": "Turnen, Toben, Spielen: eine breite Bewegungsgrundlage, aus der später jede Sportart wachsen kann.",
       "ort": "Birkhalle / Sportplatz",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Donnerstag", "von": "16:00", "bis": "17:30", "ort": "Birkhalle / Sportplatz", "leitung": "D. Kronefeld" }
+        {
+          "tag": "Donnerstag",
+          "von": "16:00",
+          "bis": "17:30",
+          "ort": "Birkhalle / Sportplatz",
+          "leitung": "D. Kronefeld"
+        }
       ]
     },
     {
-      "slug": "after-school-sport", "name": "After School Sport", "kategorie": "kinder",
-      "zielgruppen": ["kinder", "jugend"],
+      "slug": "after-school-sport",
+      "name": "After School Sport",
+      "kategorie": "kinder",
+      "zielgruppen": [
+        "kinder",
+        "jugend"
+      ],
       "kurz": "„Alles was rollt“ – freitags nach der Schule in der Birkhalle.",
       "text": "Ein offenes Angebot zum Wochenausklang: Rollbretter, Roller, Inliner und alles, was sonst noch rollt.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Freitag", "von": "13:30", "bis": "15:00", "ort": "Birkhalle", "gruppe": "Alles was rollt", "leitung": "B. Kratz" }
+        {
+          "tag": "Freitag",
+          "von": "13:30",
+          "bis": "15:00",
+          "ort": "Birkhalle",
+          "gruppe": "Alles was rollt",
+          "leitung": "B. Kratz"
+        }
       ]
     },
     {
-      "slug": "scheersbergfesttraining", "name": "Scheersbergfest-Training", "kategorie": "kinder",
-      "zielgruppen": ["kinder", "jugend"],
+      "slug": "scheersbergfesttraining",
+      "name": "Scheersbergfest-Training",
+      "kategorie": "kinder",
+      "zielgruppen": [
+        "kinder",
+        "jugend"
+      ],
       "kurz": "Vorbereitung auf das Scheersbergfest, freitags von Mai bis Oktober.",
       "text": "Gemeinsames Training für die Wettbewerbe des Scheersbergfestes – in der Halle und auf dem Sportplatz.",
       "ort": "Birkhalle / Sportplatz",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Freitag", "von": "14:30", "bis": "16:00", "ort": "Birkhalle / Sportplatz", "leitung": "S. Koch / T. Kraack-Petersen", "hinweis": "Mai bis Oktober" }
+        {
+          "tag": "Freitag",
+          "von": "14:30",
+          "bis": "16:00",
+          "ort": "Birkhalle / Sportplatz",
+          "leitung": "S. Koch / T. Kraack-Petersen",
+          "hinweis": "Mai bis Oktober"
+        }
       ]
     },
     {
-      "slug": "kunstturnen", "name": "Kunstturnen", "kategorie": "kinder",
-      "zielgruppen": ["kinder", "jugend"],
+      "slug": "kunstturnen",
+      "name": "Kunstturnen",
+      "kategorie": "kinder",
+      "zielgruppen": [
+        "kinder",
+        "jugend"
+      ],
       "kurz": "Geräte- und Bodenturnen mit Anleitung.",
       "text": "An Geräten und am Boden werden Turnelemente Schritt für Schritt aufgebaut – vom Rad bis zur Kür.",
-      "ort": "Schulsporthalle", "zeiten": []
+      "ort": "Schulsporthalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
+      "zeiten": []
     },
-
     {
-      "slug": "seniorensport", "name": "Seniorensport", "kategorie": "senioren",
-      "zielgruppen": ["senioren"],
+      "slug": "seniorensport",
+      "name": "Seniorensport",
+      "kategorie": "senioren",
+      "zielgruppen": [
+        "senioren"
+      ],
       "kurz": "Donnerstagmorgens: Beweglichkeit, Kraft und Gleichgewicht.",
       "text": "Ein Programm für alle, die im Alter beweglich und sicher auf den Beinen bleiben wollen – in gemischter Gruppe.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Donnerstag", "von": "09:30", "bis": "10:30", "ort": "Birkhalle", "leitung": "B. Kratz" }
+        {
+          "tag": "Donnerstag",
+          "von": "09:30",
+          "bis": "10:30",
+          "ort": "Birkhalle",
+          "leitung": "B. Kratz"
+        }
       ]
     },
     {
-      "slug": "sitzgymnastik", "name": "Fit bis ins hohe Alter / Sitzgymnastik", "kategorie": "senioren",
-      "zielgruppen": ["senioren"],
+      "slug": "sitzgymnastik",
+      "name": "Fit bis ins hohe Alter / Sitzgymnastik",
+      "kategorie": "senioren",
+      "zielgruppen": [
+        "senioren"
+      ],
       "kurz": "Übungen im Sitzen oder im Stehen mit Stuhl – ganz ohne Matte.",
       "text": "2014 hat der MTV Gelting 08 sein Sportangebot für alle erweitert, die nicht auf einer Gymnastikmatte trainieren möchten: Die Übungen werden im Sitzen oder im Stehen mit einem Stuhl ausgeführt.",
       "ort": "Schulsporthalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Dienstag", "von": "15:00", "bis": "15:45", "ort": "Schulsporthalle", "leitung": "H.-P. Spurk" }
+        {
+          "tag": "Dienstag",
+          "von": "15:00",
+          "bis": "15:45",
+          "ort": "Schulsporthalle",
+          "leitung": "H.-P. Spurk"
+        }
       ]
     },
     {
-      "slug": "frauensportgruppe", "name": "Frauensportgruppe", "kategorie": "senioren",
-      "zielgruppen": ["senioren", "erwachsene"],
+      "slug": "frauensportgruppe",
+      "name": "Frauensportgruppe",
+      "kategorie": "senioren",
+      "zielgruppen": [
+        "senioren",
+        "erwachsene"
+      ],
       "kurz": "Gymnastik und Bewegung in vertrauter Frauengruppe, dienstags.",
       "text": "Bewegung, Kräftigung und Beweglichkeit in einer festen Gruppe – im eigenen Tempo.",
       "ort": "Schulsporthalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Dienstag", "von": "16:00", "bis": "17:00", "ort": "Schulsporthalle", "leitung": "H.-P. Spurk" }
+        {
+          "tag": "Dienstag",
+          "von": "16:00",
+          "bis": "17:00",
+          "ort": "Schulsporthalle",
+          "leitung": "H.-P. Spurk"
+        }
       ]
     },
     {
-      "slug": "sport-fuer-maenner-ab-50", "name": "Sport für Männer ab 50", "kategorie": "senioren",
-      "zielgruppen": ["senioren", "erwachsene"],
+      "slug": "sport-fuer-maenner-ab-50",
+      "name": "Sport für Männer ab 50",
+      "kategorie": "senioren",
+      "zielgruppen": [
+        "senioren",
+        "erwachsene"
+      ],
       "kurz": "Ausgleichssport für Männer ab 50 – Bewegung und Geselligkeit.",
       "text": "Kräftigung, Ballspiele und Ausgleichsgymnastik für Männer ab 50. Der Klönschnack danach gehört dazu.",
       "ort": "Schulsporthalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Dienstag", "von": "17:00", "bis": "18:00", "ort": "Schulsporthalle", "leitung": "H.-P. Spurk" }
+        {
+          "tag": "Dienstag",
+          "von": "17:00",
+          "bis": "18:00",
+          "ort": "Schulsporthalle",
+          "leitung": "H.-P. Spurk"
+        }
       ]
     },
-
     {
-      "slug": "dart", "name": "Dart", "kategorie": "freizeit",
-      "zielgruppen": ["jugend", "erwachsene", "senioren"],
+      "slug": "dart",
+      "name": "Dart",
+      "kategorie": "freizeit",
+      "zielgruppen": [
+        "jugend",
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Seit April 2024 eigene Sparte – freitagabends in der Birkhalle.",
       "text": "Am 22. April 2024 hat der MTV Gelting 08 eine Dart-Sparte eröffnet. Gespielt wird an mehreren Boards – Anfängerinnen und Anfänger sind ausdrücklich willkommen.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Freitag", "von": "19:00", "bis": "", "ort": "Birkhalle", "leitung": "A. Koch" }
+        {
+          "tag": "Freitag",
+          "von": "19:00",
+          "bis": "",
+          "ort": "Birkhalle",
+          "leitung": "A. Koch"
+        }
       ]
     },
     {
-      "slug": "modellflug", "name": "Modellflug", "kategorie": "freizeit",
-      "zielgruppen": ["jugend", "erwachsene", "senioren"],
+      "slug": "modellflug",
+      "name": "Modellflug",
+      "kategorie": "freizeit",
+      "zielgruppen": [
+        "jugend",
+        "erwachsene",
+        "senioren"
+      ],
       "kurz": "Freitagabends fliegen in der Birkhalle.",
       "text": "Die Modellflug-Gruppe trifft sich freitagabends in der Birkhalle – Zuschauen und Mitmachen ausdrücklich erwünscht.",
       "ort": "Birkhalle",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
       "zeiten": [
-        { "tag": "Freitag", "von": "20:00", "bis": "22:00", "ort": "Birkhalle", "leitung": "V. Hamann" }
+        {
+          "tag": "Freitag",
+          "von": "20:00",
+          "bis": "22:00",
+          "ort": "Birkhalle",
+          "leitung": "V. Hamann"
+        }
       ]
     },
     {
-      "slug": "pokern", "name": "Pokern", "kategorie": "freizeit",
-      "zielgruppen": ["erwachsene"],
+      "slug": "pokern",
+      "name": "Pokern",
+      "kategorie": "freizeit",
+      "zielgruppen": [
+        "erwachsene"
+      ],
       "kurz": "Geselliger Spieleabend in fester Runde.",
       "text": "Ein geselliger Abend am Kartentisch – ohne Einsätze, mit viel Spaß an der Runde.",
-      "ort": "Vereinsheim", "zeiten": []
+      "ort": "Vereinsheim",
+      "leitung": "",
+      "kontakt_email": "",
+      "kontakt_telefon": "",
+      "zeiten": []
     }
   ]
 }

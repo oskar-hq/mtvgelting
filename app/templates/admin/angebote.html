@@ -1,0 +1,49 @@
+{% extends "admin/rahmen.html" %}
+{% set aktiv = 'angebote' %}
+{% block titel %}Sportangebote{% endblock %}
+{% block inhalt %}
+<div class="kopfzeile">
+  <div>
+    <h1>Sportangebote</h1>
+    <p class="hilfe">Jedes Angebot mit Bereich, Zielgruppe, Beschreibung, Trainingszeiten und
+    Ansprechpartner. Die Zeiten erscheinen automatisch auch im Wochenplan auf der Termineseite.</p>
+  </div>
+  <a class="knopf knopf--haupt" href="{{ url_for('admin.angebot_neu') }}">Angebot hinzufügen</a>
+</div>
+
+{% if angebote %}
+<div class="tabelle-huelle">
+<table class="tabelle">
+  <thead>
+    <tr><th scope="col">Angebot</th><th scope="col">Bereich</th><th scope="col">Zeiten</th>
+        <th scope="col">Ansprechpartner</th><th scope="col" class="rechts">Aktion</th></tr>
+  </thead>
+  <tbody>
+  {% for a in angebote %}
+    <tr>
+      <td><strong>{{ a['name'] }}</strong><br><span class="blass">{{ a['kurz']|truncate(60) }}</span></td>
+      <td>{{ a['kategorie_name'] or a['kategorie'] or '—' }}</td>
+      <td>{{ a['anzahl_zeiten'] or 'auf Anfrage' }}</td>
+      <td>{{ a['leitung'] or '—' }}</td>
+      <td class="rechts nowrap">
+        <form method="post" action="{{ url_for('admin.angebot_verschieben', eid=a['id']) }}" class="inline">
+          <input type="hidden" name="csrf" value="{{ csrf() }}">
+          <button class="knopf knopf--mini" name="richtung" value="hoch" title="nach oben" {% if loop.first %}disabled{% endif %}>↑</button>
+          <button class="knopf knopf--mini" name="richtung" value="runter" title="nach unten" {% if loop.last %}disabled{% endif %}>↓</button>
+        </form>
+        <a class="knopf knopf--mini" href="{{ url_for('admin.angebot_bearbeiten', eid=a['id']) }}">Bearbeiten</a>
+        <form method="post" action="{{ url_for('admin.angebot_loeschen', eid=a['id']) }}" class="inline"
+              data-bestaetigen="„{{ a['name'] }}“ mit allen Trainingszeiten löschen?">
+          <input type="hidden" name="csrf" value="{{ csrf() }}">
+          <button class="knopf knopf--mini knopf--gefahr" type="submit">Löschen</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+<p class="leer">Noch keine Angebote. Lege das erste an.</p>
+{% endif %}
+{% endblock %}

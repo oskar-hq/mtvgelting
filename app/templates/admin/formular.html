@@ -1,0 +1,17 @@
+{% extends "admin/rahmen.html" %}
+{% from "admin/felder.html" import feld %}
+{% set aktiv = b.schluessel %}
+{% block titel %}{{ b.einzahl }} {{ 'anlegen' if neu else 'bearbeiten' }}{% endblock %}
+{% block inhalt %}
+<p class="brotkrume"><a href="{{ url_for('admin.liste', schluessel=b.schluessel) }}">← {{ b.titel }}</a></p>
+<h1>{{ b.einzahl }} {{ 'anlegen' if neu else 'bearbeiten' }}</h1>
+
+<form method="post" class="formular" enctype="multipart/form-data">
+  <input type="hidden" name="csrf" value="{{ csrf() }}">
+  {% for f in b.felder %}{{ feld(f, eintrag) }}{% endfor %}
+  <p class="knopfzeile">
+    <button class="knopf knopf--haupt" type="submit">Speichern</button>
+    <a class="knopf" href="{{ url_for('admin.liste', schluessel=b.schluessel) }}">Abbrechen</a>
+  </p>
+</form>
+{% endblock %}

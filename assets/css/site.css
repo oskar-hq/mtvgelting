@@ -485,14 +485,30 @@ table.plan th.t-day, table.plan td.t-day { font-family: var(--mono); font-size: 
 
 /* --- Sponsoren ---------------------------------------------------------- */
 
-.sponsors { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.sponsors { grid-template-columns: repeat(2, 1fr); }
-@media (min-width: 640px)  { .sponsors { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1040px) { .sponsors { grid-template-columns: repeat(4, 1fr); } }
+/* Das Raster richtet sich nach der Anzahl der Sponsoren. „auto-fill“ statt
+   „auto-fit“ ist hier entscheidend: leere Spalten bleiben leer, statt die
+   vorhandenen Kacheln über die ganze Breite zu ziehen. Jede Kachel bringt ihre
+   eigene Haarlinie mit (box-shadow, braucht keinen Platz) – so bleibt bei einer
+   nicht ganz gefüllten letzten Zeile keine angefangene Fläche stehen.
+   Wer im Backend einen Sponsor ergänzt oder löscht, muss hier nichts nachziehen. */
+.sponsors {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+@media (min-width: 640px)  { .sponsors { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); } }
+@media (min-width: 1040px) { .sponsors { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); } }
+
 .sponsor {
-  background: var(--surface); min-height: 96px; display: flex; align-items: center; justify-content: center;
-  padding: 1rem; text-align: center;
+  background: var(--surface); min-height: 96px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem; text-align: center; text-decoration: none;
+  box-shadow: 0 0 0 1px var(--line);
   font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; color: var(--ink-70); line-height: 1.35;
+}
+a.sponsor:hover { background: var(--blue-tint); position: relative; z-index: 1; }
+.sponsor img {
+  max-width: 100%; max-height: 64px; width: auto; height: auto;
+  object-fit: contain; display: block;
 }
 
 /* --- CTA band ----------------------------------------------------------- */
@@ -537,3 +553,21 @@ table.plan th.t-day, table.plan td.t-day { font-family: var(--mono); font-size: 
   border-left: 3px solid var(--blue); background: var(--blue-tint);
   padding: 1rem 1.25rem; font-size: .88rem; color: var(--ink-70); border-radius: 0 var(--radius) var(--radius) 0;
 }
+
+/* --- Nachtraege fuer die pflegbaren Inhalte ------------------------------ */
+
+/* Ansprechpartner einer Abteilung, aufgeklappt in der Angebotskarte */
+.card__kontakt { font-size: .85rem; color: var(--ink-70); margin-top: .75rem; padding-top: .75rem; border-top: 1px solid var(--line-soft); }
+.card__kontakt-h { display: block; font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-45); margin-bottom: .2rem; }
+.card__kontakt a { color: var(--blue); }
+
+/* E-Mail-Adresse eines Vorstandsmitglieds */
+.person__kontakt { font-size: .85rem; margin-top: .5rem; word-break: break-word; }
+.person__kontakt a { color: var(--blue); }
+
+/* Ausgaben des Sprachrohrs und andere PDF-Listen */
+.doclist { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+
+/* Anmeldelink im Footer – bewusst zurueckhaltend, er richtet sich an den Vorstand */
+.ftr__admin { opacity: .7; }
+.ftr__admin:hover { opacity: 1; }

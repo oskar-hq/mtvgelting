@@ -1,0 +1,18 @@
+{% extends "admin/rahmen.html" %}
+{% set aktiv = 'veroeffentlichen' %}
+{% block titel %}Statische Seiten{% endblock %}
+{% block inhalt %}
+<h1>Statische Seiten erzeugen</h1>
+<p class="hilfe">Die Website läuft normalerweise direkt aus dieser Datenbank — Änderungen sind
+sofort sichtbar, hier ist nichts zu tun.</p>
+<p class="hilfe">Dieser Knopf wird nur gebraucht, wenn die Seite <em>zusätzlich</em> als reine
+HTML-Dateien ausgeliefert werden soll, etwa über GitHub Pages. Er schreibt die sieben Seiten und
+die Dateien in <code>data/</code> neu.</p>
+
+<form method="post" class="formular">
+  <input type="hidden" name="csrf" value="{{ csrf() }}">
+  <p class="knopfzeile"><button class="knopf knopf--haupt" type="submit">Jetzt erzeugen</button></p>
+</form>
+
+<p class="hilfe">Zielordner: <code>{{ ziel }}</code></p>
+{% endblock %}

@@ -14,6 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Abhängigkeiten installieren
+        run: python3 -m pip install -r requirements.txt
+
       - name: Seiten aus data/ neu erzeugen
         run: python3 tools/build.py
 
@@ -23,3 +30,6 @@ jobs:
             echo "::error::Die erzeugten Seiten weichen von den eingecheckten ab. Bitte 'python3 tools/build.py' ausführen und das Ergebnis committen."
             exit 1
           fi
+
+      - name: Tests für Datenbank und Verwaltungsbereich
+        run: python3 -m unittest discover -s tests -v

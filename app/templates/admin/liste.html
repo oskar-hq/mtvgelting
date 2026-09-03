@@ -1,0 +1,70 @@
+{% extends "admin/rahmen.html" %}
+{% set aktiv = b.schluessel %}
+{% block titel %}{{ b.titel }}{% endblock %}
+{% block inhalt %}
+<div class="kopfzeile">
+  <div>
+    <h1>{{ b.titel }}</h1>
+    <p class="hilfe">{{ b.beschreibung }}</p>
+  </div>
+  <a class="knopf knopf--haupt" href="{{ url_for('admin.neu', schluessel=b.schluessel) }}">{{ b.einzahl }} hinzufügen</a>
+</div>
+
+{% if eintraege %}
+<div class="tabelle-huelle">
+<table class="tabelle">
+  <thead>
+    <tr>
+      {% for _, beschriftung in b.spalten %}<th scope="col">{{ beschriftung }}</th>{% endfor %}
+      <th scope="col" class="rechts">Aktion</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for e in eintraege %}
+    <tr>
+      {% for spalte, _ in b.spalten %}
+        {% set wert = e[spalte] %}
+        <td>
+        {% if spalte in ('logo', 'bild') and wert %}
+          <img src="/{{ wert }}" alt="" class="mini-logo">
+        {% elif spalte == 'datei' and wert %}
+          <a href="/{{ wert }}" target="_blank" rel="noopener">PDF ansehen</a>
+        {% elif spalte == 'url' and wert %}
+          <a href="{{ wert }}" target="_blank" rel="noopener">{{ wert|replace('https://', '')|replace('http://', '')|truncate(34) }}</a>
+        {% elif spalte == 'bereich' %}
+          {{ {'satzung': 'Satzungen & Ordnungen', 'sprachrohr': 'Sprachrohr', 'antrag': 'Aufnahmeantrag'}.get(wert, wert) }}
+        {% elif spalte == 'paragraf26' %}
+          {{ 'ja' if wert else '–' }}
+        {% elif spalte == 'datum' %}
+          {{ wert or '—' }}
+        {% elif wert %}
+          {{ wert|truncate(70) }}
+        {% else %}
+          <span class="blass">—</span>
+        {% endif %}
+        </td>
+      {% endfor %}
+      <td class="rechts nowrap">
+        {% if b.sortierbar %}
+        <form method="post" action="{{ url_for('admin.verschieben', schluessel=b.schluessel, eid=e['id']) }}" class="inline">
+          <input type="hidden" name="csrf" value="{{ csrf() }}">
+          <button class="knopf knopf--mini" name="richtung" value="hoch" title="nach oben" {% if loop.first %}disabled{% endif %}>↑</button>
+          <button class="knopf knopf--mini" name="richtung" value="runter" title="nach unten" {% if loop.last %}disabled{% endif %}>↓</button>
+        </form>
+        {% endif %}
+        <a class="knopf knopf--mini" href="{{ url_for('admin.bearbeiten', schluessel=b.schluessel, eid=e['id']) }}">Bearbeiten</a>
+        <form method="post" action="{{ url_for('admin.loeschen', schluessel=b.schluessel, eid=e['id']) }}" class="inline"
+              data-bestaetigen="Diesen Eintrag wirklich löschen?">
+          <input type="hidden" name="csrf" value="{{ csrf() }}">
+          <button class="knopf knopf--mini knopf--gefahr" type="submit">Löschen</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+<p class="leer">{{ b.leer }}</p>
+{% endif %}
+{% endblock %}

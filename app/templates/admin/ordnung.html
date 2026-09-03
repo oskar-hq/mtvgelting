@@ -1,0 +1,49 @@
+{% extends "admin/rahmen.html" %}
+{% set aktiv = art %}
+{% block titel %}{{ titel }}{% endblock %}
+{% block inhalt %}
+<h1>{{ titel }}</h1>
+<p class="hilfe">{{ beschreibung }}</p>
+
+<div class="tabelle-huelle">
+<table class="tabelle">
+  <thead><tr><th scope="col">Name</th><th scope="col">Benutzt von</th><th scope="col" class="rechts">Aktion</th></tr></thead>
+  <tbody>
+  {% for e in eintraege %}
+    <tr>
+      <td>
+        <form method="post" action="{{ url_for('admin.ordnung_umbenennen', art=art, kennung=e['id']) }}" class="inline">
+          <input type="hidden" name="csrf" value="{{ csrf() }}">
+          <input type="text" name="name" value="{{ e['name'] }}" aria-label="Name" class="schmal">
+          <button class="knopf knopf--mini" type="submit">Umbenennen</button>
+        </form>
+      </td>
+      <td>{{ genutzt.get(e['id'], 0) }} Angebote</td>
+      <td class="rechts nowrap">
+        <form method="post" action="{{ url_for('admin.ordnung_verschieben', art=art, kennung=e['id']) }}" class="inline">
+          <input type="hidden" name="csrf" value="{{ csrf() }}">
+          <button class="knopf knopf--mini" name="richtung" value="hoch" title="nach oben" {% if loop.first %}disabled{% endif %}>↑</button>
+          <button class="knopf knopf--mini" name="richtung" value="runter" title="nach unten" {% if loop.last %}disabled{% endif %}>↓</button>
+        </form>
+        <form method="post" action="{{ url_for('admin.ordnung_loeschen', art=art, kennung=e['id']) }}" class="inline"
+              data-bestaetigen="Wirklich löschen?">
+          <input type="hidden" name="csrf" value="{{ csrf() }}">
+          <button class="knopf knopf--mini knopf--gefahr" type="submit" {% if genutzt.get(e['id'], 0) %}disabled title="wird noch benutzt"{% endif %}>Löschen</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<h2>{{ einzahl }} hinzufügen</h2>
+<form method="post" class="formular">
+  <input type="hidden" name="csrf" value="{{ csrf() }}">
+  <div class="feld">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required>
+  </div>
+  <p class="knopfzeile"><button class="knopf knopf--haupt" type="submit">Hinzufügen</button></p>
+</form>
+{% endblock %}

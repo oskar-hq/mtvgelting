@@ -1,0 +1,13 @@
+# Die Vereinsdatenbank und der Sitzungsschlüssel gehören auf den Server,
+# nicht ins Repository.
+verein.db
+verein.db-wal
+verein.db-shm
+verein.key
+*.db
+*.key
+
+__pycache__/
+*.pyc
+.venv/
+venv/
