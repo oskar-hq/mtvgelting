@@ -448,36 +448,67 @@ def seite_sportangebot():
           "sportangebot.html", body)
 
 
-def seite_termine():
-    termine = "".join(f"""      <article class="news__item">
-        <p class="news__date">{esc(datum_lang(t['datum']) or t['zeit'])}</p>
-        <div>
-          <h3 class="news__title">{esc(t['titel'])}</h3>
-          <p class="news__text">{esc(t['text'])}</p>
+def termin_karten():
+    """Feste Termine, datierte zuerst; undatierte Dauerangebote ans Ende."""
+    sortiert = sorted(V["termine"], key=lambda t: t["datum"] or "9999")
+    out = []
+    for t in sortiert:
+        if t["datum"]:
+            y, m, d = t["datum"].split("-")
+            datum = ('<span class="event__day">%d.</span>'
+                     '<span class="event__mon">%s</span>'
+                     '<span class="event__yr">%s</span>'
+                     % (int(d), esc(MONATE[int(m) - 1][:3]), esc(y)))
+            attr = ' data-datum="%s"' % esc(t["datum"])
+        else:
+            datum = '<span class="event__open">%s</span>' % esc(t["zeit"])
+            attr = ""
+        meta = " · ".join(x for x in [t["zeit"] if t["datum"] else "", t["ort"]] if x)
+        out.append(f"""      <article class="event"{attr}>
+        <p class="event__date">{datum}</p>
+        <div class="event__body">
+          <h3 class="event__title">{esc(t['titel'])}</h3>
+          <p class="event__meta">{esc(meta)}</p>
+          <p class="event__text">{esc(t['text'])}</p>
         </div>
-        <p class="news__kat">{esc(t['ort'])}</p>
-      </article>""" for t in V["termine"])
+      </article>""")
+    return "\n".join(out)
 
+
+def seite_termine():
     plaene = "".join(
         (f'<li><a href="{esc(p["url"])}" rel="noopener">{esc(p["name"])} — {esc(p["quelle"])} →</a></li>'
          if p["url"] else
          f'<li>{esc(p["name"])} <span class="muted">— über die {esc(p["quelle"])}</span></li>')
         for p in V["spielplaene"])
+    n_zeiten = sum(len(a["zeiten"]) for a in ANG)
 
     body = f"""
 <section class="section section--tight">
   <div class="wrap">
     <p class="label">Termine</p>
-    <h1 class="h1">Wochenplan &amp;<br>Spieltage.</h1>
-    <p class="lead" style="margin-top:1.5rem">{sum(len(a["zeiten"]) for a in ANG)} Trainingszeiten in einer Tabelle – mit Ort und Übungsleitung. Dazu Spielpläne und die festen Termine im Vereinsjahr.</p>
+    <h1 class="h1">Was als<br>Nächstes ansteht.</h1>
+    <p class="lead" style="margin-top:1.5rem">Zuerst die festen Termine im Vereinsjahr, darunter der Wochenplan mit allen {n_zeiten} Trainingszeiten und die Spielpläne der Mannschaften.</p>
   </div>
 </section>
 
 <section class="section--tight" style="padding-top:0">
   <div class="wrap">
+    <div class="events">
+{termin_karten()}
+    </div>
+  </div>
+</section>
+
+<section class="section section--line">
+  <div class="wrap">
+    <div class="shead">
+      <div><p class="label label--blue">Woche für Woche</p><h2 class="h2">Wochenplan</h2></div>
+      <div class="shead__aside"><p class="muted small">{n_zeiten} Trainingszeiten mit Ort und Übungsleitung</p></div>
+    </div>
     <div class="table-scroll">
       <table class="plan">
-        <caption class="visually-hidden" style="position:absolute;left:-9999px">Trainingszeiten nach Wochentag</caption>
+        <caption style="position:absolute;left:-9999px">Trainingszeiten nach Wochentag</caption>
         <thead>
           <tr><th scope="col">Tag</th><th scope="col">Zeit</th><th scope="col">Angebot</th><th scope="col">Ort</th><th scope="col">Leitung</th></tr>
         </thead>
@@ -498,24 +529,15 @@ def seite_termine():
         <h2 class="h2">Spielpläne</h2>
         <p class="lead" style="margin-top:1rem">Die Ansetzungen der Mannschaften laufen über die Verbände — hier direkt verlinkt statt in Einzelseiten versteckt.</p>
       </div>
-      <ul class="ftr__list" style="font-size:1rem;gap:.85rem;list-style:none;padding:0;border-top:1px solid var(--line)">
+      <ul class="linklist">
         {plaene}
       </ul>
     </div>
   </div>
 </section>
-
-<section class="section section--line">
-  <div class="wrap">
-    <div class="shead"><div><p class="label">Vereinsjahr</p><h2 class="h2">Feste Termine</h2></div></div>
-    <div class="news">
-{termine}
-    </div>
-  </div>
-</section>
 """
     write("termine.html", "Termine & Trainingszeiten",
-          "Trainingszeiten, Spielpläne und Vereinstermine des MTV Gelting 08 in einer Übersicht.",
+          "Vereinstermine, Wochenplan mit allen Trainingszeiten und Spielpläne des MTV Gelting 08.",
           "termine.html", body)
 
 

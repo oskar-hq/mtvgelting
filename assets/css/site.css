@@ -372,6 +372,43 @@ table.plan th.t-day, table.plan td.t-day { font-family: var(--mono); font-size: 
 .z-meta { font-size: .78rem; color: var(--ink-45); }
 .z-note { font-family: var(--mono); font-size: .68rem; color: var(--blue); margin-top: .1rem; }
 
+/* --- Feste Termine ------------------------------------------------------ */
+
+.events { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.event {
+  background: var(--surface); padding: 1.5rem 1.35rem;
+  display: grid; gap: .35rem 1.5rem; grid-template-columns: 1fr; align-items: start;
+}
+@media (min-width: 700px) { .event { grid-template-columns: 124px 1fr; padding: 1.75rem 1.5rem; } }
+.event__date { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem; margin: 0; }
+@media (min-width: 700px) { .event__date { display: block; } }
+.event__day { font-family: var(--display); font-size: 2.5rem; font-weight: 600; letter-spacing: -.045em; line-height: .9; color: var(--blue); display: block; }
+.event__mon { font-family: var(--mono); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); display: block; margin-top: .25rem; }
+.event__yr  { font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; color: var(--ink-45); display: block; }
+.event__open {
+  font-family: var(--mono); font-size: .64rem; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--blue); background: var(--blue-tint); padding: .35rem .5rem; border-radius: 3px;
+  display: inline-block; white-space: nowrap;
+}
+.event__body { min-width: 0; }
+.event__title { font-family: var(--display); font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -.025em; line-height: 1.1; }
+.event__meta { font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; color: var(--ink-45); margin: .45rem 0 0; }
+.event__text { font-size: .95rem; color: var(--ink-70); margin: .65rem 0 0; }
+.event--past { background: var(--paper); }
+.event--past .event__day, .event--past .event__mon { color: var(--ink-45); }
+.event__past {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-45); border: 1px solid var(--line); border-radius: 3px;
+  padding: .2rem .5rem; display: inline-block; margin: .5rem 0 0;
+}
+
+/* --- Linkliste ---------------------------------------------------------- */
+
+.linklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.linklist li { padding: .85rem 0; border-bottom: 1px solid var(--line-soft); font-size: 1rem; }
+.linklist a { color: var(--blue); text-decoration: none; }
+.linklist a:hover { text-decoration: underline; }
+
 /* --- News --------------------------------------------------------------- */
 
 .news { display: grid; gap: 1px; background: var(--line); border-block: 1px solid var(--line); }

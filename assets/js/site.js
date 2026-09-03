@@ -26,6 +26,26 @@
     });
   }
 
+  /* --- Vergangene Termine kennzeichnen ---------------------------------- */
+  var termine = document.querySelectorAll(".event[data-datum]");
+  if (termine.length) {
+    var heute = new Date();
+    heute.setHours(0, 0, 0, 0);
+    Array.prototype.forEach.call(termine, function (el) {
+      var d = new Date(el.getAttribute("data-datum") + "T00:00:00");
+      if (!isNaN(d) && d < heute) {
+        el.classList.add("event--past");
+        var titel = el.querySelector(".event__title");
+        if (titel) {
+          var badge = document.createElement("p");
+          badge.className = "event__past";
+          badge.textContent = "Termin liegt zurück";
+          titel.insertAdjacentElement("afterend", badge);
+        }
+      }
+    });
+  }
+
   /* --- Angebotsfilter --------------------------------------------------- */
   var grid = document.getElementById("angebote");
   if (!grid) return;
