@@ -1,3 +1,0 @@
-# Vereinsverwaltung des MTV Gelting 08
-# Installation:  python3 -m pip install -r requirements.txt
-Flask>=3.0,<4

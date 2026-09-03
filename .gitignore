@@ -1,11 +1,19 @@
-# Die Vereinsdatenbank und der Sitzungsschlüssel gehören auf den Server,
-# nicht ins Repository.
-verein.db
-verein.db-wal
-verein.db-shm
-verein.key
-*.db
-*.key
+# Erzeugte Seiten. Sie entstehen bei jedem Build neu aus den Inhalten des CMS
+# und werden von GitHub Actions veröffentlicht — eine eingecheckte Fassung
+# wäre schon nach der nächsten Änderung im CMS veraltet.
+/index.html
+/sportangebot.html
+/termine.html
+/verein.html
+/mitglied-werden.html
+/impressum.html
+/datenschutz.html
+/.nojekyll
+/_site/
+
+# Beim Bauen aus dem CMS heruntergeladene Bilder und PDFs.
+/assets/img/inhalte/
+/assets/dokumente/
 
 __pycache__/
 *.pyc

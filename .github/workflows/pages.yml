@@ -1,14 +1,15 @@
-# Deployt die Seite über GitHub Actions.
+# Holt die Inhalte aus dem CMS, baut die Seiten und veröffentlicht sie.
 #
-# Nur nötig, wenn unter Settings > Pages als Source "GitHub Actions" gewählt ist.
-# Bei der Einstellung "Deploy from a branch" veröffentlicht GitHub den Branch
-# direkt und dieser Workflow wird nicht gebraucht.
-#
-# Läuft bewusst nur auf Zuruf, damit er nicht bei jedem Push fehlschlägt,
-# solange Pages noch nicht eingerichtet ist.
-name: GitHub Pages
+# Läuft automatisch, sobald im Sanity-Studio etwas gespeichert wird: Sanity
+# ruft dann per Webhook die GitHub-API auf und löst „repository_dispatch“ aus.
+# Die Einrichtung dieses Webhooks steht in studio/README.md.
+name: Website veröffentlichen
 
 on:
+  repository_dispatch:
+    types: [sanity-update]
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -16,21 +17,41 @@ permissions:
   pages: write
   id-token: write
 
+# Läuft immer nur eine Veröffentlichung; spätere warten, statt sich zu
+# überholen. Nicht abbrechen — sonst ginge die zuletzt gespeicherte Änderung
+# verloren.
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  bauen:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.veroeffentlichen.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Inhalte holen und Seiten bauen
+        env:
+          SANITY_PROJEKT: ${{ vars.SANITY_PROJEKT }}
+          SANITY_DATENSATZ: ${{ vars.SANITY_DATENSATZ || 'production' }}
+          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
+        # Ausdrücklich „cms“: fehlt die Einrichtung, soll der Lauf sichtbar
+        # scheitern und nicht stillschweigend einen alten Stand veröffentlichen.
+        run: python3 tools/build.py --quelle cms --ziel _site
+
       - uses: actions/configure-pages@v5
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
-      - id: deployment
+          # Nur der Ausgabeordner — nicht der Quellcode des Projekts.
+          path: _site
+
+      - id: veroeffentlichen
         uses: actions/deploy-pages@v4

@@ -1,3 +1,5 @@
+# Prüft bei jedem Push, dass Generator und CMS-Anbindung funktionieren.
+# Kommt ohne CMS-Zugang aus: gebaut wird aus den Dateien in data/.
 name: Seiten prüfen
 
 on:
@@ -9,27 +11,42 @@ permissions:
   contents: read
 
 jobs:
-  generator:
+  pruefen:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
 
-      - name: Abhängigkeiten installieren
-        run: python3 -m pip install -r requirements.txt
-
-      - name: Seiten aus data/ neu erzeugen
-        run: python3 tools/build.py
-
-      - name: Prüfen, dass die eingecheckten Seiten zu den Daten passen
-        run: |
-          if ! git diff --exit-code; then
-            echo "::error::Die erzeugten Seiten weichen von den eingecheckten ab. Bitte 'python3 tools/build.py' ausführen und das Ergebnis committen."
-            exit 1
-          fi
-
-      - name: Tests für Datenbank und Verwaltungsbereich
+      - name: Tests
         run: python3 -m unittest discover -s tests -v
+
+      - name: Seiten aus data/ bauen
+        run: python3 tools/build.py --quelle dateien --ziel "${RUNNER_TEMP}/bau"
+
+      - name: Alle sieben Seiten sind entstanden
+        run: |
+          anzahl=$(ls "${RUNNER_TEMP}/bau"/*.html | wc -l)
+          echo "Erzeugt: $anzahl Seiten"
+          test "$anzahl" -eq 7
+
+  studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: studio/package-lock.json
+
+      - name: Abhängigkeiten des Studios
+        working-directory: studio
+        run: npm ci --no-audit --no-fund
+
+      - name: Schema prüfen
+        working-directory: studio
+        run: npx --no-install sanity schema validate

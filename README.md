@@ -22,6 +22,11 @@ Dieser Entwurf fasst dieselben Inhalte in fünf Seiten zusammen:
 
 Dazu `impressum.html` und `datenschutz.html`.
 
+Die zweite Änderung: **der Verein pflegt alles selbst**, ohne den Code anzufassen. Termine,
+Sportangebote, Trainingszeiten, Beiträge, Vorstand, Sponsorenlogos, Satzung und Sprachrohr stehen
+in einem CMS, in dem man sich mit E-Mail-Adresse anmeldet. Wer dort speichert, löst automatisch
+einen neuen Build aus. Einrichtung und Bedienung: **[`studio/README.md`](studio/README.md)**.
+
 Die zweite Änderung ist der **Verwaltungsbereich**: Termine, Sportangebote, Trainingszeiten,
 Beiträge, Vorstand, Sponsorenlogos, Satzung und Sprachrohr werden über eine Anmeldung im Browser
 gepflegt — niemand muss dafür an den Code oder an Dateien. Details unter
@@ -32,133 +37,85 @@ nur anders sortiert. Die Filter-Links sind teilbar
 (`sportangebot.html?kategorie=kinder&fuer=kinder`), sodass jede Abteilung weiterhin einen eigenen
 Link für ihre Aushänge hat.
 
-## Technik
-
-Die Website ist eine kleine Python-Anwendung (Flask) mit einer SQLite-Datenbank. Alle Inhalte
-stehen in dieser Datenbank; die sieben Seiten werden daraus erzeugt und zwischengespeichert.
-Ändert jemand im Verwaltungsbereich etwas, baut die nächste Anfrage die betroffenen Seiten neu —
-es gibt keinen Veröffentlichungsschritt und keine Wartezeit.
+## Wie es zusammenhängt
 
 ```
-app/__init__.py       Anwendung, öffentliche Seiten, Zwischenspeicher
-app/db.py             Datenbankschema, Lesen und Schreiben, Erstbefüllung aus data/
-app/auth.py           Anmeldung, Passwörter (scrypt), Schutz vor fremden Formularen
-app/admin.py          Verwaltungsbereich: alle Listen und Formulare
-app/render.py         erzeugt das HTML der sieben Seiten aus den Daten
-app/templates/admin/  Vorlagen des Verwaltungsbereichs
-app/static/           Gestaltung des Verwaltungsbereichs
-tools/build.py        statischer Export (für GitHub Pages)
-tools/verwaltung.py   Einrichtung, Zugänge, Passwörter
-tests/                Prüfungen für Datenbank, Anmeldung und Verwaltung
-data/*.json           Ausgangsdaten; daraus wird die Datenbank erstmalig gefüllt
-assets/css/site.css   Design-System der Website
-assets/js/site.js     Navigation + Angebotsfilter
-uploads/              hochgeladene Logos, PDFs und Fotos
+Sanity Studio                 Redaktion: Anmeldung per E-Mail,
+(mtv-gelting.sanity.studio)   kein GitHub-Konto nötig
+        │
+        │  jemand speichert  →  Webhook
+        ▼
+GitHub Actions                .github/workflows/pages.yml
+        │  1. Inhalte aus dem CMS holen      tools/sanity.py
+        │  2. Bilder und PDFs herunterladen
+        │  3. sieben Seiten erzeugen         tools/render.py
+        ▼
+GitHub Pages                  fertiges HTML, kein Server nötig
 ```
 
-Einzige Abhängigkeit ist Flask. Passwörter werden mit `hashlib.scrypt` aus der
-Standardbibliothek gehasht, die Datenbank ist SQLite — es gibt nichts zusätzlich zu betreiben.
+Auf der Website läuft damit nichts als HTML, CSS und ein wenig JavaScript für den Filter — kein
+Server, keine Datenbank, keine Anmeldung. Alles Bewegliche passiert beim Bauen.
 
-## Der Verwaltungsbereich
-
-Der Verein pflegt alle Inhalte selbst, ohne den Programmcode anzufassen. Unten im Footer jeder
-Seite steht der Link **„Vereinsintern anmelden“**; dahinter liegt eine Anmeldung mit
-E-Mail-Adresse und Passwort.
-
-| Bereich | Was sich dort ändern lässt |
+| Datei | Aufgabe |
 |---|---|
-| **Sportangebote** | Name, Bereich, Zielgruppen, Kurz- und Langtext, Ort, **alle Trainingszeiten** (Tag, von/bis, Gruppe, Ort, Übungsleitung, Hinweis) und der **Ansprechpartner der Abteilung** mit Telefon und E-Mail |
-| **Termine** | Titel, Datum, Uhrzeit, Ort, Beschreibung. Ohne Datum wird der Termin als Dauerangebot geführt |
-| **Aktuelles** | Meldungen für die Startseite |
-| **Vorstand** | Name, Funktion, E-Mail, Kennzeichen „vertritt nach § 26 BGB“ (steuert zugleich das Impressum) |
-| **Beiträge** | Gruppen mit Monats- und Jahresbeitrag. Der Satz „ab … € im Monat“ auf der Startseite rechnet sich daraus |
-| **Dokumente & PDFs** | Satzung, Ehrenordnung, Aufnahmeantrag und die Ausgaben des Sprachrohrs — als PDF hochladen oder verlinken |
-| **Sponsoren** | Name, Logo (Bilddatei) und Website |
-| **Spielpläne** | Verweise auf die Verbände |
-| **Stammdaten** | Vereinsname, Anschrift, Telefon, E-Mail, Register, Öffnungszeiten, Vereinsshop, Facebook, Instagram |
-| **Texte & Bilder** | Überschrift der Startseite, Fotos, Sprachrohr-Einleitung, Kinder- & Jugendschutz, Hinweisstreifen, Sperre für Suchmaschinen, Datenschutztext |
-| **Bereiche / Zielgruppen** | die Filter des Sportangebots |
-| **Zugänge** | wer sich anmelden darf; jede Person kann ihr Passwort selbst ändern |
+| `tools/render.py` | erzeugt aus den Inhalten die sieben Seiten |
+| `tools/inhalte.py` | lädt Inhalte aus `data/*.json` und bringt sie in die Form des Generators |
+| `tools/sanity.py` | holt dieselben Inhalte stattdessen aus dem CMS, samt Bildern und PDFs |
+| `tools/build.py` | das Kommando, das beides zusammenführt |
+| `tools/nach_sanity.py` | überträgt die Bestandsinhalte einmalig ins CMS |
+| `studio/` | die Redaktionsoberfläche: Dokumentarten, Felder, Menüaufbau |
+| `data/*.json` | Sicherung des CMS-Stands; zugleich Quelle, wenn ohne CMS gebaut wird |
+| `assets/css/site.css` | Design-System |
+| `assets/js/site.js` | Navigation und Angebotsfilter |
 
-Ein paar Dinge geschehen dabei von allein:
+Der Generator braucht **nur die Python-Standardbibliothek** — keine Abhängigkeiten, kein
+`pip install`. Das Studio ist ein gewöhnliches Node-Projekt und wird nur zum Bearbeiten gebraucht,
+nicht zum Ausliefern.
 
-- **Trainingszeiten stehen an genau einer Stelle.** Was beim Angebot eingetragen wird, erscheint
-  zugleich in der Angebotskarte **und** im Wochenplan auf der Termineseite.
-- **Das Sponsorenraster passt sich der Anzahl an.** Bei wenigen Sponsoren werden es weniger
-  Spalten, bei vielen mehr Zeilen — ohne dass jemand am Layout etwas ändern muss.
-- **Die Anschrift steht nur einmal da.** Sie wirkt gleichzeitig im Footer, auf der Vereinsseite
-  und im Impressum.
-- **Der Beitragssatz auf der Startseite rechnet sich aus den Beiträgen.** Passive Beiträge werden
-  dabei ausgenommen, damit dort kein irreführender Preis steht.
-
-### Einrichten
+### Bauen
 
 ```
-python3 -m pip install -r requirements.txt
-python3 tools/verwaltung.py einrichten
+python3 tools/build.py                     Quelle automatisch wählen
+python3 tools/build.py --quelle dateien    aus data/*.json, ohne CMS
+python3 tools/build.py --quelle cms        aus dem CMS
+python3 tools/build.py --ziel _site        in einen eigenen Ordner
 ```
 
-Der zweite Befehl legt `verein.db` an, füllt sie aus `data/*.json` und fragt nach dem ersten
-Zugang. Danach starten:
+Ohne gesetzte Umgebungsvariablen wird aus `data/*.json` gebaut. Für den CMS-Weg:
 
 ```
-flask --app app run
-# http://127.0.0.1:5000  — Verwaltung unter /admin/
+export SANITY_PROJEKT=tonxqosy
+export SANITY_TOKEN=…          nur nötig, wenn der Datensatz nicht öffentlich ist
+python3 tools/build.py --quelle cms
 ```
 
-Weitere Zugänge legt man im Browser unter „Zugänge“ an oder auf der Kommandozeile:
+Die erzeugten HTML-Dateien sind **nicht eingecheckt**: sie entstehen bei jedem Build neu und wären
+nach der nächsten Änderung im CMS ohnehin veraltet.
 
-```
-python3 tools/verwaltung.py zugang-anlegen --email name@example.de
-python3 tools/verwaltung.py passwort-setzen --email name@example.de
-python3 tools/verwaltung.py zugaenge
-```
+### Was von allein passiert
 
-### Betrieb auf einem Server
+- **Trainingszeiten stehen an genau einer Stelle** — beim Sportangebot. Von dort erscheinen sie
+  zugleich in der Angebotskarte und im Wochenplan auf der Termineseite.
+- **Die Anschrift steht nur einmal da** und wirkt zugleich im Footer, auf der Vereinsseite und im
+  Impressum.
+- **Der Satz „ab … € im Monat"** auf der Startseite rechnet sich aus den gepflegten Beiträgen;
+  passive Beiträge bleiben dabei außen vor, damit dort kein irreführender Preis steht.
+- **Das Sponsorenraster richtet sich nach der Anzahl** — weniger Sponsoren ergeben weniger
+  Spalten, mehr ergeben weitere Zeilen.
+- **Bilder und PDFs werden beim Bauen heruntergeladen** und neben die Seiten gelegt. Besucher
+  laden nichts beim CMS-Anbieter nach.
 
-`flask run` ist nur für den eigenen Rechner gedacht. Auf einem Server läuft die Anwendung hinter
-einem WSGI-Server, zum Beispiel:
+### Abläufe in GitHub Actions
 
-```
-python3 -m pip install gunicorn
-gunicorn --workers 2 --bind 127.0.0.1:8000 "app:create_app()"
-```
+| Ablauf | Wann | Was |
+|---|---|---|
+| `pages.yml` | Webhook aus dem CMS, Push auf `main`, von Hand | Inhalte holen, bauen, auf Pages veröffentlichen |
+| `inhalte-sichern.yml` | nachts um 3:17 Uhr | CMS-Stand als `data/*.json` ins Repository sichern |
+| `check.yml` | jeder Push | Tests, Bau aus `data/`, Prüfung des CMS-Schemas |
 
-Davor gehört ein Webserver (nginx, Apache) mit HTTPS. Wichtig sind vier Punkte:
-
-1. **`MTV_HTTPS=1` setzen**, sobald die Seite über HTTPS läuft — dann wird das Sitzungs-Cookie
-   nur noch verschlüsselt übertragen.
-2. **`verein.db` und `verein.key` sichern.** Darin stehen alle Inhalte und der Sitzungsschlüssel.
-   Ein `cp verein.db verein.db.sicherung` im Cron reicht für den Anfang; beide Dateien sind
-   bewusst nicht im Repository.
-3. **Den Ordner `uploads/` mitsichern** — dort liegen Logos, PDFs und Fotos.
-4. **Zuerst einrichten, dann erreichbar machen.** Solange kein Zugang existiert, bietet
-   `/admin/einrichten` an, den ersten anzulegen — das soll nicht der erste Besucher tun.
-
-Ohne gesetzte Umgebungsvariablen liegen Datenbank und Uploads neben dem Projekt. Ändern lässt
-sich das mit `MTV_DATENBANK`, `MTV_UPLOADS` und `MTV_SECRET_KEY`.
-
-### Statische Ausgabe für GitHub Pages
-
-Der ursprüngliche Weg funktioniert weiterhin. Ohne Datenbank baut
-
-```
-python3 tools/build.py
-```
-
-die sieben Seiten aus `data/*.json`. Ein Workflow prüft bei jedem Push, dass die eingecheckten
-HTML-Dateien dazu passen. Wer die Datenbank als Quelle nehmen will:
-
-```
-python3 tools/build.py --db --json
-```
-
-Das schreibt zusätzlich den Datenbankstand nach `data/` zurück, sodass beide Quellen wieder
-zusammenpassen. Im Verwaltungsbereich macht der Punkt „Statische Seiten“ dasselbe per Knopfdruck.
-
-Der statische Weg hat eine Grenze: GitHub Pages liefert nur Dateien aus, dort läuft kein
-Verwaltungsbereich. Wer die Seiten statisch ausspielt, braucht die Anwendung trotzdem irgendwo
-zum Bearbeiten — oder blendet den Anmeldelink unter „Texte & Bilder“ aus.
+`inhalte-sichern.yml` ist die Rückversicherung: Sollte Sanity ausfallen oder der Verein den
+Anbieter wechseln wollen, liegen alle Inhalte lesbar im Git und die Seite lässt sich mit
+`--quelle dateien` weiterbauen.
 
 ### Tests
 
@@ -166,9 +123,11 @@ zum Bearbeiten — oder blendet den Anmeldelink unter „Texte & Bilder“ aus.
 python3 -m unittest discover -s tests
 ```
 
-45 Prüfungen für Anmeldung, Fehlversuchssperre, Formularschutz, alle Bearbeitungsmasken,
-Datei-Uploads, das Sponsorenraster und den statischen Export. Jeder Test bekommt eine frische
-Datenbank in einem temporären Ordner.
+30 Prüfungen, alle ohne Netzzugriff — die Antworten des CMS werden nachgebaut. Die wichtigste ist
+`RundeReise`: sie schickt die Inhalte aus `data/*.json` durch die Übertragung ins CMS, durch die
+Abfrage und durch den Generator und vergleicht das Ergebnis mit dem direkten Bau. Passt ein
+Feldname zwischen `tools/nach_sanity.py`, der Abfrage und `tools/sanity.py` nicht zusammen, fällt
+das dort auf statt erst im Betrieb.
 
 ### Farben
 
@@ -197,76 +156,71 @@ s.resize((225,300), Image.LANCZOS).quantize(colors=32, method=Image.FASTOCTREE).
 Der Entwurf ist inhaltlich vollständig strukturiert, aber an diesen Stellen fehlen echte Daten.
 Alle Stellen sind in den Seiten sichtbar als „folgt" / „auf Anfrage" markiert — nichts ist erfunden.
 
-**Vom Verein zu liefern** — alles davon lässt sich jetzt im Verwaltungsbereich eintragen,
-ohne den Code anzufassen.
+**Vom Verein zu liefern** — alles davon lässt sich im CMS eintragen, ohne den Code anzufassen.
 
-1. **Fotos.** Sämtliche Bilder sind Platzhalter. Unter „Texte & Bilder“ lassen sich Startseiten-
+1. **Fotos.** Sämtliche Bilder sind Platzhalter. Unter *Texte & Bilder* lassen sich Startseiten-
    und Sprachrohrbild hochladen. Echte Vereinsfotos wären der größte sichtbare Gewinn.
 2. **Trainingszeiten** — weitgehend erledigt. Der Hallenbelegungsplan (gültig ab Juni 2026) ist
    vollständig eingepflegt: 58 Einheiten mit Tag, Uhrzeit, Ort, Gruppe und Übungsleitung.
    Nur vier Angebote stehen nicht darin (Volleyball, Reha-Sport, Kunstturnen, Pokern) und zeigen
-   „Zeit auf Anfrage". Änderungen laufen über „Sportangebote“.
+   „Zeit auf Anfrage". Änderungen laufen über *Sportangebote*.
 3. **Ansprechpartner je Abteilung.** Die Felder stehen bereit (Name, Telefon, E-Mail je Angebot),
    die Daten fehlen noch.
-4. **PDFs**: Satzung, Ehrenordnung, Aufnahmeantrag, Sprachrohr — unter „Dokumente & PDFs“
+4. **PDFs**: Satzung, Ehrenordnung, Aufnahmeantrag, Sprachrohr — unter *Dokumente & PDFs*
    hochladen.
-5. **Kinder- & Jugendschutzkonzept**: Text und Ansprechpersonen, unter „Texte & Bilder“.
-6. **Öffnungszeiten der Geschäftsstelle**, unter „Stammdaten“.
+5. **Kinder- & Jugendschutzkonzept**: Text und Ansprechpersonen, unter *Texte & Bilder*.
+6. **Öffnungszeiten der Geschäftsstelle**, unter *Stammdaten*.
 7. **E-Mail-Adresse prüfen** — hinterlegt ist `vorstand@mtv-gelting-08.de`; zu bestätigen und
-   gegebenenfalls unter „Stammdaten“ zu ändern.
-8. **Sponsorenlogos** inkl. Freigabe — unter „Sponsoren“ hochladen. Bis dahin erscheint der Name.
+   gegebenenfalls unter *Stammdaten* zu ändern.
+8. **Sponsorenlogos** inkl. Freigabe — unter *Sponsoren* hochladen. Bis dahin erscheint der Name.
 9. ~~Vereinswappen~~ — erledigt. Die Originaldatei liegt unter `assets/img/logo.hd1.png` und
    ist in Header, Footer und Favicon eingebunden; das Vereinsblau ist daraus ausgelesen.
 
 **Technisch zu klären**
 
-10. ~~Mitglieder-Login~~ — für den Vorstand erledigt: der Verwaltungsbereich unter `/admin/`
-    ersetzt den bisherigen Redaktionsweg. Ein Login **für alle Mitglieder** (wie im
-    Joomla-Auftritt) ist damit noch nicht gebaut; falls er gebraucht wird, ist zu klären, welche
-    Inhalte er überhaupt zeigen soll.
-11. **Schriften lokal einbinden** statt über Google Fonts (Datenschutz).
-12. **Spielpläne**: aktuell Links zu den Verbänden. Einbettung wäre möglich, aber
-    abhängig von den Schnittstellen der Verbände.
-13. **Impressum und Datenschutzerklärung** müssen vor Veröffentlichung rechtlich geprüft werden.
-    Beide Texte sind im Verwaltungsbereich änderbar.
-14. **Vor dem Livegang**: unter „Texte & Bilder“ den Haken „Für Suchmaschinen sperren“ entfernen
-    und den Hinweisstreifen „Vorschau-Entwurf“ leeren.
+10. ~~Inhaltspflege ohne Code~~ — erledigt. Sie läuft über das CMS; siehe
+    [`studio/README.md`](studio/README.md).
+11. **Mitglieder-Login.** Der Joomla-Auftritt hat einen Bereich für alle Mitglieder. Das CMS
+    ersetzt nur die Redaktion, nicht diesen Bereich. Falls er gebraucht wird, ist zuerst zu
+    klären, welche Inhalte er überhaupt zeigen soll — auf rein statischen Seiten gibt es dafür
+    keine Lösung ohne zusätzlichen Dienst.
+12. **Schriften lokal einbinden** statt über Google Fonts (Datenschutz). Bilder und PDFs werden
+    bereits lokal ausgeliefert.
+13. **Spielpläne**: aktuell Links zu den Verbänden. Einbettung wäre möglich, aber abhängig von
+    den Schnittstellen der Verbände.
+14. **Impressum und Datenschutzerklärung** müssen vor Veröffentlichung rechtlich geprüft werden.
+    Beide Texte sind im CMS änderbar.
+15. **Vor dem Livegang**: unter *Texte & Bilder → Sichtbarkeit* den Haken „Für Suchmaschinen
+    sperren" entfernen und den Hinweisstreifen „Vorschau-Entwurf" leeren.
 
 ## GitHub Pages aktivieren
 
-Der Actions-Token darf eine Pages-Site nicht selbst anlegen, solange Pages im Repository noch nie
-eingerichtet wurde. Dieser eine Schritt muss deshalb einmalig von Hand erfolgen — unter
-**Settings → Pages**:
+Einmalig unter **Settings → Pages** die Source auf **GitHub Actions** stellen. Der Weg „Deploy
+from a branch" funktioniert nicht mehr: die HTML-Dateien liegen bewusst nicht mehr im
+Repository, sondern entstehen bei jedem Lauf neu.
 
-**Variante A — Deploy from a branch** (einfachster Weg, sofort live)
-Source: `Deploy from a branch`, Branch: `claude/mtv-gelting-audit-3jknqv`, Ordner: `/ (root)`.
-GitHub veröffentlicht den Branch dann direkt; der Pages-Workflow wird nicht gebraucht.
-
-**Variante B — GitHub Actions**
-Source: `GitHub Actions`. Danach den Workflow „GitHub Pages" einmal starten
-(Actions → GitHub Pages → Run workflow). Jede weitere Veröffentlichung läuft dann darüber.
+Danach den Ablauf einmal von Hand starten (*Actions → Website veröffentlichen → Run workflow*).
+Jede weitere Veröffentlichung löst das CMS selbst aus.
 
 Die Adresse lautet anschließend `https://oskar-hq.github.io/mtvgelting/`.
 
-Die Seiten tragen `noindex, nofollow`, damit der Entwurf nicht in Suchmaschinen neben dem
-echten Vereinsauftritt auftaucht. Das steuert der Haken „Für Suchmaschinen sperren“ unter
-„Texte & Bilder“ (ohne Datenbank: `texte.suchmaschinen_sperren` in `data/verein.json`).
+Was dafür in GitHub hinterlegt sein muss — Variable `SANITY_PROJEKT`, Secret `SANITY_TOKEN` und
+der Webhook in Sanity — steht Schritt für Schritt in [`studio/README.md`](studio/README.md).
 
 ## Lokal ansehen
 
-Mit Verwaltungsbereich:
-
 ```
-python3 -m pip install -r requirements.txt
-python3 tools/verwaltung.py einrichten
-flask --app app run
-# http://127.0.0.1:5000
-```
-
-Nur die statischen Seiten, ohne Python-Anwendung:
-
-```
-python3 tools/build.py
-python3 -m http.server 8099
+python3 tools/build.py --ziel _site
+python3 -m http.server 8099 --directory _site
 # http://localhost:8099
+```
+
+Ohne gesetztes `SANITY_PROJEKT` wird aus `data/*.json` gebaut — es braucht dafür also weder
+CMS-Zugang noch Internet.
+
+Die Redaktionsoberfläche zum Ausprobieren:
+
+```
+cd studio && npm install && npm run dev
+# http://localhost:3333
 ```

@@ -567,7 +567,3 @@ a.sponsor:hover { background: var(--blue-tint); position: relative; z-index: 1; 
 
 /* Ausgaben des Sprachrohrs und andere PDF-Listen */
 .doclist { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
-
-/* Anmeldelink im Footer – bewusst zurueckhaltend, er richtet sich an den Vorstand */
-.ftr__admin { opacity: .7; }
-.ftr__admin:hover { opacity: 1; }

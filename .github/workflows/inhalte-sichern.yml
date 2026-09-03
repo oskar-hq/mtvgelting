@@ -1,0 +1,52 @@
+# Schreibt den Stand aus dem CMS einmal je Nacht als JSON ins Repository.
+#
+# Zweck ist die Sicherung: Sollte Sanity einmal nicht verfügbar sein oder der
+# Verein den Anbieter wechseln wollen, liegen alle Inhalte lesbar im Git und
+# die Website lässt sich mit „python3 tools/build.py --quelle dateien“ ohne
+# CMS bauen.
+name: Inhalte sichern
+
+on:
+  schedule:
+    # 03:17 UTC — außerhalb der vollen Stunde, weil GitHub dann weniger
+    # ausgelastet ist und geplante Läufe pünktlicher starten.
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: inhalte-sichern
+  cancel-in-progress: true
+
+jobs:
+  sichern:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Inhalte aus dem CMS holen
+        env:
+          SANITY_PROJEKT: ${{ vars.SANITY_PROJEKT }}
+          SANITY_DATENSATZ: ${{ vars.SANITY_DATENSATZ || 'production' }}
+          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
+        # --ziel in einen Wegwerfordner: hier sollen nur die JSON-Dateien
+        # erneuert werden, nicht die Seiten.
+        run: python3 tools/build.py --quelle cms --sichern --ziel "${RUNNER_TEMP}/bau"
+
+      - name: Änderungen übernehmen
+        run: |
+          if git diff --quiet -- data/; then
+            echo "Keine Änderungen seit gestern."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git commit -m "Inhalte aus dem CMS sichern"
+          git push
