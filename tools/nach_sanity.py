@@ -157,6 +157,7 @@ def dokumente_bauen(V, A):
         docs.append({"_id": "aktion.%s" % schluessel(a["titel"])[:40], "_type": "aktion",
                      "titel": a["titel"], "aktiv": bool(a.get("aktiv", True)),
                      "kurz": a.get("kurz", ""), "datum": a.get("datum") or None,
+                     "datumBis": a.get("datum_bis") or None,
                      "zeit": a.get("zeit", ""), "ort": a.get("ort", ""),
                      "text": a.get("text", ""),
                      "anmeldelink": a.get("anmeldelink") or None,

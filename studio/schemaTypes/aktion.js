@@ -24,7 +24,9 @@ export const aktion = defineType({
       initialValue: true,
       description:
         'Abwählen blendet die Aktion aus, ohne sie zu löschen — Texte und Angaben ' +
-        'bleiben für das nächste Mal erhalten.',
+        'bleiben für das nächste Mal erhalten. Wichtig: Der Haken allein genügt ' +
+        'nicht. Erst „Publish“ macht die Änderung auf der Website sichtbar; ' +
+        'danach dauert es ein bis zwei Minuten, bis die Seite neu gebaut ist.',
     }),
     defineField({
       name: 'kurz',
@@ -40,10 +42,19 @@ export const aktion = defineType({
       description: 'Leer lassen, solange der Termin noch nicht feststeht.',
     }),
     defineField({
+      name: 'datumBis',
+      title: 'Datum bis',
+      type: 'date',
+      options: {dateFormat: 'DD.MM.YYYY'},
+      description:
+        'Nur bei mehrtägigen Aktionen ausfüllen, etwa einem Feriencamp. Dann steht ' +
+        'auf der Seite „12. – 16. Oktober 2026“.',
+    }),
+    defineField({
       name: 'zeit',
       title: 'Uhrzeit',
       type: 'string',
-      description: 'Freier Text, zum Beispiel „ab 15:45 Uhr“.',
+      description: 'Freier Text, zum Beispiel „ab 15:45 Uhr“ oder „täglich 9:00 – 15:00 Uhr“.',
     }),
     defineField({name: 'ort', title: 'Ort', type: 'string'}),
     defineField({

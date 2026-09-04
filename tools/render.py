@@ -56,6 +56,28 @@ def datum_lang(iso):
         return str(iso)
 
 
+def datum_spanne(von, bis):
+    """„12. – 16. Oktober 2026“ – gemeinsame Teile stehen nur einmal.
+
+    Ohne Enddatum bleibt es beim einzelnen Datum; liegt das Ende vor dem
+    Anfang, wird es ignoriert statt eine unsinnige Spanne zu zeigen.
+    """
+    if not von:
+        return datum_lang(bis)
+    if not bis or bis <= von:
+        return datum_lang(von)
+    try:
+        jv, mv, tv = von.split("-")
+        jb, mb, tb = bis.split("-")
+    except ValueError:
+        return datum_lang(von)
+    if jv == jb and mv == mb:
+        return "%d. – %s" % (int(tv), datum_lang(bis))
+    if jv == jb:
+        return "%d. %s – %s" % (int(tv), MONATE[int(mv) - 1], datum_lang(bis))
+    return "%s – %s" % (datum_lang(von), datum_lang(bis))
+
+
 def preis_zahl(text):
     """'7,00 €' -> 7.0; unlesbare Angaben ergeben None."""
     if not text:
@@ -390,8 +412,8 @@ class Renderer:
 
         karten = []
         for a in aktive:
-            meta = " · ".join(x for x in [datum_lang(a.get("datum")), a.get("zeit"),
-                                          a.get("ort")] if x)
+            meta = " · ".join(x for x in [datum_spanne(a.get("datum"), a.get("datum_bis")),
+                                          a.get("zeit"), a.get("ort")] if x)
             kurz = ('<p class="aktion__label">%s</p>' % esc(a["kurz"])) if a.get("kurz") else ""
             metazeile = ('<p class="aktion__meta">%s</p>' % esc(meta)) if meta else ""
             text = ('<p class="aktion__text">%s</p>' % esc(a["text"])) if a.get("text") else ""

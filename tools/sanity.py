@@ -282,7 +282,8 @@ def nach_inhalten(roh, medien):
             for t in _liste(roh, "termine")],
         "aktionen": [
             {"titel": _text(a, "titel"), "aktiv": bool(a.get("aktiv", True)),
-             "kurz": _text(a, "kurz"), "datum": _text(a, "datum"), "zeit": _text(a, "zeit"),
+             "kurz": _text(a, "kurz"), "datum": _text(a, "datum"),
+             "datum_bis": _text(a, "datumBis"), "zeit": _text(a, "zeit"),
              "ort": _text(a, "ort"), "text": _text(a, "text"), "bild": "",
              "anmeldelink": _text(a, "anmeldelink"),
              "anmeldetext": _text(a, "anmeldetext")}

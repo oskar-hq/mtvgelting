@@ -131,6 +131,7 @@ def aus_json(datenordner=DATA):
         # einzelne Aktion an und ab, ohne sie löschen zu müssen.
         "aktionen": [{"titel": a["titel"], "aktiv": bool(a.get("aktiv", True)),
                       "kurz": a.get("kurz", ""), "datum": a.get("datum", ""),
+                      "datum_bis": a.get("datum_bis", ""),
                       "zeit": a.get("zeit", ""), "ort": a.get("ort", ""),
                       "text": a.get("text", ""), "bild": a.get("bild", ""),
                       "anmeldelink": a.get("anmeldelink", ""),

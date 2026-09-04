@@ -327,8 +327,9 @@ class Aktionen(unittest.TestCase):
 
     def basis(self, **abweichungen):
         eintrag = {"titel": "Birklauf", "aktiv": True, "kurz": "Volkslauf", "datum": "2026-08-29",
-                   "zeit": "ab 15:45 Uhr", "ort": "Birkhalle", "text": "Rund um Gelting.",
-                   "anmeldelink": "", "anmeldetext": "Zur Anmeldung"}
+                   "datum_bis": "", "zeit": "ab 15:45 Uhr", "ort": "Birkhalle",
+                   "text": "Rund um Gelting.", "anmeldelink": "",
+                   "anmeldetext": "Zur Anmeldung"}
         eintrag.update(abweichungen)
         return eintrag
 
@@ -370,6 +371,10 @@ class Aktionen(unittest.TestCase):
         self.assertNotIn("· ·", seite)
         self.assertNotIn('class="aktion__meta"> ·', seite)
 
+    def test_mehrtaegige_aktion_zeigt_eine_spanne(self):
+        seite = self.seite([self.basis(datum="2026-10-12", datum_bis="2026-10-16")])
+        self.assertIn("12. – 16. Oktober 2026", seite)
+
     def test_nur_auf_der_startseite(self):
         V, A = inhalte.aus_json()
         seiten = Renderer(V, A).pages()
@@ -380,6 +385,26 @@ class Aktionen(unittest.TestCase):
     def test_text_wird_maskiert(self):
         seite = self.seite([self.basis(titel="Lauf <script>alert(1)</script>")])
         self.assertNotIn("<script>alert(1)</script>", seite)
+
+
+class Datumsspanne(unittest.TestCase):
+    def test_faelle(self):
+        from tools.render import datum_spanne
+        self.assertEqual(datum_spanne("2026-10-12", "2026-10-16"), "12. – 16. Oktober 2026")
+        self.assertEqual(datum_spanne("2026-09-28", "2026-10-02"),
+                         "28. September – 2. Oktober 2026")
+        self.assertEqual(datum_spanne("2026-12-28", "2027-01-03"),
+                         "28. Dezember 2026 – 3. Januar 2027")
+        self.assertEqual(datum_spanne("2026-04-18", ""), "18. April 2026")
+        self.assertEqual(datum_spanne("", ""), "")
+
+    def test_ende_vor_anfang_wird_ignoriert(self):
+        from tools.render import datum_spanne
+        self.assertEqual(datum_spanne("2026-04-18", "2026-04-01"), "18. April 2026")
+
+    def test_unlesbares_datum_stuerzt_nicht_ab(self):
+        from tools.render import datum_spanne
+        self.assertEqual(datum_spanne("demnächst", "2026-04-01"), "demnächst")
 
 
 class Abbildung(unittest.TestCase):
