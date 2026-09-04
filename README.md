@@ -104,8 +104,10 @@ nach der nächsten Änderung im CMS ohnehin veraltet.
   Spalten, mehr ergeben weitere Zeilen.
 - **Bilder und PDFs werden beim Bauen heruntergeladen** und neben die Seiten gelegt. Besucher
   laden nichts beim CMS-Anbieter nach.
-- **Aktionen auf der Startseite** (Birklauf, Flohmarkt, Herbstcamp) lassen sich einzeln ein- und
-  ausblenden, ohne sie zu löschen; der Anmeldelink wird je Aktion gepflegt. Ohne aktive Aktion
+- **Aktionen auf der Startseite** (Birklauf, Flohmarkt, Herbstcamp) stehen als dunkel abgesetzter
+  Block gleich unter dem Kopfbereich und lassen sich einzeln ein- und ausblenden, ohne sie zu
+  löschen; der Anmeldelink wird je Aktion gepflegt. Der Status je Karte — „Anmeldung offen“,
+  „Termin steht“, „in Planung“ — ergibt sich aus den gepflegten Feldern. Ohne aktive Aktion
   entfällt der Abschnitt.
 
 ### Abläufe in GitHub Actions

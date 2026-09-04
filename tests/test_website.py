@@ -371,6 +371,29 @@ class Aktionen(unittest.TestCase):
         self.assertNotIn("· ·", seite)
         self.assertNotIn('class="aktion__meta"> ·', seite)
 
+    def test_status_richtet_sich_nach_dem_stand(self):
+        self.assertIn("Anmeldung offen",
+                      self.seite([self.basis(anmeldelink="https://example.org")]))
+        self.assertIn("Termin steht",
+                      self.seite([self.basis(anmeldelink="", datum="2026-08-29")]))
+        self.assertIn("in Planung",
+                      self.seite([self.basis(anmeldelink="", datum="", datum_bis="")]))
+
+    def test_offene_anmeldung_wird_hervorgehoben(self):
+        offen = self.seite([self.basis(anmeldelink="https://example.org")])
+        zu = self.seite([self.basis(anmeldelink="")])
+        self.assertIn("aktion--offen", offen)
+        self.assertNotIn("aktion--offen", zu)
+
+    def test_abschnitt_hebt_sich_dunkel_ab(self):
+        seite = self.seite([self.basis()])
+        self.assertIn("section--ink aktionsband", seite)
+
+    def test_steht_vor_dem_sportangebot(self):
+        seite = self.seite([self.basis()])
+        self.assertLess(seite.index("aktionsband"), seite.index("Was möchtest"),
+                        "Der Abschnitt muss oben stehen, sonst fällt er nicht auf")
+
     def test_mehrtaegige_aktion_zeigt_eine_spanne(self):
         seite = self.seite([self.basis(datum="2026-10-12", datum_bis="2026-10-16")])
         self.assertIn("12. – 16. Oktober 2026", seite)

@@ -401,10 +401,12 @@ class Renderer:
         return '<div class="sponsors" data-anzahl="%d">%s</div>' % (len(sp), "".join(out))
 
     def aktionen_band(self):
-        """Hervorgehobene Aktionen auf der Startseite.
+        """Hervorgehobene Aktionen, dunkel abgesetzt gleich unter dem Kopfbereich.
 
-        Jede Aktion laesst sich im CMS einzeln an- und abschalten; ist keine
-        aktiv, entfaellt der ganze Abschnitt.
+        Der dunkle Grund hebt den Abschnitt deutlich von der hellen Seite ab —
+        wer die Startseite oeffnet, sieht als Erstes, was gerade ansteht. Jede
+        Aktion laesst sich im CMS einzeln an- und abschalten; ist keine aktiv,
+        entfaellt der ganze Abschnitt.
         """
         aktive = [a for a in self.V.get("aktionen", []) if a.get("aktiv")]
         if not aktive:
@@ -412,31 +414,47 @@ class Renderer:
 
         karten = []
         for a in aktive:
+            offen = bool(a.get("anmeldelink"))
+            if offen:
+                status = "Anmeldung offen"
+            elif a.get("datum"):
+                status = "Termin steht"
+            else:
+                status = "in Planung"
+
             meta = " · ".join(x for x in [datum_spanne(a.get("datum"), a.get("datum_bis")),
                                           a.get("zeit"), a.get("ort")] if x)
-            kurz = ('<p class="aktion__label">%s</p>' % esc(a["kurz"])) if a.get("kurz") else ""
+            kurz = ('<p class="aktion__kurz">%s</p>' % esc(a["kurz"])) if a.get("kurz") else ""
             metazeile = ('<p class="aktion__meta">%s</p>' % esc(meta)) if meta else ""
             text = ('<p class="aktion__text">%s</p>' % esc(a["text"])) if a.get("text") else ""
-            if a.get("anmeldelink"):
-                knopf = ('<a class="btn btn--primary" href="%s" rel="noopener">%s <span class="arw">→</span></a>'
+            if offen:
+                knopf = ('<a class="btn btn--jetzt" href="%s" rel="noopener">%s <span class="arw">→</span></a>'
                          % (esc(a["anmeldelink"]), esc(a.get("anmeldetext") or "Zur Anmeldung")))
             else:
                 knopf = '<span class="aktion__folgt">Anmeldung folgt</span>'
-            karten.append(f"""      <article class="aktion">
-        <div class="aktion__kopf">
-          {kurz}
-          <h3 class="aktion__titel">{esc(a['titel'])}</h3>
-          {metazeile}
-        </div>
+
+            karten.append(f"""      <article class="aktion{' aktion--offen' if offen else ''}">
+        <p class="aktion__status"><span class="aktion__punkt" aria-hidden="true"></span>{esc(status)}</p>
+        {kurz}
+        <h3 class="aktion__titel">{esc(a['titel'])}</h3>
+        {metazeile}
         {text}
         <div class="aktion__cta">{knopf}</div>
       </article>""")
 
+        wieviele = ("Eine Aktion" if len(aktive) == 1
+                    else "%d Aktionen" % len(aktive))
         return f"""
-<section class="section section--tight">
+<section class="section section--ink aktionsband">
   <div class="wrap">
     <div class="shead">
-      <div><p class="label label--blue">Mitmachen</p><h2 class="h2">Unsere Aktionen</h2></div>
+      <div>
+        <p class="label">Jetzt aktuell</p>
+        <h2 class="h2">Was gerade ansteht.</h2>
+      </div>
+      <div class="shead__aside">
+        <p class="lead" style="margin-left:auto">{wieviele} beim {esc(self.V['kurzname'])} — mit Termin, Ort und Anmeldung an einer Stelle.</p>
+      </div>
     </div>
     <div class="aktionen">
 {chr(10).join(karten)}
@@ -533,8 +551,9 @@ class Renderer:
   </div>
 </section>
 
-<div class="ticker" aria-hidden="true"><div class="ticker__track">{ticker_items}</div></div>
 {self.aktionen_band()}
+<div class="ticker" aria-hidden="true"><div class="ticker__track">{ticker_items}</div></div>
+
 <section class="section">
   <div class="wrap">
     <div class="shead">

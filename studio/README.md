@@ -145,7 +145,7 @@ hat.
 |---|---|
 | **Sportangebote** | Name, Bereich, Zielgruppen, Texte, Ort, alle Trainingszeiten und der Ansprechpartner der Abteilung |
 | **Termine** | Titel, Datum, Uhrzeit, Ort, Beschreibung |
-| **Aktionen (Startseite)** | Birklauf, Flohmarkt, Herbstcamp — je mit Anmeldelink und einem Haken zum Ein- und Ausblenden |
+| **Aktionen (Startseite)** | Birklauf, Flohmarkt, Herbstcamp — je mit Anmeldelink und einem Haken zum Ein- und Ausblenden. Erscheinen als dunkel abgesetzter Block gleich unter dem Kopfbereich |
 | **Aktuelles** | kurze Meldungen; die vier neuesten stehen auf der Startseite |
 | **Vorstand** | Name, Funktion, E-Mail, Kennzeichen „§ 26 BGB" |
 | **Beiträge** | Gruppen mit Monats- und Jahresbeitrag |
@@ -183,6 +183,10 @@ Angaben bleiben erhalten. Im nächsten Jahr Datum und Anmeldelink erneuern und
 wieder anhaken. Solange kein Anmeldelink hinterlegt ist, steht statt des
 Knopfes der Hinweis „Anmeldung folgt“. Ist keine einzige Aktion aktiv, fällt
 der ganze Abschnitt auf der Startseite weg.
+
+Die Statuszeile oben auf jeder Karte ergibt sich von selbst: **Anmeldung
+offen** (mit pulsierendem Punkt), sobald ein Anmeldelink hinterlegt ist,
+**Termin steht**, wenn nur ein Datum feststeht, sonst **in Planung**.
 
 **Vor dem Livegang**: unter *Texte & Bilder → Sichtbarkeit* den Haken „Für
 Suchmaschinen sperren" entfernen und den Hinweisstreifen „Vorschau-Entwurf"
