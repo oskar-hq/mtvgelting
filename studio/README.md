@@ -145,6 +145,7 @@ hat.
 |---|---|
 | **Sportangebote** | Name, Bereich, Zielgruppen, Texte, Ort, alle Trainingszeiten und der Ansprechpartner der Abteilung |
 | **Termine** | Titel, Datum, Uhrzeit, Ort, Beschreibung |
+| **Aktionen (Startseite)** | Birklauf, Flohmarkt, Herbstcamp — je mit Anmeldelink und einem Haken zum Ein- und Ausblenden |
 | **Aktuelles** | kurze Meldungen; die vier neuesten stehen auf der Startseite |
 | **Vorstand** | Name, Funktion, E-Mail, Kennzeichen „§ 26 BGB" |
 | **Beiträge** | Gruppen mit Monats- und Jahresbeitrag |
@@ -174,6 +175,14 @@ erscheinen von dort automatisch auch im Wochenplan auf der Termineseite.
 
 **Das Sponsorenraster passt sich der Anzahl an**: weniger Sponsoren ergeben
 weniger Spalten, mehr ergeben weitere Zeilen.
+
+**Aktionen schaltet man an und ab, statt sie zu löschen.** Unter *Aktionen
+(Startseite)* steuert der Haken „Auf der Startseite zeigen“ jede Aktion
+einzeln. Nach dem Birklauf also einfach den Haken entfernen — Texte und
+Angaben bleiben erhalten. Im nächsten Jahr Datum und Anmeldelink erneuern und
+wieder anhaken. Solange kein Anmeldelink hinterlegt ist, steht statt des
+Knopfes der Hinweis „Anmeldung folgt“. Ist keine einzige Aktion aktiv, fällt
+der ganze Abschnitt auf der Startseite weg.
 
 **Vor dem Livegang**: unter *Texte & Bilder → Sichtbarkeit* den Haken „Für
 Suchmaschinen sperren" entfernen und den Hinweisstreifen „Vorschau-Entwurf"

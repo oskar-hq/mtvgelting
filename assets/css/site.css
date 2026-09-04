@@ -567,3 +567,40 @@ a.sponsor:hover { background: var(--blue-tint); position: relative; z-index: 1; 
 
 /* Ausgaben des Sprachrohrs und andere PDF-Listen */
 .doclist { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+
+/* --- Aktionen auf der Startseite ---------------------------------------- */
+
+/* Eine Zeile je Aktion: links Titel und Eckdaten, in der Mitte der Text,
+   rechts der Anmeldeknopf. Auf schmalen Bildschirmen stapelt sich das. */
+.aktionen { display: grid; gap: .75rem; }
+.aktion {
+  display: grid; gap: .75rem 2rem; align-items: center;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 1.5rem;
+}
+@media (min-width: 900px) {
+  .aktion { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) auto; }
+}
+.aktion__label {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--blue); margin: 0 0 .35rem;
+}
+.aktion__titel {
+  font-family: var(--display); font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 600; letter-spacing: -.02em; line-height: 1.15; margin: 0;
+}
+.aktion__meta {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .05em;
+  color: var(--ink-45); margin: .5rem 0 0;
+}
+.aktion__text { color: var(--ink-70); margin: 0; font-size: .95rem; line-height: 1.55; }
+.aktion__cta { justify-self: start; }
+@media (min-width: 900px) { .aktion__cta { justify-self: end; } }
+.aktion__cta .btn { white-space: nowrap; }
+
+/* Noch kein Link hinterlegt – der Platz bleibt sichtbar, aber nichts klickbar. */
+.aktion__folgt {
+  display: inline-block; font-family: var(--mono); font-size: .7rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-45);
+  border: 1px dashed var(--line); border-radius: var(--radius); padding: .6rem 1rem;
+}

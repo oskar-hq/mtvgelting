@@ -247,6 +247,7 @@ def groq_nachstellen(docs):
         "termine": sortiert("termin", "sortierung"),
         "news": sorted(nach_typ.get("news", []), key=lambda d: d.get("datum") or "",
                        reverse=True),
+        "aktionen": sortiert("aktion", "sortierung"),
         "sponsoren": [{"name": s.get("name"), "url": s.get("url"), "logo": s.get("logo")}
                       for s in sortiert("sponsor", "sortierung")],
         "spielplaene": sortiert("spielplan", "sortierung"),
@@ -317,6 +318,70 @@ class RundeReise(unittest.TestCase):
         self.assertEqual([d["_id"] for d in self.docs], [d["_id"] for d in nochmal])
 
 
+class Aktionen(unittest.TestCase):
+    """Die schaltbaren Aktionen auf der Startseite."""
+
+    def seite(self, aktionen):
+        V, A = inhalte.aus_json()
+        return Renderer(dict(V, aktionen=aktionen), A).pages()["index.html"]
+
+    def basis(self, **abweichungen):
+        eintrag = {"titel": "Birklauf", "aktiv": True, "kurz": "Volkslauf", "datum": "2026-08-29",
+                   "zeit": "ab 15:45 Uhr", "ort": "Birkhalle", "text": "Rund um Gelting.",
+                   "anmeldelink": "", "anmeldetext": "Zur Anmeldung"}
+        eintrag.update(abweichungen)
+        return eintrag
+
+    def test_alle_drei_sind_eingerichtet_und_aktiv(self):
+        V, _ = inhalte.aus_json()
+        titel = [a["titel"] for a in V["aktionen"]]
+        self.assertEqual(len(titel), 3)
+        for gesucht in ("Birklauf", "Flohmarkt", "Herbstcamp"):
+            self.assertTrue(any(gesucht in t for t in titel), "%s fehlt" % gesucht)
+        self.assertTrue(all(a["aktiv"] for a in V["aktionen"]), "nicht alle sind aktiv")
+
+    def test_abgeschaltete_aktion_erscheint_nicht(self):
+        seite = self.seite([self.basis(aktiv=False)])
+        self.assertNotIn("Birklauf", seite)
+
+    def test_ohne_aktive_aktion_faellt_der_abschnitt_weg(self):
+        self.assertNotIn('class="aktionen"', self.seite([self.basis(aktiv=False)]))
+        self.assertNotIn('class="aktionen"', self.seite([]))
+
+    def test_anmeldelink_wird_zum_knopf(self):
+        seite = self.seite([self.basis(anmeldelink="https://example.org/lauf",
+                                       anmeldetext="Jetzt anmelden")])
+        self.assertIn('href="https://example.org/lauf"', seite)
+        self.assertIn("Jetzt anmelden", seite)
+        self.assertNotIn("Anmeldung folgt", seite)
+
+    def test_ohne_link_steht_ein_hinweis(self):
+        seite = self.seite([self.basis(anmeldelink="")])
+        self.assertIn("Anmeldung folgt", seite)
+        self.assertNotIn("<a class=\"btn btn--primary\" href=\"\"", seite)
+
+    def test_eckdaten_werden_zusammengesetzt(self):
+        seite = self.seite([self.basis()])
+        self.assertIn("29. August 2026 · ab 15:45 Uhr · Birkhalle", seite)
+
+    def test_fehlende_eckdaten_hinterlassen_keine_trennzeichen(self):
+        seite = self.seite([self.basis(datum="", zeit="", ort="Birkhalle")])
+        self.assertIn("Birkhalle", seite)
+        self.assertNotIn("· ·", seite)
+        self.assertNotIn('class="aktion__meta"> ·', seite)
+
+    def test_nur_auf_der_startseite(self):
+        V, A = inhalte.aus_json()
+        seiten = Renderer(V, A).pages()
+        for name, seite in seiten.items():
+            if name != "index.html":
+                self.assertNotIn('class="aktionen"', seite, name)
+
+    def test_text_wird_maskiert(self):
+        seite = self.seite([self.basis(titel="Lauf <script>alert(1)</script>")])
+        self.assertNotIn("<script>alert(1)</script>", seite)
+
+
 class Abbildung(unittest.TestCase):
     """Einzelne Eigenheiten der Umsetzung von Sanity auf den Generator."""
 
@@ -355,6 +420,14 @@ class Abbildung(unittest.TestCase):
     def test_angebot_ohne_slug_bekommt_einen(self):
         _, A = self.umsetzen({"angebote": [{"name": "Eltern-Kind-Turnen", "zeiten": []}]})
         self.assertEqual(A["angebote"][0]["slug"], "eltern-kind-turnen")
+
+    def test_aktion_ohne_angabe_gilt_als_aktiv(self):
+        V, _ = self.umsetzen({"aktionen": [{"titel": "Flohmarkt"}]})
+        self.assertTrue(V["aktionen"][0]["aktiv"])
+
+    def test_abgeschaltete_aktion_kommt_als_solche_an(self):
+        V, _ = self.umsetzen({"aktionen": [{"titel": "Flohmarkt", "aktiv": False}]})
+        self.assertFalse(V["aktionen"][0]["aktiv"])
 
     def test_leere_zielgruppen_verweise_werden_verworfen(self):
         roh = {"zielgruppen": [{"id": "kinder", "name": "Kinder"}],

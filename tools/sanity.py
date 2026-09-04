@@ -64,6 +64,7 @@ ABFRAGE = """{
   "beitraege": *[_type == "beitrag" && %(v)s] | order(sortierung asc),
   "termine": *[_type == "termin" && %(v)s] | order(sortierung asc, datum asc),
   "news": *[_type == "news" && %(v)s] | order(datum desc),
+  "aktionen": *[_type == "aktion" && %(v)s] | order(sortierung asc, titel asc),
   "sponsoren": *[_type == "sponsor" && %(v)s] | order(sortierung asc, name asc){
     name, url, logo%(b)s
   },
@@ -279,6 +280,13 @@ def nach_inhalten(roh, medien):
             {"titel": _text(t, "titel"), "datum": _text(t, "datum"),
              "zeit": _text(t, "zeit"), "ort": _text(t, "ort"), "text": _text(t, "text")}
             for t in _liste(roh, "termine")],
+        "aktionen": [
+            {"titel": _text(a, "titel"), "aktiv": bool(a.get("aktiv", True)),
+             "kurz": _text(a, "kurz"), "datum": _text(a, "datum"), "zeit": _text(a, "zeit"),
+             "ort": _text(a, "ort"), "text": _text(a, "text"), "bild": "",
+             "anmeldelink": _text(a, "anmeldelink"),
+             "anmeldetext": _text(a, "anmeldetext")}
+            for a in _liste(roh, "aktionen")],
         "spielplaene": [
             {"name": _text(p, "name"), "quelle": _text(p, "quelle"), "url": _text(p, "url")}
             for p in _liste(roh, "spielplaene")],

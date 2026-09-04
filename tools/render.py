@@ -378,6 +378,51 @@ class Renderer:
                 out.append('<div class="sponsor" title="%s">%s</div>' % (esc(s["name"]), inner))
         return '<div class="sponsors" data-anzahl="%d">%s</div>' % (len(sp), "".join(out))
 
+    def aktionen_band(self):
+        """Hervorgehobene Aktionen auf der Startseite.
+
+        Jede Aktion laesst sich im CMS einzeln an- und abschalten; ist keine
+        aktiv, entfaellt der ganze Abschnitt.
+        """
+        aktive = [a for a in self.V.get("aktionen", []) if a.get("aktiv")]
+        if not aktive:
+            return ""
+
+        karten = []
+        for a in aktive:
+            meta = " · ".join(x for x in [datum_lang(a.get("datum")), a.get("zeit"),
+                                          a.get("ort")] if x)
+            kurz = ('<p class="aktion__label">%s</p>' % esc(a["kurz"])) if a.get("kurz") else ""
+            metazeile = ('<p class="aktion__meta">%s</p>' % esc(meta)) if meta else ""
+            text = ('<p class="aktion__text">%s</p>' % esc(a["text"])) if a.get("text") else ""
+            if a.get("anmeldelink"):
+                knopf = ('<a class="btn btn--primary" href="%s" rel="noopener">%s <span class="arw">→</span></a>'
+                         % (esc(a["anmeldelink"]), esc(a.get("anmeldetext") or "Zur Anmeldung")))
+            else:
+                knopf = '<span class="aktion__folgt">Anmeldung folgt</span>'
+            karten.append(f"""      <article class="aktion">
+        <div class="aktion__kopf">
+          {kurz}
+          <h3 class="aktion__titel">{esc(a['titel'])}</h3>
+          {metazeile}
+        </div>
+        {text}
+        <div class="aktion__cta">{knopf}</div>
+      </article>""")
+
+        return f"""
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="shead">
+      <div><p class="label label--blue">Mitmachen</p><h2 class="h2">Unsere Aktionen</h2></div>
+    </div>
+    <div class="aktionen">
+{chr(10).join(karten)}
+    </div>
+  </div>
+</section>
+"""
+
     def dokumente(self, bereich):
         return [d for d in self.V.get("dokumente", []) if d.get("bereich") == bereich]
 
@@ -467,7 +512,7 @@ class Renderer:
 </section>
 
 <div class="ticker" aria-hidden="true"><div class="ticker__track">{ticker_items}</div></div>
-
+{self.aktionen_band()}
 <section class="section">
   <div class="wrap">
     <div class="shead">

@@ -127,6 +127,15 @@ def aus_json(datenordner=DATA):
         "termine": [{"titel": t["titel"], "datum": t.get("datum", ""), "zeit": t.get("zeit", ""),
                      "ort": t.get("ort", ""), "text": t.get("text", "")}
                     for t in roh.get("termine", [])],
+        # Hervorgehobene Aktionen auf der Startseite. „aktiv“ schaltet die
+        # einzelne Aktion an und ab, ohne sie löschen zu müssen.
+        "aktionen": [{"titel": a["titel"], "aktiv": bool(a.get("aktiv", True)),
+                      "kurz": a.get("kurz", ""), "datum": a.get("datum", ""),
+                      "zeit": a.get("zeit", ""), "ort": a.get("ort", ""),
+                      "text": a.get("text", ""), "bild": a.get("bild", ""),
+                      "anmeldelink": a.get("anmeldelink", ""),
+                      "anmeldetext": a.get("anmeldetext", "")}
+                     for a in roh.get("aktionen", [])],
         "spielplaene": [{"name": p["name"], "quelle": p.get("quelle", ""), "url": p.get("url", "")}
                         for p in roh.get("spielplaene", [])],
         "dokumente": [{"bereich": d.get("bereich", "satzung"), "titel": d["titel"],
@@ -182,7 +191,8 @@ def nach_json(V, A, datenordner=DATA):
         },
         "vorstand": V["vorstand"], "beitraege": V["beitraege"],
         "beitrag_hinweis": V["beitrag_hinweis"], "sponsoren": V["sponsoren"],
-        "news": V["news"], "termine": V["termine"], "spielplaene": V["spielplaene"],
+        "news": V["news"], "termine": V["termine"], "aktionen": V["aktionen"],
+        "spielplaene": V["spielplaene"],
         "dokumente": V["dokumente"],
     }
     ordner = pathlib.Path(datenordner)

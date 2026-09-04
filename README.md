@@ -104,6 +104,9 @@ nach der nächsten Änderung im CMS ohnehin veraltet.
   Spalten, mehr ergeben weitere Zeilen.
 - **Bilder und PDFs werden beim Bauen heruntergeladen** und neben die Seiten gelegt. Besucher
   laden nichts beim CMS-Anbieter nach.
+- **Aktionen auf der Startseite** (Birklauf, Flohmarkt, Herbstcamp) lassen sich einzeln ein- und
+  ausblenden, ohne sie zu löschen; der Anmeldelink wird je Aktion gepflegt. Ohne aktive Aktion
+  entfällt der Abschnitt.
 
 ### Abläufe in GitHub Actions
 

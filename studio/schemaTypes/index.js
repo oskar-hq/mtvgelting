@@ -1,3 +1,4 @@
+import {aktion} from './aktion.js'
 import {angebot} from './angebot.js'
 import {beitrag} from './beitrag.js'
 import {dokument} from './dokument.js'
@@ -18,6 +19,7 @@ export const schemaTypes = [
   // Inhalte
   angebot,
   termin,
+  aktion,
   news,
   vorstandsmitglied,
   beitrag,

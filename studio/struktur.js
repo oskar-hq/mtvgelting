@@ -13,6 +13,9 @@ export const struktur = (S) =>
         .title('Termine')
         .child(S.documentTypeList('termin').title('Termine')),
       S.listItem()
+        .title('Aktionen (Startseite)')
+        .child(S.documentTypeList('aktion').title('Aktionen')),
+      S.listItem()
         .title('Aktuelles')
         .child(S.documentTypeList('news').title('Aktuelles')),
 

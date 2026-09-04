@@ -254,6 +254,41 @@
       "text": "Der Vereinsbus kann von Abteilungen und Mannschaften über die Geschäftsstelle gebucht werden."
     }
   ],
+  "aktionen": [
+    {
+      "titel": "26. Birklauf",
+      "aktiv": true,
+      "kurz": "Volkslauf rund um Gelting",
+      "datum": "2026-08-29",
+      "zeit": "ab 15:45 Uhr",
+      "ort": "Birkhalle Gelting",
+      "text": "Start und Ziel an der Birkhalle – mit Parkplatz, Umkleiden und Duschen. Strecken für alle Altersklassen.",
+      "anmeldelink": "",
+      "anmeldetext": "Zur Anmeldung"
+    },
+    {
+      "titel": "Flohmarkt",
+      "aktiv": true,
+      "kurz": "Stöbern und verkaufen",
+      "datum": "",
+      "zeit": "",
+      "ort": "",
+      "text": "Beschreibung und Termin werden vom Verein ergänzt.",
+      "anmeldelink": "",
+      "anmeldetext": "Stand anmelden"
+    },
+    {
+      "titel": "Herbstcamp",
+      "aktiv": true,
+      "kurz": "Ferienangebot für Kinder",
+      "datum": "",
+      "zeit": "",
+      "ort": "",
+      "text": "Beschreibung und Termin werden vom Verein ergänzt.",
+      "anmeldelink": "",
+      "anmeldetext": "Kind anmelden"
+    }
+  ],
   "spielplaene": [
     {
       "name": "Handball",

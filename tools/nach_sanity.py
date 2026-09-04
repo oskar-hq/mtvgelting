@@ -153,6 +153,15 @@ def dokumente_bauen(V, A):
                      "titel": n["titel"], "datum": n["datum"] or None,
                      "kategorie": n["kategorie"], "text": n["text"]})
 
+    for i, a in enumerate(V["aktionen"]):
+        docs.append({"_id": "aktion.%s" % schluessel(a["titel"])[:40], "_type": "aktion",
+                     "titel": a["titel"], "aktiv": bool(a.get("aktiv", True)),
+                     "kurz": a.get("kurz", ""), "datum": a.get("datum") or None,
+                     "zeit": a.get("zeit", ""), "ort": a.get("ort", ""),
+                     "text": a.get("text", ""),
+                     "anmeldelink": a.get("anmeldelink") or None,
+                     "anmeldetext": a.get("anmeldetext", ""), "sortierung": i})
+
     for i, s in enumerate(V["sponsoren"]):
         docs.append({"_id": "sponsor.%s" % schluessel(s["name"])[:40], "_type": "sponsor",
                      "name": s["name"], "url": s.get("url") or None, "sortierung": i})
